@@ -1,0 +1,11 @@
+# GOLD ESSAY — cam10 Test4 Task2 — Band 5.5
+# STATUS: DONE
+# PDF 页(1-indexed): 16
+# Prompt: Test 4 WRITING TASK 2 You should spend about 40 minutes on this task. Write about the following topic: Many museums charge for admission while others are free. 
+# 说明：预填为文本层乱码，仅作提示，请对照 PDF 手写图订正；改完把 STATUS 改成 DONE。
+# ====== ESSAY BODY BELOW (此行以下全部视为正文) ======
+Museums are unique places where you get to experience the history from past to thelatest technology. However admission is required when entering.
+Museums are popular places to go to on a weekends with family or friends.Admissions are one of the funds which keeps the museum running and also tomaintain its exibits. Without admission museums would be dirty, pourly maintained, andlikely impossible to operate, unless funded from goverment or charity.
+However admissions are one thing which may keep the customer from entering. Usuallywe have to pay around $ 30 for admissions. Chilaren or family which doesn't earn muchsimply can not afford such amount. They will go to museum which is free or even notgo and experience the greatness of the museum, which I think is horrible because itshould be open for everyone.
+I think having an admission is a disadvantage since museums should be open foreveryone, but admissions are essential for running the museums. So I think it is veryimportant to come up with a plan so that museums could be operated but also beadmission tree, such as goverment funding or doing a charity. Auckland Museum is onegreat example. It is one of the biggest museums in New Zealand but it is also free
+of admission since it's goverment funded.

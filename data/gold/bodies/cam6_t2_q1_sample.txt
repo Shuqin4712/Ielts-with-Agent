@@ -1,0 +1,10 @@
+# GOLD ESSAY — cam6 Test2 Task1 — Band 6.0
+# STATUS: DONE
+# PDF 页(1-indexed): 11
+# Prompt: Test 2 WRITING WRITING TASK 1 You should spend about 20 minutes on this task . The table below gives information about changes in modes of travel in England bet
+# 说明：预填为文本层乱码，仅作提示，请对照 PDF 手写图订正；改完把 STATUS 改成 DONE。
+# ====== ESSAY BODY BELOW (此行以下全部视为正文) ======
+
+In 2000 the most preferred mode of travel is by car with 4,806 people. There's a noticable decrease in public transportation locally where it dropped from 429 people in 1985 to 274 people in 2000. However the long distance bus rides is much more preferred by people as its figures are more than doubled in the last 15 years. People who chose to walk or cycle are decreased slightly in 2000. which probably made people to take the take the train more often. There's a significant increase in the numbers of people who travelled by train. It jumped from 289 in 1985 to 366 in 2000. This makes the train second popular mode of transportation. Thi biggest leap in the chart is the increase of taxi users who are tripled in 2000 with 42 people. where it was only 13 in 1985  
+
+Apart from all this modes of travel, there are some more different types of travel as well of course. Number of people choosing different modes of travel is rapidly increased from 450 to 585 in 2000.

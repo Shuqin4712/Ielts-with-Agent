@@ -1,0 +1,12 @@
+# GOLD ESSAY — cam8 Test3 Task1 — Band 6.0
+# STATUS: DONE
+# PDF 页(1-indexed): 13
+# Prompt: Test3 WRITING WRITING TASK 1 You should spend about 20 minutes on this task. The diagrams below show the stages and equipment used in the·cement-making process,
+# 说明：预填为文本层乱码，仅作提示，请对照 PDF 手写图订正；改完把 STATUS 改成 DONE。
+# ====== ESSAY BODY BELOW (此行以下全部视为正文) ======
+The diagrams show the processes and the equipments used to make cement, and how these are used to produce concrete for building purposes.
+The first step in the cement productios is to introduce limestone clay. These materials pass through a crusher that produces a powder. Then this powder goes into a mixer. After this, the product passes to a rotating heater which works with heat.
+Afterwards, the mixture goes into a ginder where the cement comes out. At the end of the process, the cement is packed in bags.
+Referring to the concret production, the process begins with a combination of 15% cement, 10% water, 25% and sand 50% gravel. These four elements are introduced into a concrete mixer.
+As mentioned above, the concrete production takes fewer steps that the cement production, however, it is necessary to use more materials than the latter process in order to obtain the final product.
+The last difference between both processes is that the concrete mixer does not work with heat.

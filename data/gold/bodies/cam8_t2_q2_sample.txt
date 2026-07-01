@@ -1,0 +1,12 @@
+# GOLD ESSAY — cam8 Test2 Task2 — Band 5.5
+# STATUS: DONE
+# PDF 页(1-indexed): 12
+# Prompt: Test2 WRITING TASK 2 You should spend about 40 minutes on this task. Write about the following topic: Nowadays the way many people interact with each other has 
+# 说明：预填为文本层乱码，仅作提示，请对照 PDF 手写图订正；改完把 STATUS 改成 DONE。
+# ====== ESSAY BODY BELOW (此行以下全部视为正文) ======
+Nowadays the way people interact with each other has changed because of technology.
+Yes, the technology has changed the people's interaction in very enhanced manner.
+Earlier people use to wait and try to find easy way to contact their friends or relatives leaving far. In past there was no quick technolagy to contact or to establish any communication between one person to another person. The Drawback with past communication systems was that it were very stow and were time taking process such as telegrams, letter etc. People used to afraid to write their personal feedbacks or things to their love ones due to insecure medium of communication. When it comes to professional level, the privacy and accuracy should be mainkain but, to that time there were no secure communications.
+Now the things have changed around, people from far distance contact their loves one in an easy and quick ways which improves the Interaction level between two person. Quality the level of the Interaction between people to people, has improved because the people are equipped with high-tec technology which enhances the communication. There are many many medium which are available now such as Internet, Calling Cards etc.
+The technology has provided the mobility faster which help people to talk or to interact at any time anywhere in the world.
+People can contact their friend or relatives any time they want. It has become so easier and feriendly to be in touch with your feriends, relatives even with the unknown people.

@@ -1,0 +1,12 @@
+# GOLD ESSAY — cam7 Test4 Task2 — Band 5.0
+# STATUS: DONE
+# PDF 页(1-indexed): 16
+# Prompt: Test 4 WRITING TASK 2 You should spend about 40 minutes on this task . Write about the following topic: Some people think that universities should provide gradu
+# 说明：预填为文本层乱码，仅作提示，请对照 PDF 手写图订正；改完把 STATUS 改成 DONE。
+# ====== ESSAY BODY BELOW (此行以下全部视为正文) ======
+What knowledge and skills should universities provide has been argued for many years. Some people think that the true function of universities provide knowledge for their own purpose, but nowadays, more and mare people point out that universities should provide graduates with the knowledge and skills according to the workplace.
+The first reason for universities should provide these knowledge and skill is the students' needs. Obviously, the most of the students go to university purpose of is to get some knowledge
+and skills which could make them have the ability to get a job. If a university does not provide these knowledge and skills, the students might not get a job and they would be very disappointed. As a result, the university would lose its students.
+Moreover, providing knowledge and skills needed in the workplace maks a university progress. The new skills and information always are initiated in the workplace, so focusing on the needs of the warkplace the university could get sound strategies to do research and make it more mordenization.
+Lastly, providing these knowledge and skills could benefit our country which usually gives a financial support to universities. Having these knowledge and skills, students are more easy to get a job, and this can make our countries economy strong.
+In conclusion, it can be said that providing the knowledge and skills which the workplace needs is every universities' basic function.

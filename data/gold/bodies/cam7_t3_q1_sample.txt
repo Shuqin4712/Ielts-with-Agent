@@ -1,0 +1,11 @@
+# GOLD ESSAY — cam7 Test3 Task1 — Band 6.5
+# STATUS: DONE
+# PDF 页(1-indexed): 13
+# Prompt: Test 3 \V RITI :\~ · . WRITING TASK 1 You should spend about 20 minutes on this task . The chart below shows information about changes in average house prices i
+# 说明：预填为文本层乱码，仅作提示，请对照 PDF 手写图订正；改完把 STATUS 改成 DONE。
+# ====== ESSAY BODY BELOW (此行以下全部视为正文) ======
+The chart gives information about the percentage change in average house prices in five different cities located in five different countries over 12 year period between 1990 and 2002 compared with the average house prices in 1989.
+According to the chart, during the period from 1990 to 1995 the average prices of houses in three cities decreased significantly by five percent in New York (U,SA) and about 7.5 percent in both Tokyo (Japan) and London (UK). While the average house prices increased slightly in two cities Madrid (Spain) and Frankfurt (Germany) by about 1.5 percent and 2 percent respectively.
+As far as the next period (1996-2002) is concerned, it is clear that the average house prices decreased only in Tokyo Japan) by 5 percent. In ontrast the average house prices increased in the rest of cities. In New York it increased consideraply by 5 percent, in Madrid it increased slightly by 4 percent, in Frankfurt it increased by 2 percent.
+London has the largest increase in the average house price over the 6-year period from 1996 to 2002 as it increased dramatically by lpercent.
+All in all, there are a wide differences in house prices between the five cities which illustrated in this chart. These differences may be a result of the number of population or the number of houses required in a certain city.

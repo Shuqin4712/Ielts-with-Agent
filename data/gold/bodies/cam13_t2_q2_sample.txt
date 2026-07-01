@@ -1,0 +1,11 @@
+# GOLD ESSAY — cam13 Test2 Task2 — Band 7.0
+# STATUS: DONE
+# PDF 页(1-indexed): 12
+# Prompt: Test 2 WRITING TASK 2 You should spend about 40 minutes on this task. Write about the following topic: Some people believe that nowadays we have too many choice
+# 说明：预填为文本层乱码，仅作提示，请对照 PDF 手写图订正；改完把 STATUS 改成 DONE。
+# ====== ESSAY BODY BELOW (此行以下全部视为正文) ======
+The answer is complex since there are a lot of choices in our life and all of them are different kinds. In some cases I would say that it is a good thing to have the ability to choose from a wide variety. Take for example gastronomy. Every single person has different meals on their list of favourites. Actually if you have a bigger family it is almost impossible to cook something that
+everyone would like. Therefore I would say that it is great that you can go to a shopping center and choose from a dozen different food types. I can always find something that looks delicious.
+Naturally, there are some people who say that it is against evolution. They claim to say that back in the old days we had a perfect life when technically everybody was farming. I personally disagree with that. I am happy that I could choose a job that fits best to my abilities. I mean no one is the same, why would we want to do the same? Different kinds of universities give us the opportunity to beome who we are meant to be. We have the right to choose.
+However there is one topic where, according to my opinion, we have too many choices. This specific area is television. There are hundreds of channels, therefore you can always find something that is worth watching. Literally you could sit in your sofa the whole day and watch films. I think that people doing less outdoor activities are the results of the many available channels. From this point of view I would agree that we have too many choices.
+In conclusion I would say that we can't generally talk about choices since they could be different. In some cases it is good to have many of them while in other areas they could have a negative effect.

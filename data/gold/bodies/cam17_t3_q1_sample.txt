@@ -1,0 +1,8 @@
+# GOLD ESSAY — cam17 Test3 Task1 — Band 5.5
+# STATUS: DONE
+# PDF 页(1-indexed): 14, 15
+# Prompt: WRITING WRITING TASK 1 You should spend about 20 minutes on this task. The chart below gives information about how families in one country spent their weekly in
+# 说明：预填为文本层乱码，仅作提示，请对照 PDF 手写图订正；改完把 STATUS 改成 DONE。
+# ====== ESSAY BODY BELOW (此行以下全部视为正文) ======
+The chart describes the data about families weekly expenditure prospects in 1968 and in 2018. The most significant spent rate is on food with a 35% ratio in the year 1968. Housing and clothing come next with the same prospect of 10% of the weekly income. Expenditure on leisure, transport, personal goods and household goods are almost same percentage, the former one is slightly more. Lastly, spent rates on fuel and the others are recorded the least with a 6% in the year of 1968 Turning to 2018, food expenditure of families had dropped dramatically to a percentage between15 to 20. On the other hand, housing spent had rised significantly with an almost 20% slightly more than food expenditures. The most crucial rise was recorded on leisure spent rates. It had soared abut 10% in 50 years. Transportation expeditures comes after and followed by Household goods and the othe categories respetively. Last three had remained the least just as in 1968 which is fuel and power, clothing and footware and personal goods.
+Overall, weekly expenditure averages of families had dramatically changed over 50 years. Some spent rates had remained the same whereas some of the alterations are quite noticable.

@@ -1,0 +1,15 @@
+# GOLD ESSAY — cam6 Test1 Task2 — Band 7.5
+# STATUS: DONE
+# PDF 页(1-indexed): 10
+# Prompt: WRITING TASK 2 You should spend about 40 minutes on this task. Write about the following topic: Today, the high sales of popular consumer goods reflect the powe
+# 说明：预填为文本层乱码，仅作提示，请对照 PDF 手写图订正；改完把 STATUS 改成 DONE。
+# ====== ESSAY BODY BELOW (此行以下全部视为正文) ======
+Nowadays, there are lots of advertisements on television or on the streets. Some people think that the advertising boosts the sales of goods and it encourages people to buy things unnecessarily. This arguments may be true. In my country, many advertising companies produce advertisements with famous and popular actors or singers. People, especially youngsters, buy goods that their favourite singer advertise, although they do not really need the products.  
+
+Also, on the television screen, a product may look gorgeous and good quality. As a result of it, people often buy goods without enough consideration. Consumers may not actually need it but they buy goods impulsively soon after they watch the advertising. Furthermore, as many customers buy a particular product due to its advertising campaign, the other people may be affected by the trend, even if the product is not of the real needs of the society.  
+
+On the other hand, there are various aspects against these arguments. Moreover, it is people's choice to make a decision to buy goods. Advertising may be not a cause of customers' buying habits. Individuals have their own spending habits. If they have got enough disposable income , then the right to make a decision is given to them. No one actually can judge whether the goods sold are the real needs of the society or not.  
+
+In addition, as there should be a limited amount of disposable income consumers are able to spend, people try to allocate their budgets. They cannot be simply swayed by those advertisements.
+
+In conclusion, as customers have their own strong opinions and standard of good quality goods, it is better to leave them to make their own decision in buy goods. It is fairly difficult to say everyone is swayed by advertising and buy good impulsively. However, in sensitive area of businesses such as toy industries, it may be necessary to band advertising to those children as children have not got enough ability to control themselves or to know what they need.

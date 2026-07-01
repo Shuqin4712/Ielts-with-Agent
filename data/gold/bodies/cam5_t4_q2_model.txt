@@ -1,0 +1,7 @@
+# GOLD ESSAY — cam5 Test4 Task2 — MODEL(无 band)
+# STATUS: DONE
+# PDF 页(1-indexed): 16
+# Prompt: WRITING TASK 2 You should spend about 40 minutes on this task . Write about the following topic: Research indicates that the characteristics we are born with ha
+# 说明：印刷体范文，预填一般已干净；如无误保持 STATUS: DONE 即可。
+# ====== ESSAY BODY BELOW (此行以下全部视为正文) ======
+Mode l and sample answers fo r Writing tasks MOD EL AN SW ER Thi s model has been prepared b y a n exa min er as an exa mple of a very goo d answer. Howeve r, please note th at thi s is just one exa mpl e o ut of ma ny poss ible app roac hes. 169

@@ -1,0 +1,10 @@
+# GOLD ESSAY — cam8 Test4 Task1 — Band 8.0
+# STATUS: DONE
+# PDF 页(1-indexed): 15
+# Prompt: Writing WRITING WRITING TASK 1 You should spend about 20 minutes on this task. The graph below shows the quantities of goods transported in the UK between 197 4
+# 说明：预填为文本层乱码，仅作提示，请对照 PDF 手写图订正；改完把 STATUS 改成 DONE。
+# ====== ESSAY BODY BELOW (此行以下全部视为正文) ======
+The graph illustrates the quantities of goods transported in the United Kingdom by four different modes of transport between the time period of 1974 and 2002. Over this span of 28 years, the quantities of goods transported by road, water and pipeline have all increased while the quantity transported by rail has remained almost constant at about 40 million tonnes.
+The largest quantity of goods transported both in 1974 and 2002 was by road (FO million tonnes and 98 million tonnes respectively) while the lowest both in 1974 and 2002 was by pipeline (about 5 million tonnes and 22 million tonnes respectively). The amount of goods transported by water was constant from 1974 to 1978, where it showed an exponential growth, rising to almost 60 million tonnes after which it plateaued for about 20 years before starting to rise gradually again.
+The amount of goods transported by rail is almost constant at 40 million tonnes in 1974 and L00L, with decreases in quantity in between the years. It is also interesting to note that almost all showed a decrease in 1994 in amount of goods transported except for the pipeline, which actually peaked in that year.
+In conclusion the road remains the most popular method of transporting goods in the Uk while water and pipelines are becoming increasingly used, have not become more popular as a method of transport.

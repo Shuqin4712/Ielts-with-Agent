@@ -1,0 +1,11 @@
+# GOLD ESSAY — cam7 Test1 Task1 — Band 5.5
+# STATUS: DONE
+# PDF 页(1-indexed): 9
+# Prompt: Test] .·. WRITING . WRITING TASK 1 You should spend about 20 minutes on this task . The table below gives information on consumer spending on different items in
+# 说明：预填为文本层乱码，仅作提示，请对照 PDF 手写图订正；改完把 STATUS 改成 DONE。
+# ====== ESSAY BODY BELOW (此行以下全部视为正文) ======
+Different countries' consumer spendings are quite different. The table shows the vary consumer spending on a seires of intems in the five countries, namely, the Ireland, Italy, Span, Sweden and Turkey in 2002.
+Food, drinks and tobacco were in the most important position on consumer spending in all of the five countries, and in a different percentage. In Ireland and turkey. they were near 30%, while in the other three countries they are under 20%.
+Clothing and footwear were the second important consumer spending in these countries. In Italy, they got 9%, and in Sweden, they were 5.4%. In the other three countries, the figure were very similar, all were near 6.5%.
+The last consumer spending were leisure and education. In Turkey, they were 4.35%, and in the other four countries the figure were under 4%.
+In conclusion, it can be said that in 2002, food, drinks and tabacoo were the most important consumer spending in the five countries, and the different countries' consumer spending were quite different.

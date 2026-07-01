@@ -1,0 +1,11 @@
+# 阶段 0/1 依赖。FastAPI 等阶段 5 再加。
+langchain-openai>=0.2
+langchain-core>=0.3
+langgraph>=0.2
+chromadb>=0.5
+ollama>=0.3
+pypdf>=4.0
+pymupdf>=1.24        # PDF 页栅格化（VLM gold 抽取）
+python-dotenv>=1.0
+tenacity>=8.2
+pytest>=8.0

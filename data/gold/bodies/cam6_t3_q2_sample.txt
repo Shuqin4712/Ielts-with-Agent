@@ -1,0 +1,13 @@
+# GOLD ESSAY — cam6 Test3 Task2 — Band 4.0
+# STATUS: DONE
+# PDF 页(1-indexed): 14
+# Prompt: Test 3 WRITING TASK 2 You should spend about 40 minutes on this task . Write about the following topic: Some people believe that visitors to other countries sho
+# 说明：预填为文本层乱码，仅作提示，请对照 PDF 手写图订正；改完把 STATUS 改成 DONE。
+# ====== ESSAY BODY BELOW (此行以下全部视为正文) ======
+In the Recent years, between the different countries, a lot of people keen on visit to other countries. Those people like to learn the different cultural and reconize different things from the other countries.
+
+In my opinion, every host country should welcome cultural differences. Because the visitors were stay a short time for their journey. They will travel and shopping in the cities. Sometime, they can bring up the cultural and enconomic were development. Althought, the language and the lifestyle are different, but we shall learn from ... their language.
+
+Some people cannot accept the visitors. I think they afair to effect the local customs. And ... the don't the visitors behaviour were effect to their countries saft. Therefore the cannot accept. The visitors might be the crime and escept from their countries. However, they afaird the visitors whose will destroye their countries.
+
+In summerise, the people should accept the host country and welcome cultural differences. They will earn a lot for other countries. Such as cultural, reglious, Knowledge, Arts etc, If they can accept the other countries visitors. They Might be benefit a lot than they needs.

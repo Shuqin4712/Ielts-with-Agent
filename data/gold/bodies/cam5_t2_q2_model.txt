@@ -1,0 +1,7 @@
+# GOLD ESSAY — cam5 Test2 Task2 — MODEL(无 band)
+# STATUS: DONE
+# PDF 页(1-indexed): 12
+# Prompt: Writing WRITING TASK 2 You should spend about 40 minutes on this task. Write about the following topic: In some countries young people are encouraged to work or
+# 说明：印刷体范文，预填一般已干净；如无误保持 STATUS: DONE 即可。
+# ====== ESSAY BODY BELOW (此行以下全部视为正文) ======
+This model has been prepared by an examiner as an example of a very good answer . However, please note that this is just one example out of many possible approaches. · lt is quite common these days for young people in many countri~s to have a break · from studying after graduating fromitfligh school. The trend is ru>t restricted' to rich · · students who h~'le the money to travel, but is also evident among poorer students who cho,ose to w~rk and bec;ome economically indeRendent for a: period of time. "The reasons for this trend may involve the recognition that a young adult who pa~ses directly from school to university is rather restricted in terms of general knowledge and experience of the world. By contrast, those who have spent some " ·time earning a living or travelling to other places, have a broader view of life an(j better personal resources to draw on. They· tend to be more jndependerit, whic!'l is · . . a very Important factor in academic study and research, as weU as giving them an • advantage in ~erms· of coping with the· challenges _of student life. · . . ' 165

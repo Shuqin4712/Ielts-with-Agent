@@ -1,0 +1,9 @@
+# GOLD ESSAY — cam13 Test1 Task1 — Band 5.5
+# STATUS: DONE
+# PDF 页(1-indexed): 9
+# Prompt: Writing Car park: staff and public City Road WRITING WRITING TASK 1 You should spend about 20 minutes on this task. The two maps below show road access to a cit
+# 说明：预填为文本层乱码，仅作提示，请对照 PDF 手写图订正；改完把 STATUS 改成 DONE。
+# ====== ESSAY BODY BELOW (此行以下全部视为正文) ======
+Two maps illustrate the way to get to a city hospital of two different years (2007 and 2010).
+According to both maps, the main features which is city hospital is sourrounded by Ring Road. In these two maps, there have been two features that still remained. This two features are City Hospital and staff car park. Apart from these two features there are some features that shows on 2010 map but haven't shown on 2007 map. The additional features that appear on the map of 2010 are public car park which located on the east-side of the city hospital. The further additional features are two around-turn on the hospital Rd. which can lead to the bus station.
+Overall, there are two major features that never change on both 2007 and 2010 map. These features are city hospital and staff car park. However, there are some additional features that appear on the map of 2010 but not on 2007. These features are public car park, bus station and two around-turns

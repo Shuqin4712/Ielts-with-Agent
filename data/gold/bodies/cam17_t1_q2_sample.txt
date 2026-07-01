@@ -1,0 +1,11 @@
+# GOLD ESSAY — cam17 Test1 Task2 — Band 6.5
+# STATUS: DONE
+# PDF 页(1-indexed): 9, 10
+# Prompt: Writing WRITING TASK 2 You should spend about 40 minutes on this task. Write about the following topic: It is important for people to take risks, both in their 
+# 说明：预填为文本层乱码，仅作提示，请对照 PDF 手写图订正；改完把 STATUS 改成 DONE。
+# ====== ESSAY BODY BELOW (此行以下全部视为正文) ======
+It is said that taking risks brings a lot of benefits. However, it also gives us some drawbacks.
+First of all, it is obvious that taking risks will cause a great loss if people do it and fail. In personal life, this loss might not be so harmful. However, it will be really harmfull in professional life, because people take a responsibility not only for themselves but also others such as colleages, customers and their families. It will even damage the society from the economic point.
+On the other hand, we can receive huge benefits by taking risks. Firstly, we can learn how to prepare for one goal through this process. In order to achieve the aim, people will make all the efforts to think about it and try to find more efficient way. If they do this in the professional circumstances, they will recognise the responsibility and importance of cooperation.
+Also, it will be completely meaningful even though people can't achieve the goal after taking risks. They will learn the reason why they have failed and how to change it. The failure will enable them to improve their skills and to achieve their object next time.
+As I mentioned, it is true that takingisksvustadvanages and disadvantages. However, it can be argued that the benefits outweighed the drawbacks in that we can obtain advantages not only from the result but also from the process of taking risks.

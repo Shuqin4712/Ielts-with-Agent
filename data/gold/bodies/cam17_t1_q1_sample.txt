@@ -1,0 +1,11 @@
+# GOLD ESSAY — cam17 Test1 Task1 — Band 6.0
+# STATUS: DONE
+# PDF 页(1-indexed): 8
+# Prompt: Test 1 WRITING WRITING TASK 1 You should spend about 20 minutes on this task. The maps below show an industrial area in the town of Norbiton, and planned future
+# 说明：预填为文本层乱码，仅作提示，请对照 PDF 手写图订正；改完把 STATUS 改成 DONE。
+# ====== ESSAY BODY BELOW (此行以下全部视为正文) ======
+The two maps illustrates the norbiton area in the present days, as well as, the planned development.
+Overall, the norbiton industrial area is locatedat the east side of the town, with a river on the north, separating the farmland from the industrial area, which is located in the center of the map, represented by a few factory biuldings and roads, followed by the main road at the extreme south of the map.
+the planned development shows a substantially growth and modifications of the overall infrastructure of the area between the farmland and the main road.
+Firstly, the planned development of the norbiton area replaces what once were factories for housings.
+Moreover, the roads have been developed to acomodate all the new biuldings that have been planned for the area, which are, a school and a playground to the east side of the roundabout located in the center of the map, as well as shops and a medical center around the round about. Secondly, a bridge is planned for the north of the map to cross the river and provide acess to the housing that will be located in farmland

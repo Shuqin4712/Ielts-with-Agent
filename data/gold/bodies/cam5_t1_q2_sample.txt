@@ -1,0 +1,13 @@
+# GOLD ESSAY — cam5 Test1 Task2 — Band 4.0
+# STATUS: DONE
+# PDF 页(1-indexed): 10
+# Prompt: Test I WRITING TASK 2 You should spend about 40 minutes on this task. Write about the following topic: Universities should accept equal numbers of male and fema
+# 说明：预填为文本层乱码，仅作提示，请对照 PDF 手写图订正；改完把 STATUS 改成 DONE。
+# ====== ESSAY BODY BELOW (此行以下全部视为正文) ======
+According to universities should accept equal numbers of male and female students in every subject Therefore, this essay will show some reasons of argument for and argument against
+
+Firstly, I will discuss about two reasons of argument for to begin with universities should accept equal numbers of male and female students in every subject because it will be balance of idea while studying In general, there usually are different ideas between man and woman These lead to, new ideas from different vision will happen Another reason is it display that have equal of society not eccept in each side In addition, nowadays, the most societies become to accept ability of both in any way  
+
+Secondly, I will discuss about one reason of argument against that is some subjects not suitable for each other For example, some subject of sports such as weight putting It is not suitable for female because there are different of body between male and female  
+
+In conclusion, I agree with universities should accept equal numbers of male and female students in every subject Moreover, it depen on what the subjects that the students want to study, they can choose by themselve because I believe that if the students like to study their subjects, they will do it well so that I strongly agree with this topic

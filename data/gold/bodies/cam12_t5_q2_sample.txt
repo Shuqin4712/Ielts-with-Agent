@@ -1,0 +1,11 @@
+# GOLD ESSAY — cam12 Test5 Task2 — Band 6.0
+# STATUS: DONE
+# PDF 页(1-indexed): 10
+# Prompt: Test5 WRITING TASK 2 You should spend about 40 minutes on this task. Write about the following topic: Some people believe that it is good to share as much infor
+# 说明：预填为文本层乱码，仅作提示，请对照 PDF 手写图订正；改完把 STATUS 改成 DONE。
+# ====== ESSAY BODY BELOW (此行以下全部视为正文) ======
+Sharing information is actual issue in our world where it has strong influence on people. There are various spheres of our life where information is more or less important for people working there on out of this. For this reason some people consider that it is good to share information while others think in opposike way.
+For example, practically all scientists are glad to share information with ordinary people or other scientist. There is no competition in this sphere. Sometimes it is bad for govenment which scientist share the secret information with international spy but it will not hurt information.
+There are some simple rules in academic world which limite informational sources between people. If person is interested in theme discussing with you and you are ready to keep Ealking then the person gives you all information what he knows for free. On the other hand, if the person knows much and he knows that you can not. give him actual or new information then he will share information with you just for money. For example, student pay for his learning while two students can cooperate and share information
+with each other. It is obviously that sharing information in business world can followes by releases. There is large competition and it may takes much costs for companies. Companies loose their profit every day because some one can not keep silence especially IT companies.
+To sum up all above it is neccessery to say that there are some spheres in which sharing information is a crime. In my opinion, in many cases information can be too important or sharing at all.

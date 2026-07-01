@@ -1,0 +1,11 @@
+# GOLD ESSAY — cam5 Test2 Task1 — Band 8.0
+# STATUS: DONE
+# PDF 页(1-indexed): 11
+# Prompt: Test 2 WRITING WRITING TASK 1 You should spend about 20 minutes on this task . The charts below show the main reasons for study among students of different age 
+# 说明：预填为文本层乱码，仅作提示，请对照 PDF 手写图订正；改完把 STATUS 改成 DONE。
+# ====== ESSAY BODY BELOW (此行以下全部视为正文) ======
+The first graph shows that there is a gradual decrease in study for career reasons with age. Nearly 80% of students under 26 years, study for their career. This percentage gradually declines by 10-20% every decade. Only 40% of 40-49yr olds and 18% of over 49yr olds are studying for career reasons in late adulthood.  
+
+Conversely, the first graph also shows that study stemming from interest increases with age. There are only 10% of under 26yr olds studying out of interest. The percentage increases slowly till the beginning of the fourth decade, and increases dramatically in late adulthood. Nearly same number of 40-49yr olds study for career and interest. However 70% of over 49yr olds study for interest in comparison to 18% studying for career reasons in that age group.  
+
+The second graph shows that employer support is maximum (approximately 60%) for the under 26yr students. It drops rapidly to 32% up to the third decade of life, and then increases in late adulthood up to about 44%. It is unclear whether employer support is only for career-focused study, but the highest level is for those students who mainly study for career purposes.

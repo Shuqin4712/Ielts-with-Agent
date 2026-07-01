@@ -1,0 +1,16 @@
+# GOLD ESSAY — cam11 Test2 Task1 — Band 6.0
+# STATUS: DONE
+# PDF 页(1-indexed): 11
+# Prompt:   WRITING TASK 1 You should spend about 20 minutes on this task. The charts below show the propo时ions of British students at one university in England who were 
+# 说明：预填为文本层乱码，仅作提示，请对照 PDF 手写图订正；改完把 STATUS 改成 DONE。
+# ====== ESSAY BODY BELOW (此行以下全部视为正文) ======
+The charts show the percentage of the British students, who are able to speak
+languages other than English, in 2000 and in 2010. In 2000, 20% of the British students were not able to speak another language. But in 2010 the number has
+decreased to 10%. which is good because it shows that more people have learned other languages well.
+The biggest percentage had Spanish only with 30% in 2000. However it has increased by 5% and is in 2010 still the highest percentage with 35%.
+In 2000, German only and Ewo other languages were the lowest ones, both with
+10%. While in 2010 French only, German only and two other languages show the lowest percentage, while all of them got 10%. All in all, the percentage of German only in2000 and 2010 hasn't changed. The percentage of French only has decreased by 5% No other languages percentage was reduced by the half. from the 20% in 2000 to10% in 2010.
+The number of people, who are speaking E wo other languages has increased by half: In 2000 there were 10% and in 2010 there are I5%.
+Another interesting fack is that the percentage of another language has improved aswell: from 15% to 20%
+But still, the most common learned language is Spanish only In 2000 there were30% of English students, who spoke it Auently, while in 2010 the number has increased further to 35%.
+

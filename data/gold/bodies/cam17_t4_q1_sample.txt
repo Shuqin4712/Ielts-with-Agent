@@ -1,0 +1,10 @@
+# GOLD ESSAY — cam17 Test4 Task1 — Band 7.5
+# STATUS: DONE
+# PDF 页(1-indexed): 18
+# Prompt: Test 4 WRITING TASK 2 You should spend about 40 minutes on this task. Write about the following topic: Nowadays, a growing number of people with health problems
+# 说明：预填为文本层乱码，仅作提示，请对照 PDF 手写图订正；改完把 STATUS 改成 DONE。
+# ====== ESSAY BODY BELOW (此行以下全部视为正文) ======
+The line graph shows trends in shop closures and openings of new shops in a particular country between the years 2011 and 2018.
+In 2011 approximately 6,400 shops closed. The number of closures fluctuated over the next four years until 2015, when there was a dramatic fall in closures to roughly 700 shops. The following year the number of shops closing their doors rose sharply, reaching over 5,000. The figures remained steady for the next two years, with just over 5,000 closures in 2018
+The number of new shops opening decreased dramatically between 2011 (approximately 8,500) and2012 (just under 4,000) but rebounded by roughly 50% by 2014. In 2015, the number of openings then fell to the 2012 level, but remained stable for the next two years. The last recorded year, 2018, saw a further fall to 3,000 new openings, the lowest point in this seven year period.
+Overall, the number of shop closures has remained within the 5,000 to 7,000 range (with the exception of 2015). In contrast, new shop openings have shown a wider range of figures, but generally indicate a downward trend over the same period.

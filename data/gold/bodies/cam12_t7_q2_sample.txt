@@ -1,0 +1,12 @@
+# GOLD ESSAY — cam12 Test7 Task2 — Band 7.5
+# STATUS: DONE
+# PDF 页(1-indexed): 14
+# Prompt: Test 7 WRITING TASK 2 You should spend about 40 minutes on this task. Write about the following topic: In a number of countries, some people think it is necessa
+# 说明：预填为文本层乱码，仅作提示，请对照 PDF 手写图订正；改完把 STATUS 改成 DONE。
+# ====== ESSAY BODY BELOW (此行以下全部视为正文) ======
+For many people around the world, the preferred method of transportation is high-speed rail. Communters Eravelling to and from work rely on the safety and efficiency, whill
+tourists appreciate the convenience and novelty that Erains provide. Others believe that highways, busses and regular trains should be improved before new, high-speed lines are added.
+Safety is cheif among concerns for those who travel to work or school on a regular basis. If one drives a car, they have to concentrate on the road not only to avoid accidents but also to prevent other drvers from causing a problem on Ehe road. High- speed rail allows the communter to leavethedrving to the professional controlling the train, allowing them to get some work done while getking to work safely.
+In addition, people tend to move further and further away from city centres, where land and houses are more affordable. High-speed rail allows these commuters to travel greater distances in a shorter ammount of ime. Thereis alow-on effechere, because if we can reduce the number of cars on the road, we can also cut down on traffic jams and road delays.
+On the other hand, high-speed trains are expensive, and some believe this money could be spend on repairing motorways which are used by cars, busses and motorcycles.
+Another possibiliky would be to use this money to build more regular communter trains and busses to service the ever-expanding urban populations. Moreover, boats and ferries could benefit from a budget which focuses more on existing forms of ransport. In the end, public transpork. is an issue which affecs usll. The axes which we pay should be spent on the type of transport which will have the most benefit to all citizens. In addition, we need to take nto account how much the environment is damaged by fossil fuels and pollution. Eherefore, I believe in order to move forward, we need to embrace the idea of high-speed rail so that future generations can continue to live safely and efficiently.

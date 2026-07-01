@@ -1,0 +1,10 @@
+# GOLD ESSAY — cam13 Test2 Task1 — Band 6.0
+# STATUS: DONE
+# PDF 页(1-indexed): 11
+# Prompt: Writing H households in owned ■ households in rented accommodation ■ accommodation WRITING WRITING TASK 1 You should spend about 20 minutes on this task. The ch
+# 说明：预填为文本层乱码，仅作提示，请对照 PDF 手写图订正；改完把 STATUS 改成 DONE。
+# ====== ESSAY BODY BELOW (此行以下全部视为正文) ======
+The provided bar chart depicts the compression of buying or renting houses n England and Wales from 1918 to 2011.
+1918 the rented households was raised about 78 percentage. Then it leveled of between 1939 to 1953. From 1961 to 1981 it dramaticly droped to 35 percentage. This accommodation stated the same until2001. In 2011 there was a slight increase in rented households and it was up to 38%.
+The same yeas the owned ones has raise from 21% to 32% in 1918 to1953. In 1939 to 1953 the was a graduate stade in the percentage. Then it starts to leveled up to 69% In 1991. At 2001 to 2011 there was a decline in the owned accommodation and it was 62%
+Genarally , both of the rented and owned households has raised and droped throug the years from1918 to 2011. The was a year that the were the same prectarge and it was 1971 which 50%

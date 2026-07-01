@@ -1,0 +1,7 @@
+# GOLD ESSAY — cam10 Test1 Task1 — Band 4.5
+# STATUS: DONE
+# PDF 页(1-indexed): 9
+# Prompt: Test 1 WRITING WRITING TASK 1 You should spend about 20 minutes on this task. The firs t chart below shows how energy is used in an average Australian household
+# 说明：预填为文本层乱码，仅作提示，请对照 PDF 手写图订正；改完把 STATUS 改成 DONE。
+# ====== ESSAY BODY BELOW (此行以下全部视为正文) ======
+This chart shows the energy comsuption of an average Australian household and how propotion ofemitting greenhouse gas in each type of active.First, the most bigger different informations are using heating and other appliances, relate to42% and 15%, but they going up side down in gas emittions, which is 15% and 28%Secondly, using energy of lighting and refrigeration are similar change in greenhouse gasemittions. The former using 42 energy and produce double number of emittions to 8%. The latterhave the same situation about 7% in using energy but emit 14% greenhouse gas.The last two parts of things are water heating which is second large source of using energyand the smallest cumsuming energy one = cooling. Indeed. there are just a marginally change ingreenhouse gas emittions which grow from 30% to 32% and rise from 2% to 3%.

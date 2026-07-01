@@ -61,12 +61,41 @@ ielts-writing-agent/
 └── tests/
 ```
 
+## 常用命令（已跑通）
+
+环境：Python 3.13 + venv（非 uv）；本地 embedding 用 Ollama 的 `bge-m3`（需先 `ollama pull bge-m3`）。
+
+```powershell
+# 装依赖（首次）
+python -m venv .venv; .\.venv\Scripts\Activate.ps1; pip install -r requirements.txt
+
+# 连通性 smoke test（DeepSeek / embedding / ChromaDB / SQLite 各一条）
+python tests/test_connectivity.py        # 或 pytest tests/test_connectivity.py -v
+
+# 阶段 0：构建数据地基（入 SQLite + 灌两个 ChromaDB 集合；不需 DeepSeek key）
+python scripts/build_stage0.py
+python scripts/demo_retrieve.py          # 验收：检索环境话题 band7 Task2 范文
+pytest tests/test_stage0.py -v
+
+# 阶段 1：最简 LangGraph 四维打分（需 DeepSeek key，会调 flash）
+python scripts/grade_essay.py --gold --task 2   # 验收：贴一篇 gold 作文出四维+overall
+pytest tests/test_stage1.py -v                  # LLM-free；全图 smoke 需 RUN_LLM_TESTS=1
+
+# 阶段 2：eval harness（gold holdout 上量化；temp=0 可复现；并发+超时防卡死）
+python -m src.eval.harness --config all         # baseline/anchored/reflect 全跑，写 results.jsonl
+python -m src.eval.harness --compare            # 看历史对比表
+pytest tests/test_stage2.py -v                  # 指标 + 泄漏断言（LLM-free）
+```
+
+- 跑模块用 `python -m src.xxx.yyy`（如 `python -m src.rag.rubric`），脚本用 `python scripts/xxx.py`。
+- 阶段 0 全程只用本地 embedding，**不调 DeepSeek**；改了 `.env` 的 key 后用 smoke test 验证连通。
+
 ## 开发阶段（先打通竖切，再加深）
 
-- **[阶段 0] 数据地基** ← **当前在这里**：异构数据归一化进 SQLite；rubric/范文灌 ChromaDB；切 held-out 测试集。
-- [阶段 1] 最薄竖切：最简 LangGraph 跑通四维打分出分（无 reflection/memory/锚定）。
-- [阶段 2] 把打分做准：锚定 + reflection + eval harness（±0.5 一致率 / QWK + 锚定消融）。
-- [阶段 3] 工具 + 助手模式 + 成本路由。
+- [阶段 0] 数据地基 ✅ **已完成**：异构数据归一化进 SQLite（2267 篇 silver）；rubric 按 (criterion×band) 切块、范文按 task×band×topic 分层灌 ChromaDB；剑桥 gold 已入库（51 sample 评测集 holdout + 21 model 锚点）。
+- [阶段 1] 最薄竖切 ✅ **已完成**：最简 LangGraph（ingest→retrieve_rubric→四维顺序打分→aggregate）端到端出分；CLI `grade_essay.py` 出四维 band+依据+overall。
+- [阶段 2] 把打分做准 ✅ **已完成**：eval harness（gold holdout 上算 MAE/±0.5/±1.0/QWK，temp=0 可复现，并发+超时）；范文锚定把 QWK 0.532→0.597（消融证实）；reflection 本测试集无增益、已从默认管道移除（代码保留）。默认打分管道 = 锚定开/reflection 关。
+- **[阶段 3] 工具 + 助手模式 + 成本路由** ← **当前在这里**。
 - [阶段 4] 记忆与个性化。
 - [阶段 5] 前端 + 词库/素材库。
 - [阶段 6] 可观测性 + README + 部署。

@@ -1,0 +1,1088 @@
+{
+  "cam5_t1_q1_model": {
+    "id": "cam5_t1_q1_model",
+    "source": "cam5",
+    "test": 1,
+    "task_type": 1,
+    "answer_type": "model",
+    "band": null,
+    "examiner_comment": null,
+    "prompt": "WRITING WRITING TASK 1 You should spend about 20 minutes on this task. The graph below shows the proportion of the population aged 65 and over between 1940 and 2040 in three different countries. Summarise the information by selecting and reporting the main features, and make comparisons where relevant. Write at least 150 words. % Proportion of population aged 65 and over 30 ,--------------------------------------. 0 ~------~------~--------~------~------~ 1940 1960 1980 2000 Year Japan ---- Sweden USA 2020 2040 Writing 29",
+    "pages": [
+      8
+    ],
+    "tt_explicit": true,
+    "prompt_ok": true
+  },
+  "cam5_t1_q2_sample": {
+    "id": "cam5_t1_q2_sample",
+    "source": "cam5",
+    "test": 1,
+    "task_type": 2,
+    "answer_type": "sample",
+    "band": 4.0,
+    "examiner_comment": null,
+    "prompt": "Test I WRITING TASK 2 You should spend about 40 minutes on this task. Write about the following topic: Universities should accept equal numbers of male and female students in every subject. To what extent do you agree or disagree? Give reasons for your answer and include any relevant examples from your own knowledge or experience. Write at least 250 words. 30",
+    "pages": [
+      9
+    ],
+    "tt_explicit": true,
+    "prompt_ok": true
+  },
+  "cam5_t2_q1_sample": {
+    "id": "cam5_t2_q1_sample",
+    "source": "cam5",
+    "test": 2,
+    "task_type": 1,
+    "answer_type": "sample",
+    "band": 8.0,
+    "examiner_comment": null,
+    "prompt": "Test 2 WRITING WRITING TASK 1 You should spend about 20 minutes on this task . The charts below show the main reasons for study among students of different age groups and the amount of support they received from employers. Summarise the information by selecting and reporting the main features, and make comparisons where relevant. Write at least 150 words. 52 % 80 70 60 so 40 30 20 10 0 % 70 60 so 40 30 20 10 Reasons for study according to age of student r- ,___ under 26 F r- ,..=; !:m 1= 1--- tJ ,___ 26-29 30- 39 Age 40-49 Employer support, by age group (Time off and help with fees) over 49 1--- r- r- r- 1--- r-.__, o¥=~~~~~~~~~~~~~~ under 26 26- 29 30- 39 Age 40-49 over 49 0 For career For interest",
+    "pages": [
+      10
+    ],
+    "tt_explicit": false,
+    "prompt_ok": true
+  },
+  "cam5_t2_q2_model": {
+    "id": "cam5_t2_q2_model",
+    "source": "cam5",
+    "test": 2,
+    "task_type": 2,
+    "answer_type": "model",
+    "band": null,
+    "examiner_comment": null,
+    "prompt": "Writing WRITING TASK 2 You should spend about 40 minutes on this task. Write about the following topic: In some countries young people are encouraged to work or travel for a year between finishing high school and starting university studies. Discuss the advantages and disadvantages for young people who decide to do this. Give reasons for your answer and include any relevant examples from your own knowledge or experience . Write at least 250 words. 53",
+    "pages": [
+      11
+    ],
+    "tt_explicit": true,
+    "prompt_ok": true
+  },
+  "cam5_t3_q1_model": {
+    "id": "cam5_t3_q1_model",
+    "source": "cam5",
+    "test": 3,
+    "task_type": 1,
+    "answer_type": "model",
+    "band": null,
+    "examiner_comment": null,
+    "prompt": "WRITING WRITING TASK 1 You should spend about 20 minutes on thi s task . The map below is of the town of Gar/sdon. A new supermarket ( S) is planned for the town. The map shows two possible sites for the supermark et. Summarise the information hy selecting and reporting the main features, and make comparisons where relevaflf. Write at leas t 150 words . GARLSDON Population 65,000 12 km to Hindon population I 0.000 ' ' 16 k.m to Bransdon population 15.000 :\\ f D Countryside D Town Centre D • -- (no traffic zone) Housing Industry Railway Main roads \\ I I 25 km to Cransdon population 29.000 Writing 75",
+    "pages": [
+      12
+    ],
+    "tt_explicit": true,
+    "prompt_ok": true
+  },
+  "cam5_t3_q2_sample": {
+    "id": "cam5_t3_q2_sample",
+    "source": "cam5",
+    "test": 3,
+    "task_type": 2,
+    "answer_type": "sample",
+    "band": 6.0,
+    "examiner_comment": null,
+    "prompt": "Test 3 WRITING TASK 2 You should spend about 40 minutes on this task . Write about the following topic: Some people think that a sense of competition in children should be encouraged. Others believe that children who are taught to co-operate rather than compete become more useful adults. Discuss both these views and give your own opinion. Give reasons for your answer and include any relevant examples from your own knowledge or expenence. Write at least 250 words. 76",
+    "pages": [
+      13
+    ],
+    "tt_explicit": true,
+    "prompt_ok": true
+  },
+  "cam5_t4_q1_model": {
+    "id": "cam5_t4_q1_model",
+    "source": "cam5",
+    "test": 4,
+    "task_type": 1,
+    "answer_type": "model",
+    "band": null,
+    "examiner_comment": null,
+    "prompt": "Test 4 WRITING WRITING TASK 1 You should spend about 20 minutes on this task. The table below gives information about the underground railway systems in six cities. Summarise the information by selecting and reporting the main features, and make comparisons where relevant. Write at least 150 words. Underground Railway Systems City '-9.'\", ; 'l<\"-\" 're ~. ' 'Date opened Kilometres of route Passetigen per year - - (in millions) .. London 1863 394 775 Paris 1900 199 1191 Tokyo 1927 155 1927 Washington DC 1976 126 144 Kyoto 1981 11 45 Los Angeles 2001 28 50 98",
+    "pages": [
+      14
+    ],
+    "tt_explicit": true,
+    "prompt_ok": true
+  },
+  "cam5_t4_q2_model": {
+    "id": "cam5_t4_q2_model",
+    "source": "cam5",
+    "test": 4,
+    "task_type": 2,
+    "answer_type": "model",
+    "band": null,
+    "examiner_comment": null,
+    "prompt": "WRITING TASK 2 You should spend about 40 minutes on this task . Write about the following topic: Research indicates that the characteristics we are born with have much more influence on our personality and development than any experiences we may have in our life. Which do you consider to be the major influence'! Writing Give reasons for your answer and include any relevant examples from your own knowledge or expenence. Write at least 250 words. 99",
+    "pages": [
+      15
+    ],
+    "tt_explicit": true,
+    "prompt_ok": true
+  },
+  "cam6_t1_q1_model": {
+    "id": "cam6_t1_q1_model",
+    "source": "cam6",
+    "test": 1,
+    "task_type": 1,
+    "answer_type": "model",
+    "band": null,
+    "examiner_comment": null,
+    "prompt": "Test 1 -WRITING WR ITI NG TASK 1 You should spend about 20 minutes on this task . The graph and table below give information about water use worldwide and water consumpti on in two different countries. Summarise the information by selecting and reporting the main features , and make comparisons where relevant. Write at least !50 words. Country Brazil Global water use by sector 3,000 \" \" 2,000 \" \" 1,000 --------------- -- \" \" \" \" \" \" \" \" \" , \" Agriculture ., \" Industrial use _ - - Domestic use ------==-=-=============---------­o~~~~=r~~~~~~~~--------.---~~ 1900 1910 1920 1930 1940 1950 1960 1970 1980 1990 2000 Water consumption in Brazil and Congo in 2000 Population Irrigated land Water consumption per person ' 176 million 26,500 km2 359m 3 Democractic 5.2 million 100 km2 8m3 Republic of Congo 30",
+    "pages": [
+      8
+    ],
+    "tt_explicit": true,
+    "prompt_ok": true
+  },
+  "cam6_t1_q2_sample": {
+    "id": "cam6_t1_q2_sample",
+    "source": "cam6",
+    "test": 1,
+    "task_type": 2,
+    "answer_type": "sample",
+    "band": 7.5,
+    "examiner_comment": null,
+    "prompt": "WRITING TASK 2 You should spend about 40 minutes on this task. Write about the following topic: Today, the high sales of popular consumer goods reflect the power of advertising and not the real needs of the society in which they are sold. To what extent do you agree or disagree! Speaking Give reasons for your answer and include any relevant examples from your own knowledge or expenence. Write at least 250 words. 31",
+    "pages": [
+      9
+    ],
+    "tt_explicit": true,
+    "prompt_ok": true
+  },
+  "cam6_t2_q1_sample": {
+    "id": "cam6_t2_q1_sample",
+    "source": "cam6",
+    "test": 2,
+    "task_type": 1,
+    "answer_type": "sample",
+    "band": 6.0,
+    "examiner_comment": "This answer does not introduce the information in the table, nor does it report it accurately. The figures are misinterpreted as representing the number of people rather than the average number of miles travelled per person per year. Consequently the information about the increase in total travel is simply not mentioned, so not all key information is covered. There is an attempt to summarise trends in the figures, but the reader cannot get a clear overall picture of the information because of the fundamental confusion. Nevertheless , the information is organised and the writing flows quite well because of good use of referencing and other connectors, but there are occasional errors in these and the links between ideas are slightly confusing at times. The strong feature in this answer is the range of vocabulary which is used with some flexibility and good control. A good range of structures is also used, but there are still some fairly basic mistakes, such as in the choice of tense, subject/verb agreement and inappropriate use of the passive",
+    "prompt": "Test 2 WRITING WRITING TASK 1 You should spend about 20 minutes on this task . The table below gives information about changes in modes of travel in England between 1985 and 2000. Summarise the information by selecting and reporting the main features, and make Cf!mparisons where relevant. Write at least 150 words. Average distance in miles travelled per person per year, by mode of travel 1985 2000 Walking 255 237 Bicycle 51 41 Car 3,199 4,806 Local bus 429 274 Long distance bus 54 124 Train 289 366 Taxi 13 42 Other 450 585 All modes 4,740 6,475 52",
+    "pages": [
+      10
+    ],
+    "tt_explicit": true,
+    "prompt_ok": true
+  },
+  "cam6_t2_q2_model": {
+    "id": "cam6_t2_q2_model",
+    "source": "cam6",
+    "test": 2,
+    "task_type": 2,
+    "answer_type": "model",
+    "band": null,
+    "examiner_comment": null,
+    "prompt": "WRITING TASK 2 You should spend about 40 minutes on this task. Write about the following topic: Successful sports professioiUlls can earn a great deal more money than people in other important professions. Some people think this is fully justified while others think it is unfair. Discuss both these views and give your own opinion. Writing Give reasons for your answer and include any relevant examples from your own knowledge or experience. Write at least 250 words. 53",
+    "pages": [
+      11
+    ],
+    "tt_explicit": true,
+    "prompt_ok": true
+  },
+  "cam6_t3_q1_model": {
+    "id": "cam6_t3_q1_model",
+    "source": "cam6",
+    "test": 3,
+    "task_type": 1,
+    "answer_type": "model",
+    "band": null,
+    "examiner_comment": null,
+    "prompt": "WRITING WRITING TASK 1 You should spend about 20 minutes on this task. The diagrams below show the life cycle of the silkworm and the stages in the production of silk cloth. Summarise the information by selecting and reporting the main features, and make comparisons where relevant. Write at least 150 words. Life cycle of the silkworm Select Boil Unwind Twist Weave Writing 75",
+    "pages": [
+      12
+    ],
+    "tt_explicit": true,
+    "prompt_ok": true
+  },
+  "cam6_t3_q2_sample": {
+    "id": "cam6_t3_q2_sample",
+    "source": "cam6",
+    "test": 3,
+    "task_type": 2,
+    "answer_type": "sample",
+    "band": 4.0,
+    "examiner_comment": "This answer is considerably underlength at 186 words and it loses marks for this. The writing tries to address the two points of view in the question, but it is so underlength that main ideas are not developed enough . The writer expresses a point of view, but this is not always clear for the reader. There is a certain logic to the way the ideas are organised, and a range of logical connectors is used. However, these connectives are often inaccurate and at times it is difficult to understand the relationship between the points. Control of vocabulary is weak and the errors in word form and spelling make it hard for the reader to understand the message at times. Phrases from the question are copied directly, even when inappropriate, and this reveals the limitations in the writer's vocabulary. Similarly, there is poor control of grammatical structures, with mistakes in even simple sentences. Although there are occasional accurate structures, the number of mistakes causes great strain for the reader",
+    "prompt": "Test 3 WRITING TASK 2 You should spend about 40 minutes on this task . Write about the following topic: Some people believe that visitors to other countries should follow local customs and behaviour. Others disagree and think that the host country should welcome cultural differences. Discuss both these views and give your own opinion. Give reasons for your answer and include any relevant examples from your own knowledge or expenence. Write at least 250 words. 76",
+    "pages": [
+      13
+    ],
+    "tt_explicit": true,
+    "prompt_ok": true
+  },
+  "cam6_t4_q1_sample": {
+    "id": "cam6_t4_q1_sample",
+    "source": "cam6",
+    "test": 4,
+    "task_type": 1,
+    "answer_type": "sample",
+    "band": 6.5,
+    "examiner_comment": null,
+    "prompt": "Test 4 WRITING WRITING TASK 1 You should spend about 20 minutes on this task. The charts below give information about USA marriage and divorce rates between 1970 and 2000, and the marital status of adult Americans in two of the years. Summarise the information by selecting and reporting the main features, and make comparisons where relevant. Write at least 150 words. 98 Number of marriages and divorces in the USA, 1970-2000 3 ~-------------------------------. 2.5 l!:l 2 ~ 1.5 ·e 0.5 0 1970 1980 1990 2000 • Marriages 1'1 Divorces Marital status of adult Americans, 1970 and 2000 80 -r-------------------------------------, !l :; 70 +-----------, 'i 60 +-----~ '0 50 +-----­ ~ 40 +-----­ s 30+-----­c ~ 20 +----...-..,....,--- ~ 10 c. 0 Never Married Married Widowed Divorced [il970l ~",
+    "pages": [
+      14
+    ],
+    "tt_explicit": true,
+    "prompt_ok": true
+  },
+  "cam6_t4_q2_model": {
+    "id": "cam6_t4_q2_model",
+    "source": "cam6",
+    "test": 4,
+    "task_type": 2,
+    "answer_type": "model",
+    "band": null,
+    "examiner_comment": null,
+    "prompt": "WRITING TASK 2 You should spend about 40 minutes on this task. Write about the following topic: Some people prefer to spend their lives doing the same things and avoiding change. Others, however, think that change is always a good thing. Discuss both these views and give your own opinion. Writing Give reasons for your answer and include any relevant examples from your own knowledge or expenence . Write at least 250 words. 99",
+    "pages": [
+      15
+    ],
+    "tt_explicit": true,
+    "prompt_ok": true
+  },
+  "cam7_t1_q1_sample": {
+    "id": "cam7_t1_q1_sample",
+    "source": "cam7",
+    "test": 1,
+    "task_type": 1,
+    "answer_type": "sample",
+    "band": 5.5,
+    "examiner_comment": "This answer focuses on the key features of the information , clearly grouping the countries, using supporting figures and presenting an overview. However, there is no clear reference to what the percentages represent and key comparisons need more expansion. Information is organised with clear signalling and some effective referencing and linking, although not all ideas are clearly linked and the overall progression is achieved by repetition in the final section. The range of vocabulary is rather narrow and just sufficient for the task. The attempt to paraphrase the rubric shows limited flexibility. There are several spelling and word form errors, and quite a lot of repetition . Similarly, the range of sentence forms is not wide, with few examples of complex structures. However, apart from one or two errors in basic grammar, simple structures are accurate and easily understood",
+    "prompt": "Test] .·. WRITING . WRITING TASK 1 You should spend about 20 minutes on this task . The table below gives information on consumer spending on different items in jive different countries in 2002. Summarise the information by selecting and reporting the main features, and make comparisons where relevant. Write at least 150 words. Percentage of national consumer expenditure by category~ 2002 0 . Food/DrinksiT~bacco Country I• .... . '! \" Clothmg/Footwear LeiSUreiEducation\" a . \" .... _]I'_ 0 • __..__._ ~ \" Ireland 28.91 % 6.43% 2.21 •y., 14 .. .. 1111 Italy .a 16.36% 9.00% 3.20°/c, Ill . ~ • Spain it 18.80% 6.51% 1.98% .. .. . a Sweden \\~ 15.77% 5.40% 3.22% b I 'ill 11 . • .. .• a 32.14% 6.63% 4.35% Turkey \"'~~~ I•. . ·. 30 0 .JI. __11",
+    "pages": [
+      8
+    ],
+    "tt_explicit": true,
+    "prompt_ok": true
+  },
+  "cam7_t1_q2_model": {
+    "id": "cam7_t1_q2_model",
+    "source": "cam7",
+    "test": 1,
+    "task_type": 2,
+    "answer_type": "model",
+    "band": null,
+    "examiner_comment": null,
+    "prompt": "Writing WRITING TASK 2 You should spend about 40 minutes on this task. Write about the following topic: It is generally believed that some people are horn with certain talents, for instance for sport or music, and others are not. However, it is sometimes claimed that any child can he taught to become a good sports person or musician. Discuss both these views and give your own opinion. Give reasons for your answer and include any relevant examples from your own knowledge or expenence. Write at least 250 words. 31",
+    "pages": [
+      9
+    ],
+    "tt_explicit": true,
+    "prompt_ok": true
+  },
+  "cam7_t2_q1_model": {
+    "id": "cam7_t2_q1_model",
+    "source": "cam7",
+    "test": 2,
+    "task_type": 1,
+    "answer_type": "model",
+    "band": null,
+    "examiner_comment": null,
+    "prompt": "\\\\'RITI:'\\G WRITING TASK 1 You should spend about 20 minutes on this task. The graph below shows the consumption of.fish and some different kinds of meat in a European country between 1979 and 2004. Summarise the information by selecting and reporting the main features, and make comparisons where relevant. Write at least 150 words. Fish and meat consumption 300 250 ~ <!) <!) ~ 200 ,_ <!) 0. s:: 0 \"' 150 ,_ <!) 0. ,_ <!) 0. \"' 100 E «:! ,_ 0 ..... _ ' , .. .....-.. ,_ 50 Fish 0+-----.----.-----.-----.----~ 1979 1984 1989 1994 1999 2004 Writing 53",
+    "pages": [
+      10
+    ],
+    "tt_explicit": true,
+    "prompt_ok": true
+  },
+  "cam7_t2_q2_sample": {
+    "id": "cam7_t2_q2_sample",
+    "source": "cam7",
+    "test": 2,
+    "task_type": 2,
+    "answer_type": "sample",
+    "band": 7.5,
+    "examiner_comment": null,
+    "prompt": "Test 2 WRITING TASK 2 You should spend about 40 minutes on this task. Write about the following topic: Some people believe that there should be fixed punishments for each type of crime. Others, however, argue that the circumstances of an individual crime, and the motivation for committing it, should always be taken into account when deciding on the punishment. Discuss both these views and give your own opinion. Give reasons for your answer and include any relevant examples from your own knowledge or expenence . Write at least 250 words. 54",
+    "pages": [
+      11
+    ],
+    "tt_explicit": true,
+    "prompt_ok": true
+  },
+  "cam7_t3_q1_sample": {
+    "id": "cam7_t3_q1_sample",
+    "source": "cam7",
+    "test": 3,
+    "task_type": 1,
+    "answer_type": "sample",
+    "band": 6.5,
+    "examiner_comment": "This answer clearly presents and illustrates the key points of the information. The writer groups the data effectively and draws clear comparisons, although these could be more appropriately extended in the overview. Information is well organised across the response and a range of linking devices is used. The opening paragraph, however, is an inadequate paraphrase of language given in the task, and although there are some appropriate collocations in the response, overall the range of vocabulary is rather restricted. Control is good, however, with few examples of error. A variety of structures is used with some fluency. There are occasional errors in punctuation and there are also some omissions and errors in grammar, but these tend to be minor and do not reduce communication. lh.e",
+    "prompt": "Test 3 \\V RITI :\\~ · . WRITING TASK 1 You should spend about 20 minutes on this task . The chart below shows information about changes in average house prices in five different cities between 1990 and 2002 compared with the average house prices in 1989. Summarise the information by selecting and reporting the main features, and make comparisons where relevant. Write at least 150 words. Cll ~ ·;:: 0. 0\\ 00 0\\ s 0 ...:: 11) 00 c <ll ..c () 11) 00 o:s ...... c 11) () .... 11) Q. 78 15 10 5 0 - 5 Percentage change in average house prices in five cities 1990- 2002 compared with 1989 1990-1995 1996--2002 average average ·-- --- ---- ----------------- --- ~ ------- - ---------------------- ' ' ' ' ' ' - ---- - ------------------------~----------------------- ' ' ' ' ' ' ' ~~r ----------- - 10 ------- --- ---------- ---------- •------------- -- ------------ --- • New York (USA) • Madrid (Spain) lW Toky o (Japan) D Frankfurt (Germany) E8l London (UK)",
+    "pages": [
+      12
+    ],
+    "tt_explicit": true,
+    "prompt_ok": true
+  },
+  "cam7_t3_q2_model": {
+    "id": "cam7_t3_q2_model",
+    "source": "cam7",
+    "test": 3,
+    "task_type": 2,
+    "answer_type": "model",
+    "band": null,
+    "examiner_comment": null,
+    "prompt": "Writing WRITING TASK Z You should spend about 40 minutes on this task. Write about the following topic: As most people spend a m~~jor part of their adult life at work, job satisfaction is an important eleme11t of individual wellbeing. What factors contribute to job satisfaction? How realistic is the expectati011 of job satisfaction for a/! workers? Give reasons for your answer and include any relevant examples from your own knowledge or experience. Write at least 250 words. 79",
+    "pages": [
+      13
+    ],
+    "tt_explicit": true,
+    "prompt_ok": true
+  },
+  "cam7_t4_q1_model": {
+    "id": "cam7_t4_q1_model",
+    "source": "cam7",
+    "test": 4,
+    "task_type": 1,
+    "answer_type": "model",
+    "band": null,
+    "examiner_comment": null,
+    "prompt": "WRITING WRITING TASK 1 You should spend about 20 minutes on this task. The pie charts below show units of electricity production by fuel source in Australia and France in 1980 and 2000. Writing Summarise the information by selecting and reporting the main features, and make comparisons where relevant. Write at least 150 words. 5 Units of electricity by fuel source in Australia 20 1980 Total Production: 100 units 50 2000 Total Production: 170 units Units of electricity by fuel source in France 1980 Total Production : 90 units 2000 Total Production : 180 units Ocoal .Oil GJ Natural Gas ~ Hydro Power [ill Nuclear Power 101",
+    "pages": [
+      14
+    ],
+    "tt_explicit": true,
+    "prompt_ok": true
+  },
+  "cam7_t4_q2_sample": {
+    "id": "cam7_t4_q2_sample",
+    "source": "cam7",
+    "test": 4,
+    "task_type": 2,
+    "answer_type": "sample",
+    "band": 5.0,
+    "examiner_comment": "This answer is less than 250 words and it does not address all parts of the question, so it loses marks. Nevertheless, some relevant ideas and a position on the issue are presented. Ideas are organised and the structure of the answer is clearly signalled . Paragraphing is not always logical, however. There is some good use of linkers, but there is also a lot of repetition due to inadequate use of referencing and substitution. The high level of repetition ['knowledge and skills' is repeated nine times] also indicates limitations in the range of vocabulary although, apart from language given in the rubric, there is just sufficient additional vocabulary for the task",
+    "prompt": "Test 4 WRITING TASK 2 You should spend about 40 minutes on this task . Write about the following topic: Some people think that universities should provide graduates with the knowledge and skills needed in the workplace. Others think that the true function of a university should be to give access to knowledge for its own sake, regardless of whether the course is useful to an employer. What, in your opinion, should be the main function of a university? Give reasons for your answer and include any relevant examples from your own knowledge or expenence. Write at least 250 words. 102",
+    "pages": [
+      15
+    ],
+    "tt_explicit": true,
+    "prompt_ok": true
+  },
+  "cam8_t1_q1_model": {
+    "id": "cam8_t1_q1_model",
+    "source": "cam8",
+    "test": 1,
+    "task_type": 1,
+    "answer_type": "model",
+    "band": null,
+    "examiner_comment": null,
+    "prompt": "Test 1 WRITING WRITING TASK 1 You should spend about 20 minutes on this task. The pie chart below shows the main reasons why agricultural land becomes less productive. The table shows how these causes affected three regions of the world during the 1990s. Summarise the information by selecting and reporting the main features, and make comparisons where relevant. Write at least 150 words. Causes of worldwide land degradation other deforestation over-grazing Causes of land degradation by region Region % land degraded by ... deforestation over- over- Total land cultivation grazing degraded North America 0.2 3.3 1.5 5% Europe 9.8 7.7 5.5 23% Oceania* 1.7 0 11.3 13% * A large group of islands in the South Pacific including Australia and New Zealand 30",
+    "pages": [
+      8
+    ],
+    "tt_explicit": true,
+    "prompt_ok": true
+  },
+  "cam8_t1_q2_model": {
+    "id": "cam8_t1_q2_model",
+    "source": "cam8",
+    "test": 1,
+    "task_type": 2,
+    "answer_type": "model",
+    "band": null,
+    "examiner_comment": null,
+    "prompt": "WRITING TASK 2 You should spend about 40 minutes on this task. Write about the following topic: Some people think that parents should teach children how to be good members of society. Others, however, believe that school is the place to learn this. Discuss both these views and give your own opinion. Give reasons for your answer and include any relevant examples from your own knowledge or experience. Write at least 250 words. Writing 31",
+    "pages": [
+      9
+    ],
+    "tt_explicit": true,
+    "prompt_ok": true
+  },
+  "cam8_t2_q1_model": {
+    "id": "cam8_t2_q1_model",
+    "source": "cam8",
+    "test": 2,
+    "task_type": 1,
+    "answer_type": "model",
+    "band": null,
+    "examiner_comment": null,
+    "prompt": "Writing WRITING WRITING TASK 1 You should spend about 20 minutes on this task. The three pie charts below show the changes in annual spending by a particular UK school in 1981, 1991 and 2001. Summarise the information by selecting and reporting the main features, and make comparisons where relevant. Write at least 150 words. Total School Spending 1981 Insurance 2% Furniture and equipment 15% Teachers' salaries 40% Total School Spending 1991 Insurance Resources e.g. books 20% Furniture and equipment 5% 3% Teachers' salaries 50% Total School Spending 2001 Other workers' Resources e.g. books 9% Furniture and equipment 23% Insurance 8% Teachers' salaries 45% 53",
+    "pages": [
+      10
+    ],
+    "tt_explicit": true,
+    "prompt_ok": true
+  },
+  "cam8_t2_q2_sample": {
+    "id": "cam8_t2_q2_sample",
+    "source": "cam8",
+    "test": 2,
+    "task_type": 2,
+    "answer_type": "sample",
+    "band": 5.5,
+    "examiner_comment": "The topic introduction has been copied from the task and is deducted from the word count. This leaves the answer underlength at 236 words, so the candidate loses marks for this. This answer addresses both questions, but the first is not well covered in terms of how actual relationships have changed. Nevertheless, there is a clear opinion that the effects have been positive and relationships have improved, with some relevant ideas to support this. There is a general progression to the argument, with some effective use of time markers and linkers. There is also some repetition, however. Paragraphing is not always logical, and ideas are not always well linked. A range of vocabulary that is relevant to the topic is used, including some precise and natural expressions. There are quite a lot of mistakes in word form, word choice or spelling, but these do not usually reduce understanding. A variety of sentence types is used, but not always accurately",
+    "prompt": "Test2 WRITING TASK 2 You should spend about 40 minutes on this task. Write about the following topic: Nowadays the way many people interact with each other has changed because of technology. In what ways has technology affected the types of relationships people make? Has this become a positive or negative development? Give reasons for your answer and include any relevant examples from your own knowledge or experience. Write at least 250 words. 54",
+    "pages": [
+      11
+    ],
+    "tt_explicit": true,
+    "prompt_ok": true
+  },
+  "cam8_t3_q1_sample": {
+    "id": "cam8_t3_q1_sample",
+    "source": "cam8",
+    "test": 3,
+    "task_type": 1,
+    "answer_type": "sample",
+    "band": 6.0,
+    "examiner_comment": "This answer presents the information in the two diagrams appropriately. The main differences between the two processes are identified in a clear summary, but other important features could be described more fully. The organisation of information is the strongest feature of this script. The description is well organised and there is a smooth progression across the whole answer that is achieved through good use of linkers and referencing phrases. A range of relevant vocabulary is used, although this is not wide and there are some less suitable word choices. There are a few mistakes in spelling, but these do not make the answer difficult to understand. A mix of sentence forms is used and there are some accurate examples of complex structures, but the many short, simple sentences tend to limit the range",
+    "prompt": "Test3 WRITING WRITING TASK 1 You should spend about 20 minutes on this task. The diagrams below show the stages and equipment used in the·cement-making process, and how cement is used to produce concrete for building purposes. Summarise the information by selecting and reporting the main features, and make comparisons where relevant. Write at least 150 words. Cement Production Concrete Production Limestone l ~er t (10%) I I mixer *Gravel= small stones 78",
+    "pages": [
+      12
+    ],
+    "tt_explicit": true,
+    "prompt_ok": true
+  },
+  "cam8_t3_q2_model": {
+    "id": "cam8_t3_q2_model",
+    "source": "cam8",
+    "test": 3,
+    "task_type": 2,
+    "answer_type": "model",
+    "band": null,
+    "examiner_comment": null,
+    "prompt": "WRITING TASK 2 You should spend about 40 minutes on this task. Write about the following topic: Writing Increasing the price of petrol is the best way to solve growing traffic and pollution problems. To what extent do you agree or disagree? What other measures do you think might be effective? Give reasons for your answer and include any relevant examples from your own knowledge or experience. Write at least 250 words. 79",
+    "pages": [
+      13
+    ],
+    "tt_explicit": true,
+    "prompt_ok": true
+  },
+  "cam8_t4_q1_sample": {
+    "id": "cam8_t4_q1_sample",
+    "source": "cam8",
+    "test": 4,
+    "task_type": 1,
+    "answer_type": "sample",
+    "band": 8.0,
+    "examiner_comment": "This answer covers all the relevant information in the task, and clearly highlights the main trends and comparisons. The only thing that would improve this answer is an introduction to the topic that is not so closely copied from the prompt. The message is easy to -follow because paragraphing is logical and information is clearly linked across the whole answer. A wide range of vocabulary is used accurately and effectively, although there are some rare imprecise choices and some repetitions. Similarly, a wide range of grammatical structures and sentence forms is used accurately and effectively, with only one significant error where punctuation is omitted in the final paragraph. Overall, most sentences are accurate",
+    "prompt": "Writing WRITING WRITING TASK 1 You should spend about 20 minutes on this task. The graph below shows the quantities of goods transported in the UK between 197 4 and 2002 by four different modes of transport. Summarise the information by selecting and reporting the main features, and make comparisons where relevant. Write at least 150 words. Goods transported in UK (1974-2002} 120 ---- road •·•·• water 100 -·-·- rail Cl) 80 (I) C __ ... ---...... -......... ________ _ - pipeline C .9 60 C ~ ~ 40 .. ...... ' ....... , .. '.. . ' ... -~ -~ -~ ~~-~-.;~:.;ii ii •.••• , ............... ii.-~~~~~~~-' .... , ... ' .. ''.~··~· ... . ... . ...... . .. .. .. ~ ........ .: . .;._ -·-............. _ .... ---·-·-·-·-·-·, . .................. .,. ...... 20 0-+------~--~-~-~--~-~-----r 1974 1978 1982 1986 1990 1994 1998 2002 101",
+    "pages": [
+      14
+    ],
+    "tt_explicit": true,
+    "prompt_ok": true
+  },
+  "cam8_t4_q2_sample": {
+    "id": "cam8_t4_q2_sample",
+    "source": "cam8",
+    "test": 4,
+    "task_type": 2,
+    "answer_type": "sample",
+    "band": 6.5,
+    "examiner_comment": "This script answers both parts of the task and presents a clear opinion on the issues. There are relevant main ideas, although the supporting examples are sometimes less appropriate",
+    "prompt": "Test4 WRITING TASK 2 You should spend about 40 minutes on this task. Write about the following topic: In some countries the average weight of people is increasing and their levels of health and fitness are decreasing. What do you think are the causes of these problems and what measures could be taken to solve them? Give reasons for your answer and include any relevant examples from your own knowledge or experience. Write at least 250 words. 102",
+    "pages": [
+      15
+    ],
+    "tt_explicit": true,
+    "prompt_ok": true
+  },
+  "cam10_t1_q1_sample": {
+    "id": "cam10_t1_q1_sample",
+    "source": "cam10",
+    "test": 1,
+    "task_type": 1,
+    "answer_type": "sample",
+    "band": 4.5,
+    "examiner_comment": null,
+    "prompt": "Test 1 WRITING WRITING TASK 1 You should spend about 20 minutes on this task. The firs t chart below shows how energy is used in an average Australian household. The second chart shows the greenhouse gas emissions which result from this energy use. Summarise the information by selecting and reporting the main features, and make comparisons where relevant Write at least 150 words. Australian household energy use water heating 30% heating 42% cooling 2 i lighting 4% refrigeration 7% other appliances 15% Australian household greenhouse gas emissions heating 30",
+    "pages": [
+      8
+    ],
+    "tt_explicit": true,
+    "prompt_ok": true
+  },
+  "cam10_t1_q2_model": {
+    "id": "cam10_t1_q2_model",
+    "source": "cam10",
+    "test": 1,
+    "task_type": 2,
+    "answer_type": "model",
+    "band": null,
+    "examiner_comment": null,
+    "prompt": "Writing WRITING TASK 2 You should spend about 40 minutes on this task. Present a written argument or case to an educated reader with no specialist knowledge of the following topic. It is important for children to learn the difference between right and wrong at an early age. Punishment is necessary to help them learn this distinction. To what extent do you agree o r disagree w ith th is opinion? What sort of punishment should parents and teachers be allowed to use to teach good behaviour to children? Give reasons for your answer and include any relevant examples from your own knowledge or experience. Write at least 250 words. 31",
+    "pages": [
+      9
+    ],
+    "tt_explicit": true,
+    "prompt_ok": true
+  },
+  "cam10_t2_q1_model": {
+    "id": "cam10_t2_q1_model",
+    "source": "cam10",
+    "test": 2,
+    "task_type": 1,
+    "answer_type": "model",
+    "band": null,
+    "examiner_comment": null,
+    "prompt": "Test 2 WRITING WRITING TASK 1 You should spend about 20 minutes on this task. The tables below give inform ation about sales o f Fairtrade*-labelled coffee and bananas in 1999 and 2004 in five European countries. Summarise the information by selecting and reporting the main features， and make comparisons where relevant Write at least 150 words. Sales of Fairtrade-labelled coffee and bananas (1999 & 2004) Coffee 1999 (millions of euros) 2004 (millions of euros) UK 1.5 20 Switzerland 36 Denmark 1.8 2 Belgium 1 1.7 Sweden 0.8 1 Bananas 1999 (millions of euros) 2004 (millions of euros) Switzerland 15 47 UK 1 5.5 Belgium 0.6 4 Sweden 1.8 1 Denmark 2 0.9 * Fairtrade: a category of products for which farmers from developing countries have been paid an officially agreed fair price. 54",
+    "pages": [
+      10
+    ],
+    "tt_explicit": true,
+    "prompt_ok": true
+  },
+  "cam10_t2_q2_sample": {
+    "id": "cam10_t2_q2_sample",
+    "source": "cam10",
+    "test": 2,
+    "task_type": 2,
+    "answer_type": "sample",
+    "band": 3.5,
+    "examiner_comment": null,
+    "prompt": "Writing WRITING TASK 2 You should spend about 40 minutes on this task. Write about the following topic: Some people think that all university students should study whatever they like. Others believe that they should only be allowed to study subjects that wi l l be usef ul i n t he f ut ur e, such as t hose r el at ed t o sci ence and t echnol ogy. Discuss both these views and give your own opinion. Give reasons for your answer and include any relevant examples from your own knowledge or experience. Write at least 250 words. 55",
+    "pages": [
+      11
+    ],
+    "tt_explicit": true,
+    "prompt_ok": true
+  },
+  "cam10_t3_q1_sample": {
+    "id": "cam10_t3_q1_sample",
+    "source": "cam10",
+    "test": 3,
+    "task_type": 1,
+    "answer_type": "sample",
+    "band": 6.5,
+    "examiner_comment": null,
+    "prompt": "Writing WRITING WRITING TASK 1 You should spend about 20 minutes on this task. The charts below show what UK graduate and postgraduate students who did not go into full-time work did after leaving college in 2008. Summarise the information by selecting and reporting the main features, and make comparisons where relevant. Write at least 150 words. 5, % \" & \" & \" ' \" ' if a y x / ro TJ OJ vf 乃 Destination of UK graduates (excluding full-time work) 200 8 29,665 17,735 1 3,500 Part-time work Voluntary work Further study Unemployment Destination of UK postgraduates (excluding full-time work) 200 8 3,000 Part-time work Voluntary Further study Unemployment 77",
+    "pages": [
+      12
+    ],
+    "tt_explicit": true,
+    "prompt_ok": true
+  },
+  "cam10_t3_q2_model": {
+    "id": "cam10_t3_q2_model",
+    "source": "cam10",
+    "test": 3,
+    "task_type": 2,
+    "answer_type": "model",
+    "band": null,
+    "examiner_comment": null,
+    "prompt": "Test 3 WRITING TASK 2 You should spend about 40 minutes on this task. Write about the following topic: Countries are becoming more and more similar because people are able to buy the same products anywhere in the world. Do you think this is a positive or negative development? Give reasons for your answer and include any relevant examples from your own knowledge or experience. Write at least 250 words. 78",
+    "pages": [
+      13
+    ],
+    "tt_explicit": true,
+    "prompt_ok": true
+  },
+  "cam10_t4_q1_model": {
+    "id": "cam10_t4_q1_model",
+    "source": "cam10",
+    "test": 4,
+    "task_type": 1,
+    "answer_type": "model",
+    "band": null,
+    "examiner_comment": null,
+    "prompt": "Writing WRITING WRITING TASK 1 You should spend about 20 minutes on this task. The diagrams below show the life cycle o f a species o f large fish called the salmon. Summarise the information by selecting and reporting the main features, and make comparisons where relevant Write at least 150 words. 101",
+    "pages": [
+      14
+    ],
+    "tt_explicit": true,
+    "prompt_ok": true
+  },
+  "cam10_t4_q2_sample": {
+    "id": "cam10_t4_q2_sample",
+    "source": "cam10",
+    "test": 4,
+    "task_type": 2,
+    "answer_type": "sample",
+    "band": 5.5,
+    "examiner_comment": null,
+    "prompt": "Test 4 WRITING TASK 2 You should spend about 40 minutes on this task. Write about the following topic: Many museums charge for admission while others are free. Do you think the advantages o f charging people for admission to museums outweigh the disadvantages? Give reasons for your answer and include any relevant examples from your own knowledge or experience. Write at least 250 words. 102",
+    "pages": [
+      15
+    ],
+    "tt_explicit": true,
+    "prompt_ok": true
+  },
+  "cam11_t1_q1_sample": {
+    "id": "cam11_t1_q1_sample",
+    "source": "cam11",
+    "test": 1,
+    "task_type": 1,
+    "answer_type": "sample",
+    "band": 4.5,
+    "examiner_comment": null,
+    "prompt": "l!lfilim团 WRITING TASK 1 You should spend about 20 minutes on this task. The charts below show the percentage of water used for different purposes in six areas of the world. Summarise the information by selecting and reporting the main features, and make comparisons where relevant. Write at least 150 words. 48% 30 Percentage of water used for different purposes in six areas of the world 13% NORTH AMERICA 19% 10% 53% SOUTH AMERICA EUROPE 7% 12% AFRICA CENTRAL ASIA SOUTH EAST ASIA D Industrial use 区� Agricultural use - Domestic use",
+    "pages": [
+      8
+    ],
+    "tt_explicit": true,
+    "prompt_ok": true
+  },
+  "cam11_t1_q2_sample": {
+    "id": "cam11_t1_q2_sample",
+    "source": "cam11",
+    "test": 1,
+    "task_type": 2,
+    "answer_type": "sample",
+    "band": 5.5,
+    "examiner_comment": null,
+    "prompt": "WRITING TASK 2 You should spend about 40 minutes on this task. Write about the following topic: Governments should spend money on railways rather than roads. To what extent do you agree or disagree with this statement? Give reasons for your answer and include any「elevant examples from your own knowledge or experience. Write at least 250 words. 31",
+    "pages": [
+      9
+    ],
+    "tt_explicit": true,
+    "prompt_ok": true
+  },
+  "cam11_t2_q1_sample": {
+    "id": "cam11_t2_q1_sample",
+    "source": "cam11",
+    "test": 2,
+    "task_type": 1,
+    "answer_type": "sample",
+    "band": 6.0,
+    "examiner_comment": null,
+    "prompt": "� WRITING TASK 1 You should spend about 20 minutes on this task. The charts below show the propo时ions of British students at one university in England who were able to speak other languages in addition to English, in 2000 and 2010. Summarise the information by selecting and reporting the main features, and make comparisons where relevant. Write at least 150 wo「ds. 54 % of British Students able to speak languages other than English, 2000 15 Other language(s) spoken • No other language 口 French only 囱German only • Spanish only 口 Anothe「language 因Two other languages % of British Students able to speak la『1guages other than English, 2010 10 20 10 Other language(s) spoken • No other language 口 French only 囱German only • Spanish only 口 Another language 因Two other languages",
+    "pages": [
+      10
+    ],
+    "tt_explicit": true,
+    "prompt_ok": true
+  },
+  "cam11_t2_q2_sample": {
+    "id": "cam11_t2_q2_sample",
+    "source": "cam11",
+    "test": 2,
+    "task_type": 2,
+    "answer_type": "sample",
+    "band": 5.0,
+    "examiner_comment": null,
+    "prompt": "WRITING TASK 2 You should spend about 40 minutes on this task. W「ite about the following topic: Some people claim that not enough of the waste from homes is recycled. They say that the only way to increase recycling is for governments to make it a legal requirement. To what extent do you think laws are needed to make people recycle more of their waste? Give 「easons for your answe「 and include any relevant examples f「om your own knowledge or expe「ience. W「ite at least 250 words. 55",
+    "pages": [
+      11
+    ],
+    "tt_explicit": true,
+    "prompt_ok": true
+  },
+  "cam11_t3_q1_sample": {
+    "id": "cam11_t3_q1_sample",
+    "source": "cam11",
+    "test": 3,
+    "task_type": 1,
+    "answer_type": "sample",
+    "band": 6.0,
+    "examiner_comment": null,
+    "prompt": "mmm理 WRITING TASK 1 You should spend about 20 minutes on this task. The graph below shows average carbon dioxide (COz) emissions per person in the United Kingdom, Sweden, Italy and Portugal between 1967 and 2007. Summarise the information by selecting and reporting the main features, and make comparisons where relevant. W「ite at least丁50 words. Average carbon dioxide (C02) emissions per person, 1967-2007 12 (/) Q) § 10 －－－－－－－－ ，．－…‘··．‘－·· ，， ， ， 、、、、 …··．·－－ －－·．『··－－·� －·、、nc oz －ωZ」 C 一ωc 。一ωω －FH」 ＠ 6 』山 ·-·-· United Kingdom - - -- Sweden -Italy · Po「tugal4 ． ． ． ． ． ． ． ． ． ． ． ． ． ． ． ． ． ． ． ． ． ． ． • 少』NO O ． ． ． ． ． ． ． ． ． • 0 1967 1977 1987 1997 2007 77",
+    "pages": [
+      12
+    ],
+    "tt_explicit": true,
+    "prompt_ok": true
+  },
+  "cam11_t3_q2_sample": {
+    "id": "cam11_t3_q2_sample",
+    "source": "cam11",
+    "test": 3,
+    "task_type": 2,
+    "answer_type": "sample",
+    "band": 7.0,
+    "examiner_comment": null,
+    "prompt": "WRITING TASK 2 You should spend about 40 minutes on this task. Write about the following topic: Some people say that the only reason for learning a foreign language is in order to travel to or work in a foreign country. Others say that these are not the only reasons why someone should learn a foreign language. Discuss both these views and give your own opinion. Give 「easons for you「 answer and include any 「elevant examples from your knowledge o「 experience. Write at least 250 wo「ds. 78",
+    "pages": [
+      13
+    ],
+    "tt_explicit": true,
+    "prompt_ok": true
+  },
+  "cam11_t4_q1_sample": {
+    "id": "cam11_t4_q1_sample",
+    "source": "cam11",
+    "test": 4,
+    "task_type": 1,
+    "answer_type": "sample",
+    "band": 7.0,
+    "examiner_comment": null,
+    "prompt": "�且且mm WRITING TASK 1 You should spend about 20 minutes on this task. The table below shows the numbers of visitors to Ashdown Museum during the year before and the year after it was refurbished. The charts show the result of surveys asking visitors how satisfied they were with their visit, during the same two periods. Summarise the information by selecting and repo时ing the main features, and make comparisons where relevant. W「ite at least 150 words. Total number of visitors to Ashd。wn Museum During the year before refurbishment: 74,000 During the year afte「「efurbishment: 92,000 Results of surveys of visitor satisfaction Year bef。re refurbishment Year after refurbishment 5 口 Ve叭atisfied 5 口 Very satisfied 自Satisfied 35自Satisfied 因Dissatisfied 囱Dissatisfied 囱Ve叩dissatisfi创 园Very dissatisfied 回No response 因No response 100",
+    "pages": [
+      14
+    ],
+    "tt_explicit": true,
+    "prompt_ok": true
+  },
+  "cam11_t4_q2_sample": {
+    "id": "cam11_t4_q2_sample",
+    "source": "cam11",
+    "test": 4,
+    "task_type": 2,
+    "answer_type": "sample",
+    "band": 5.5,
+    "examiner_comment": null,
+    "prompt": "WRITING TASK 2 You should spend about 40 minutes on this task. W「ite about the fo川owing topic: Many governments think that economic progress is their most important goal. Some people, however, think that other types of progress are equally important for a country. Discuss both these views and give your own opinion. Give reasons for your answer and include any relevant examples from your own knowledge or expe「ience. Write at least 250 wo「ds. 101",
+    "pages": [
+      15
+    ],
+    "tt_explicit": true,
+    "prompt_ok": true
+  },
+  "cam12_t5_q1_sample": {
+    "id": "cam12_t5_q1_sample",
+    "source": "cam12",
+    "test": 5,
+    "task_type": 1,
+    "answer_type": "sample",
+    "band": 5.0,
+    "examiner_comment": "The candidate covers the key features and rounds off the description with an overview. Organisation is evident, however not wholly logical, and it is sometimes difficult to relate data to specific age groups. Vocabulary is just about adequate, but is rather dependent on input material [regular physical activity I percentage]: original material is limited to e.g",
+    "prompt": "Writing f\" o,..� c-,, tc -CH CH WRITING \" y WRITING TASK 1 You should spend about 20 minutes on this task. The bar chart below shows the percentage of Australian men and women in different age groups who did regular physical activity in 2010. Summarise the information by selecting and reporting the main features, and make comparisons where relevant. Write at least 150 words. Q) C) ea Q) 60 Percentage of Australian men and women doing regular physical activity: 2010 15 to 24 25 to 34 35 to 44 45 to 54 55 to 64 65 and over Age group Ii] Male ■ Female 27",
+    "pages": [
+      8
+    ],
+    "tt_explicit": true,
+    "prompt_ok": true
+  },
+  "cam12_t5_q2_sample": {
+    "id": "cam12_t5_q2_sample",
+    "source": "cam12",
+    "test": 5,
+    "task_type": 2,
+    "answer_type": "sample",
+    "band": 6.0,
+    "examiner_comment": "The candidate addresses all parts of the prompt, although there is some misunderstanding of the term shared freely. Ideas relating to each sector mentioned in the prompt are presented, yet there is not much development of these, especially of sharing ideas in the business world. There is a clear overall progression, with the candidate's own opinion presented at the end, but there are some errors in the use of cohesive devices [working there on out of this I which scientist]. Lexis is mainly appropriate for the task, though there are some errors in word choice [actual I releases] and spelling [govenment I limite I theme I loose]. There is a mix of simple and complex sentence forms, with a fair degree of accuracy: errors in grammatical control seldom prevent meaning from coming through. Sho.ri..ns i..nfO(IYIO.li..on i..S o.cluo.l i..ssue i..n OU( world where i.,!:.. ho.s sl:..t,ons i..ntluence 01'\\ people. There o.re vo.ri..ous spheres of our Ii.",
+    "prompt": "Test5 WRITING TASK 2 You should spend about 40 minutes on this task. Write about the following topic: Some people believe that it is good to share as much information as possible in scientific research, business and the academic world. Others believe that some information is too important or too valuable to be shared freely. Discuss both these views and give your own opinion. Give reasons for your answer and include any relevant examples from your own knowledge or experience. Write at least 250 words. 28",
+    "pages": [
+      9
+    ],
+    "tt_explicit": true,
+    "prompt_ok": true
+  },
+  "cam12_t6_q1_sample": {
+    "id": "cam12_t6_q1_sample",
+    "source": "cam12",
+    "test": 6,
+    "task_type": 1,
+    "answer_type": "sample",
+    "band": 7.0,
+    "examiner_comment": "The candidate covers all the key features and presents a clear overview of the developments planned. Information and ideas are logically organised and there is a clear progression throughout the response. A range of cohesive devices is used flexibly [currently I Overall I First of all I therefore I Moreover I The next point I To sum up]. Lexical choice shows flexibility and precision, and includes less common items [modifications I predicting I grouped in a shopping main, though there is some inappropriate word choice [desetves]",
+    "prompt": "Test6 WRITING WRITING TASK 1 You should spend about 20 minutes on this task. The maps below show the centre of a small town called /slip as it is now, and plans for its development. Summarise the information by selecting and reporting the main features, and make comparisons where relevant. Write at least 150 words. 50 lslip town centre now Countryside Shops Main road Housing Park Housing lslip town centre: planned development / / 1 Bus Shopping Car 1 station centre park / ,..__�---�� 1 Pedestrians only Dual� carriageway Housing Shops New housing Park \\ '- / ' / - ----- -------- - Housing",
+    "pages": [
+      10
+    ],
+    "tt_explicit": true,
+    "prompt_ok": true
+  },
+  "cam12_t6_q2_sample": {
+    "id": "cam12_t6_q2_sample",
+    "source": "cam12",
+    "test": 6,
+    "task_type": 2,
+    "answer_type": "sample",
+    "band": 5.0,
+    "examiner_comment": "The response looks at some advantages and disadvantages of the topic, but does not reach any conclusion. As a result, there is a lack of overall progression, although organisation is evident and cohesive devices are used (though rather mechanically) [One of advantages I For example I A/so I Another disadvantage I For instance]. The range of lexis is adequate for the task, however there are often spelling mistakes [contries I yonge I quilifiedj and errors in word choice or formation [chancing to improve I unemployee problem]. There are attempts to produce complex sentence forms, but there is a lack of grammatical control which can cause some difficulty for the reader [ ..",
+    "prompt": "WRITING TASK 2 You should spend about 40 minutes on this task. Write about the following topic: Writing At the present time, the population of some countries includes a relatively large number of young adults, compared with the number of older people. Do the advantages of this situation outweigh the disadvantages? Give reasons for your answer and include any relevant examples from your own knowledge or experience. Write at least 250 words. 51",
+    "pages": [
+      11
+    ],
+    "tt_explicit": true,
+    "prompt_ok": true
+  },
+  "cam12_t7_q1_sample": {
+    "id": "cam12_t7_q1_sample",
+    "source": "cam12",
+    "test": 7,
+    "task_type": 1,
+    "answer_type": "sample",
+    "band": 6.5,
+    "examiner_comment": "The candidate organises the information well and describes the trends in the various groups, but the lack of data to support the descriptions is a significant omission. There is a clear progression throughout the response, with good management of cohesive devices [percentage of people who I during the same period I in these segments of the chart I the groups in which I such facilities]. Lexis shows some flexibility and precision [on a weekly basis] and there is evidence of less common items [segments I major changes I most of the population I most/ least popular I with the exception on, with few errors in word choice [visualises I be I clients]. There is a variety of complex structures used with flexibility and accuracy, but there are also a few errors in grammatical control and in punctuation. The cho.d: .. vi...Suo.k.ses hO\\,..) ofl .",
+    "prompt": "Writing WRITING TASK 1 V <� ~ V �� =� -SST':;/�� �N � � .-> x � WRllJING- '�.,� '� �� •, �_ You should spend about 20 minutes on this task. The chart below shows how frequently people in the USA ate in fast food restaurants between 2003 and 2013. Summarise the information by selecting and reporting the main features, and make comparisons where relevant. Write at least 150 words. 0 Frequency of eating at fast food restaurants among people in the USA (2003-2013) 40% 35% 30% 25% 20% 15% 10% 5% 0% ·=· <•--·•-\" Every day •·----·-·--•·--•-� Several Once a Once or A few Never times week twice times a a week a month year ■ 2003 til 2006 [23 2013 71",
+    "pages": [
+      12
+    ],
+    "tt_explicit": true,
+    "prompt_ok": true
+  },
+  "cam12_t7_q2_sample": {
+    "id": "cam12_t7_q2_sample",
+    "source": "cam12",
+    "test": 7,
+    "task_type": 2,
+    "answer_type": "sample",
+    "band": 7.5,
+    "examiner_comment": "This is a good response which would achieve an even higher score if there was more focus on large sums of money and on between cities. The writing is well organised and there is a clear progression throughout, although the use of some cohesive devices could be more flexible",
+    "prompt": "Test 7 WRITING TASK 2 You should spend about 40 minutes on this task. Write about the following topic: In a number of countries, some people think it is necessary to spend large sums of money on constructing new railway lines for very fast trains between cities. Others believe the money should be spent on improving existing public transport. Discuss both these views and give your own opinion. Give reasons for your answer and include any relevant examples from your own knowledge or experience. Write at least 250 words. 72",
+    "pages": [
+      13
+    ],
+    "tt_explicit": true,
+    "prompt_ok": true
+  },
+  "cam12_t8_q1_sample": {
+    "id": "cam12_t8_q1_sample",
+    "source": "cam12",
+    "test": 8,
+    "task_type": 1,
+    "answer_type": "sample",
+    "band": 6.0,
+    "examiner_comment": "The candidate has provided a clear introduction and an overview of the key stages of the process. Each stage is identified and described, although there are some minor errors in the reporting of stage 5. There is room for expansion of the description of each stage, which could help to achieve a higher score. There is a clear overall progression, with each stage being signalled by appropriate markers [First I in order to I After that I At this point I Then, the final step I Finally]. These markers are adequate, but a higher score might be achieved by varying their position in each sentence, rather than always placing them at the beginning. The range of vocabulary is adequate for the task and there are attempts to use more variety here [five general steps I connected I accumulated], though there are some examples of error in word choice .[box I tank I a circle movements I a circular movement], in spelling [undergrownd I trough I conteiner I sumary] and in word formation [condensered I condensed I gas I gaseous I :trasladated I transferred? I condensering I condensing]. There is a mix of simple and complex sentence forms, including accurate use of passive forms. There are some errors [a/ an I who I what], but otherwise the level of accuracy is good. The same level of accuracy, over a wider range of sentence forms, would increase the score on Grammatical Range and Accuracy. The dLo,c)ro,m shows how e\\ed::.Acd: .. .:l LS produced b.:J c)eolhermo,I el\"\\erc).:l· There o,re fLve c)el\"\\ero,I sleps LI\"\\ lhLS process. FLrSl, LI\"\\ o, bLc) bo><.. cOl\"\\l\"\\ecled ul\"\\derc)rowl\"\\d, cold wo,ler LS o,ccumulo,led LI\"\\ order lo be pumped dOWI\"\\ o,boul 4- .S K.m. Afler lho,l, wo,ler LS heo,led po,SSLl\"\\c) lrnuc)h hol rocks co,\\led Geolhermo,1 -z..Ol\"\\e e>,l\"\\d Ll LS pumped up LI\"\\ order lo be COl\"\\del\"\\Sered LI\"\\ o, bLc) COl\"\\leLl\"\\er",
+    "prompt": "Test 8 WRITING WRITING TASK 1 You should spend about 20 minutes on this task. The diagram below shows how geothermal energy is used to produce electricity. Summarise the information by selecting and reporting the main features, and make comparisons where relevant. Write at least 150 words. 92 Cold water Geothermal power plant 0 �Steam.··· (powered by (powered by turbine and steam) produces electricity) t_ •..... Condenser",
+    "pages": [
+      14
+    ],
+    "tt_explicit": true,
+    "prompt_ok": true
+  },
+  "cam12_t8_q2_sample": {
+    "id": "cam12_t8_q2_sample",
+    "source": "cam12",
+    "test": 8,
+    "task_type": 2,
+    "answer_type": "sample",
+    "band": 5.0,
+    "examiner_comment": "This is an attempt to address the prompt and some main ideas are put forward, but there is no discussion of is likely to result in a society of individuals who only think about their own wishes. This omission, and the fact that the response is underlength, limit the Band score rating. Organisation is evident, however the answer lacks contextualisation, and cohesion within sentences is sometimes faulty [that is cause many African children to ..",
+    "prompt": "Writing WRITING TASK 2 You should spend about 40 minutes on this task. Write about the following topic: Some people believe that allowing children to make their own choices on everyday matters (such as food, clothes and entertainment) is likely to result in a society of individuals who only think about their own wishes. Other people believe that it is important for children to make decisions about matters that affect them. Discuss both these views and give your own opinion. Give reasons for your answer and include any relevant examples from your own knowledge or experience. Write at least 250 words. 93",
+    "pages": [
+      15
+    ],
+    "tt_explicit": true,
+    "prompt_ok": true
+  },
+  "cam13_t1_q1_sample": {
+    "id": "cam13_t1_q1_sample",
+    "source": "cam13",
+    "test": 1,
+    "task_type": 1,
+    "answer_type": "sample",
+    "band": 5.5,
+    "examiner_comment": "The candidate has identified all the key features (hospital, ring road, new public car park, staff car park and bus station in 2010) but the descriptions are not always accurate e.g. [two features that still remained. This two features are City Hospital and staff car park] whereas the staff car park was formerly a car park for both staff and public, while the mention of the bus station is not developed. Organisation is clear, however, with some good use of cohesive devices [According to | Apart from | The further additional features], although there is an error in the use of reference pronouns [This/These two features]",
+    "prompt": "Writing Car park: staff and public City Road WRITING WRITING TASK 1 You should spend about 20 minutes on this task. The two maps below show road access to a city hospital in 2007 and in 2010. Summarise the information by selecting and reporting the main features, and make comparisons where relevant Write at least 150 words. City Hospital 2007 Ring Road CITYHOSPITAL O ◎ roundabout City Road 29",
+    "pages": [
+      8
+    ],
+    "tt_explicit": true,
+    "prompt_ok": true
+  },
+  "cam13_t1_q2_sample": {
+    "id": "cam13_t1_q2_sample",
+    "source": "cam13",
+    "test": 1,
+    "task_type": 2,
+    "answer_type": "sample",
+    "band": 6.5,
+    "examiner_comment": "The candidate deals with both parts of the prompt and addresses some social and practical problems that might be experienced in a foreign language environment. Ideas are supported by examples, though there is room for further development here. Organisation is logical and there is clear progression throughout the response. Cohesive devices are used appropriately [Another problem | For example | Therefore | That means ... \\ The second ... problem | To summarize]. There is a sufficient range of vocabulary to allow some flexibility and precision and to demonstrate awareness of style and collocation [language barrier | linked to | influence the behaviour] offend | misunderstanding | misconceptions]. There is a mix of simple and complex sentence forms including subordinate clauses [which means that | a person who], modal verbs [should | might | would] and gerunds [finding a job]. Grammatical control is generally good as is the use of punctuation, although the first sentence in the second paragraph is incomplete",
+    "prompt": "Test 1 WRITING TASK 2 You should spend about 40 minutes on this task. Write about the following topic: Living in a country where you have to speak a foreign language can cause serious social problems, as well as practical problems. To what extent do you agree or disagree with this statement? Give reasons for your answer and include any relevant examples from your own knowledge or experience. Write at least 250 words. 30",
+    "pages": [
+      9
+    ],
+    "tt_explicit": true,
+    "prompt_ok": true
+  },
+  "cam13_t2_q1_sample": {
+    "id": "cam13_t2_q1_sample",
+    "source": "cam13",
+    "test": 2,
+    "task_type": 1,
+    "answer_type": "sample",
+    "band": 6.0,
+    "examiner_comment": "The candidate has identified all the main features and trends, including the fact that in 1971 the number of households in owned and rented households was the same. Comments are supported by dates and percentages of households and there is a short overview at the end of the script. Organisation is clear as the writer deals with each category in turn. The range of vocabulary is adequate but there are frequent spelling errors [comprss/'or? / comparison | dramaticly cfropecf/dramatically dropped | stated/ stayed | yeas/year | /eue/ecf/levelled | Genarally / Generally | precfarge / percentage]. These do not noticeably impede communication, however. There is a mix of grammatical structures and some complex sentence forms, though these are not always accurate: the meaning is still clear, however",
+    "prompt": "Writing H households in owned ■ households in rented accommodation ■ accommodation WRITING WRITING TASK 1 You should spend about 20 minutes on this task. The chart beiow shows the percentage of households in owned and rented accommodation in England and Wales between 1918 and 2011. Summarise the information by selecting and reporting the main features, and make comparisons where relevant Write at least 150 words. Households owning and renting accommodation in England and Wales 1918 to 2011 51",
+    "pages": [
+      10
+    ],
+    "tt_explicit": true,
+    "prompt_ok": true
+  },
+  "cam13_t2_q2_sample": {
+    "id": "cam13_t2_q2_sample",
+    "source": "cam13",
+    "test": 2,
+    "task_type": 2,
+    "answer_type": "sample",
+    "band": 7.0,
+    "examiner_comment": "The candidate explains why s/he both agrees and disagrees with the statement, meeting the requirements of To what extent do you agree or disagree with thi",
+    "prompt": "Test 2 WRITING TASK 2 You should spend about 40 minutes on this task. Write about the following topic: Some people believe that nowadays we have too many choices. To what extent do you agree or disagree with this statement? Give reasons for your answer and include any relevant examples from your own knowledge or experience. Write at least 250 words. 52",
+    "pages": [
+      11
+    ],
+    "tt_explicit": true,
+    "prompt_ok": true
+  },
+  "cam13_t3_q1_sample": {
+    "id": "cam13_t3_q1_sample",
+    "source": "cam13",
+    "test": 3,
+    "task_type": 1,
+    "answer_type": "sample",
+    "band": 5.0,
+    "examiner_comment": "This response is rather mechanical as it lists the countries in order of production and consumption of electricity, identifies the countries that produce and consume most and least and notes the fact that all the countries except Germany produce more than they consume. However, the writing is supported by data, although there are some errors in the figures (the figures for production in Russia, India and Brazil are inaccurate as is the figure for consumption in Japan). Organisation is limited and there are few examples of cohesive devices; similarly the range of vocabulary is limited although just adequate for the task. There is a mix of simple and complex sentence structures, but complex forms are mainly inaccurate [that have/has | Almost all the country have / Almost all the countries have]. From tine bar chart that show the- top ten countries for the- production and donsumption of in 2-014",
+    "prompt": "Writing WRITING WRITING TASK 1 You should spend about 20 minutes on this task. The bar chart below shows the top ten countries for the production and consumption of electricity in 2014. Summarise the information by selecting and reporting the main features, and make comparisons where relevant. Write at least 150 words. Rank Country Electricity ■ Production (billion kWh )圖 Consumption (billion kWh) 73",
+    "pages": [
+      12
+    ],
+    "tt_explicit": true,
+    "prompt_ok": true
+  },
+  "cam13_t3_q2_sample": {
+    "id": "cam13_t3_q2_sample",
+    "source": "cam13",
+    "test": 3,
+    "task_type": 2,
+    "answer_type": "sample",
+    "band": 6.0,
+    "examiner_comment": "The writer addresses all parts of the prompt and outlines why the various subjects are all important, supporting these ideas with relevant examples. Although the organisation is sometimes confused, there is a sense of progression and a definite conclusion is reached. Cohesive devices are used effectively [In my opinion | Of course | especially]. Referencing is generally accurate _ wouldn't know that without them | these things \\ that hope | that is a reason why], but there is one error [With this/these two things]",
+    "prompt": "Test 3 WRITING TASK 2 You should spend about 40 minutes on this task. Write about the following topic: Some people say History is one of the most important school subjects. Other people think that, in today’s world, subjects like Science and Technology are more important than History. Discuss both these views and give your own opinion. Give reasons for your answer and include any relevant examples from your own knowledge or experience. Write at least 250 words. 74",
+    "pages": [
+      13,
+      14
+    ],
+    "tt_explicit": true,
+    "prompt_ok": true
+  },
+  "cam13_t4_q1_sample": {
+    "id": "cam13_t4_q1_sample",
+    "source": "cam13",
+    "test": 4,
+    "task_type": 1,
+    "answer_type": "sample",
+    "band": 6.5,
+    "examiner_comment": "This answer addresses the main features of the redeveloped sports centre, but it could be improved by adding a brief description of the centre as it is at present. Another aspect of the response that could be improved would be to indicate where the various facilities will be situated in relation to each other: from the description above the reader cannot know where for example the gym, the leisure pool and the dance studios will be located The range of vocabulary is above average, however: [illustrate | reconstruction | redeveloped | additional | replaced by other facilities | renovated] and shows flexibility and precision",
+    "prompt": "Test 4 WRITING WRITING TASK 1 You should spend about 20 minutes on this task. The plans below show the layout of a university^ sports centre now, and how it will look after redevelopment. Summarise the information by selecting and reporting the main features, and make comparisons where relevant Write at least 150 words. UNIVERSITY SPORTS CENTRE (present) Changing ~ x room Sports \\ ___________shop 、 UNIVERSITY SPORTS CENTRE (future plans) Outdoorcourts Seating l u o o j D )u 'D) u (o JC: oi u o o j D )u !6 u e q o 94",
+    "pages": [
+      15
+    ],
+    "tt_explicit": true,
+    "prompt_ok": true
+  },
+  "cam13_t4_q2_sample": {
+    "id": "cam13_t4_q2_sample",
+    "source": "cam13",
+    "test": 4,
+    "task_type": 2,
+    "answer_type": "sample",
+    "band": 6.0,
+    "examiner_comment": "This script presents some difficulties for the reader. There is an attempt to answer the first part of the prompt (Why is this the case?) although the explanation is not well supported, while the answer to the second question (What can be done about this problem?) lacks focus as it mentions education, clean water and social mobility as well as food. At the same time, it is clear that the writer has some ideas, but lacks the language needed to express them satisfactorily. Ideas are organised into paragraphs and there is some sense of progression, with accurate use of cohesive devices [Nowadays | According to \\ for example] although there is also some inaccuracy [Hence | In the long team/term?]. Control over spelling and word formation is weak and there are frequent errors [itmes | opioin | Captialism | divied | countris | resouse | develping] for example, causing further difficulty. There are attempts to produce both simple and complex sentence forms, but the error level is high throughout, even in simple forms [/ think it made many problem | the people w ill be expenditure more]. Punctuation is also sometimes faulty",
+    "prompt": "Writing WRITING TASK 2 You should spend about 40 minutes on this task. Write about the following topic: In spite of the advances made in agriculture, many people around the world still go hungry. Why is this the case? What can be done about this problem? Give reasons for your answer and include any relevant examples from your own knowledge or experience. Write at least 250 words. 95",
+    "pages": [
+      16,
+      17
+    ],
+    "tt_explicit": true,
+    "prompt_ok": true
+  },
+  "cam17_t1_q1_sample": {
+    "id": "cam17_t1_q1_sample",
+    "source": "cam17",
+    "test": 1,
+    "task_type": 1,
+    "answer_type": "sample",
+    "band": 6.0,
+    "examiner_comment": null,
+    "prompt": "Test 1 WRITING WRITING TASK 1 You should spend about 20 minutes on this task. The maps below show an industrial area in the town of Norbiton, and planned future development of the site. Summarise the information by selecting and reporting the main features, and make comparisons where relevant. Write at least 150 words. Planned future development Farmland = Housing Medicalcentre Playground Town School Shops Norbiton industrial area now Farmland = Factory Town River River River River 28 p. 127",
+    "pages": [
+      7
+    ],
+    "tt_explicit": true,
+    "prompt_ok": true
+  },
+  "cam17_t1_q2_sample": {
+    "id": "cam17_t1_q2_sample",
+    "source": "cam17",
+    "test": 1,
+    "task_type": 2,
+    "answer_type": "sample",
+    "band": 6.5,
+    "examiner_comment": null,
+    "prompt": "Writing WRITING TASK 2 You should spend about 40 minutes on this task. Write about the following topic: It is important for people to take risks, both in their professional lives and their personal lives. Do you think the advantages of taking risks outweigh the disadvantages? Give reasons for your answer and include any relevant examples from your own knowledge or experience. Write at least 250 words. p. 128 29 \u0000-",
+    "pages": [
+      8,
+      9
+    ],
+    "tt_explicit": true,
+    "prompt_ok": true
+  },
+  "cam17_t2_q1_sample": {
+    "id": "cam17_t2_q1_sample",
+    "source": "cam17",
+    "test": 2,
+    "task_type": 1,
+    "answer_type": "sample",
+    "band": 7.5,
+    "examiner_comment": null,
+    "prompt": "WRITING WRITING TASK 1 You should spend about 20 minutes on this task. The table and charts below give information on the police budget for 2017 and 2018 in one area of Britain. The table shows where the money came from and the charts show how it was distributed. Summarise the information by selecting and reporting the main features, and make comparisons where relevant. Write at least 150 words. Police Budget 2017–2018 (in £m) 50 p. 130 Test 2",
+    "pages": [
+      10
+    ],
+    "tt_explicit": true,
+    "prompt_ok": true
+  },
+  "cam17_t2_q2_sample": {
+    "id": "cam17_t2_q2_sample",
+    "source": "cam17",
+    "test": 2,
+    "task_type": 2,
+    "answer_type": "sample",
+    "band": 6.5,
+    "examiner_comment": null,
+    "prompt": "Writing WRITING TASK 2 You should spend about 40 minutes on this task. Write about the following topic: Some children spend hours every day on their smartphones. Why is this the case? Do you think this is a positive or a negative development? Give reasons for your answer and include any relevant examples from your own knowledge or experience. Write at least 250 words. p. 131 51",
+    "pages": [
+      11,
+      12
+    ],
+    "tt_explicit": true,
+    "prompt_ok": true
+  },
+  "cam17_t3_q1_sample": {
+    "id": "cam17_t3_q1_sample",
+    "source": "cam17",
+    "test": 3,
+    "task_type": 1,
+    "answer_type": "sample",
+    "band": 5.5,
+    "examiner_comment": null,
+    "prompt": "WRITING WRITING TASK 1 You should spend about 20 minutes on this task. The chart below gives information about how families in one country spent their weekly income in 1968 and in 2018. Summarise the information by selecting and reporting the main features, and make comparisons where relevant. Write at least 150 words. 1968 and 2018: average weekly spending by families 0 5 10 15 20 % of weekly income 1968 25 30 35 40 Food Housing Fuel and power Clothing and footware Household goods Personal goods Transport Leisure 2018 72 p. 133 Test 3",
+    "pages": [
+      13,
+      14
+    ],
+    "tt_explicit": true,
+    "prompt_ok": true
+  },
+  "cam17_t3_q2_sample": {
+    "id": "cam17_t3_q2_sample",
+    "source": "cam17",
+    "test": 3,
+    "task_type": 2,
+    "answer_type": "sample",
+    "band": 6.5,
+    "examiner_comment": null,
+    "prompt": "Writing WRITING TASK 2 You should spend about 40 minutes on this task. Write about the following topic: Some people believe that professionals, such as doctors and engineers, should be required to work in the country where they did their training. Others believe they should be free to work in another country if they wish. Discuss both these views and give your own opinion. Give reasons for your answer and include any relevant examples from your own knowledge or experience. Write at least 250 words. p. 135 73 \u0000-",
+    "pages": [
+      15,
+      16
+    ],
+    "tt_explicit": true,
+    "prompt_ok": true
+  },
+  "cam17_t4_q1_sample": {
+    "id": "cam17_t4_q1_sample",
+    "source": "cam17",
+    "test": 4,
+    "task_type": 1,
+    "answer_type": "sample",
+    "band": 7.5,
+    "examiner_comment": null,
+    "prompt": "Test 4 WRITING TASK 2 You should spend about 40 minutes on this task. Write about the following topic: Nowadays, a growing number of people with health problems are trying alternative medicines and treatments instead of visiting their usual doctor. Do you think this is a positive or a negative development? Give reasons for your answer and include any relevant examples from your own knowledge or experience. Write at least 250 words. 94 p. 138",
+    "pages": [
+      17
+    ],
+    "tt_explicit": true,
+    "prompt_ok": true
+  },
+  "cam17_t4_q2_sample": {
+    "id": "cam17_t4_q2_sample",
+    "source": "cam17",
+    "test": 4,
+    "task_type": 2,
+    "answer_type": "sample",
+    "band": 6.0,
+    "examiner_comment": null,
+    "prompt": "",
+    "pages": [
+      18
+    ],
+    "tt_explicit": true,
+    "prompt_ok": false
+  }
+}

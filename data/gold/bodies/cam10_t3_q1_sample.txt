@@ -1,0 +1,9 @@
+# GOLD ESSAY — cam10 Test3 Task1 — Band 6.5
+# STATUS: DONE
+# PDF 页(1-indexed): 13
+# Prompt: Writing WRITING WRITING TASK 1 You should spend about 20 minutes on this task. The charts below show what UK graduate and postgraduate students who did not go i
+# 说明：预填为文本层乱码，仅作提示，请对照 PDF 手写图订正；改完把 STATUS 改成 DONE。
+# ====== ESSAY BODY BELOW (此行以下全部视为正文) ======
+The graphs represents what UK graduates and postgraduates did after leaving collegein 2008.
+On the first graph, it shows that 17,735 graduate students sought part-time employmentin 2008 while 3,500 did voluntary work and 29,b65 decided to seek further study.According to the graph, lb,23s graduate students were unemployed after college, which isroughly almost the same amount as those who sought part-time work.
+On the second graph, we see that 2,535 uK postgraduates did part-time work whileonly 345 did voluntary work. 2,725 uK postgraduates decided to study further which isslightly more than those who decided to take part-time emplayment. Lastly, l,625 uKpostgraduate students were not in the work force. The overall trend shows that most of the students, graduates and postgraduates alike, sought out further education while only a small nomber of students in both groups did voluntary work after leaving college。 We wll also notice that about a third in each group were unemployed. Lastly, the only difference that we will notice between the two groups is the percentage on the amountof students who wert on to do part-time work with only one-third of the total amountin the graduate students and almost one-half with the postgraduate students.

@@ -1,0 +1,13 @@
+# GOLD ESSAY — cam11 Test1 Task2 — Band 5.5
+# STATUS: DONE
+# PDF 页(1-indexed): 10
+# Prompt: WRITING TASK 2 You should spend about 40 minutes on this task. Write about the following topic: Governments should spend money on railways rather than roads. To
+# 说明：预填为文本层乱码，仅作提示，请对照 PDF 手写图订正；改完把 STATUS 改成 DONE。
+# ====== ESSAY BODY BELOW (此行以下全部视为正文) ======
+In recent years, government focuse on improving quaility of life, that would bring a lot benifits for citizens. Such as. communication, ransprotation, health care. Some
+arguement that built railways is more useful for local people than roads. In my opinion, it is good idea that more train sation is built. There are some reasons.
+first of all, it reduced pollution when more people give up driving to work in weekday. Nowaday, people spend a lot of time on the road in rush hours. At the same time,
+emissions of car bring a pollution in our enviroment. People easily get upset , if they got into traffic jam for longtime. Research has shown that it is get more pollution of air that car stoped on the road without cutting power. Trainstation is a good way to make easy that train never could get into congestion and train is a public transport which is more relpful to reduce air pollution.
+Secondly, it solved congestion on the road while many people commute by train, nearly years, a number of car is growing. So, a question that a number of car is over volumed of road is following. This caused traffic jam have being horrible problem. However, the train will take more people to go to their destinations without waiting on road in rush hour. It is more convience for citizen.
+Finally, taking public transport is cheaper than privatcal vichele. People could save money to do others they intrested.
+Overall, goverment pay more money for building railway. It bring more it is a good decision that advantages than drawbacks.

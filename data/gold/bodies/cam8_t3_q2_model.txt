@@ -1,0 +1,7 @@
+# GOLD ESSAY — cam8 Test3 Task2 — MODEL(无 band)
+# STATUS: DONE
+# PDF 页(1-indexed): 14
+# Prompt: WRITING TASK 2 You should spend about 40 minutes on this task. Write about the following topic: Writing Increasing the price of petrol is the best way to solve 
+# 说明：印刷体范文，预填一般已干净；如无误保持 STATUS: DONE 即可。
+# ====== ESSAY BODY BELOW (此行以下全部视为正文) ======
+This model has been prepared by an examiner as an example of a very good answer. However, please note that this is just one example out of many possible approaches. 167

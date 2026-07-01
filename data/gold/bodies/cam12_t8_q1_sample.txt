@@ -1,0 +1,11 @@
+# GOLD ESSAY — cam12 Test8 Task1 — Band 6.0
+# STATUS: DONE
+# PDF 页(1-indexed): 15
+# Prompt: Test 8 WRITING WRITING TASK 1 You should spend about 20 minutes on this task. The diagram below shows how geothermal energy is used to produce electricity. Summ
+# 说明：预填为文本层乱码，仅作提示，请对照 PDF 手写图订正；改完把 STATUS 改成 DONE。
+# ====== ESSAY BODY BELOW (此行以下全部视为正文) ======
+The diagram shows how electriciky is produced by geothermal energy . There are five
+general steps in this process. First, in a big box connected undergrownd, cold water is accumulated in order to be pumped down about 4.5 Km.
+After that, water is heated passing trough hot rocks called Geothermal zone and it is pumped up in order to be condensered in a big conteiner. At this point, water is in a gas state and it is put in a turbine which moves it in a circle movements. Then. the final step is to use a generator in order to water be powered and energy can be produced. Finally energy is trasladated to a energy tower.
+In sumary, the geothermal power plant is used to create energy in some steps:
+heating cold water by a geothermal zone and condensering it in order to put it in a generator Eurbine which is who produces the energy to be used.

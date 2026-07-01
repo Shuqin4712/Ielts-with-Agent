@@ -1,0 +1,14 @@
+# GOLD ESSAY — cam5 Test3 Task2 — Band 6.0
+# STATUS: DONE
+# PDF 页(1-indexed): 14
+# Prompt: Test 3 WRITING TASK 2 You should spend about 40 minutes on this task . Write about the following topic: Some people think that a sense of competition in childre
+# 说明：预填为文本层乱码，仅作提示，请对照 PDF 手写图订正；改完把 STATUS 改成 DONE。
+# ====== ESSAY BODY BELOW (此行以下全部视为正文) ======
+
+Nowadays, purpose of education being changed in Korea There are some people who think that competition in children should be made, also others believe that children who are taught to co-operate as well as become more useful adults There are advantages and disadvantages for both of the arguements
+
+To begin with, what is good if a sense of competition in children is made? They could develope themselves more and more as they learn and study a lot to win from the competition To prove this, in Korea, it is popular - even common now - to have a tutor who come to student's house to teach extra pieces of study with paying a lot of money They learn faster than what they learn at school Furthermore, during the vacations, students study abroad to learn English for a month instead of revise school work If they have experiments such as study abroad, it is one of the greatest plus point to go to the famous well-known high-school Moreover, there are four big school exam and two national examinations to test students' level of studies Generally, only the highest 40% can go to the good quality highschools and colleges Children learn as much as they can, to win the competition to obtain good quality schools
+
+On the other hand, as they are busy to enter the schools and study individually with their own tutors, there are problems They become selfish They become careless and don't help others a lot if it is about studies There will be no co-operations for them Then, why are there companies for many people to work in? Each of them are clever, however, there are weak parts and strong parts for each person To co-operate is to improve this part People talk and listen to what others thinking of and learn That could also be a great opportunity to learn instead of learning alone with one teacher
+
+In conclusion, I strongly agree with that children should be taught to co-operate rather than compete Nobody is perfect People learn together, work together to develop each other Therefore, I want parents and teachers to educate children concentrating on co-operation, not compete and ranking them

@@ -1,0 +1,10 @@
+# GOLD ESSAY — cam12 Test6 Task1 — Band 7.0
+# STATUS: DONE
+# PDF 页(1-indexed): 11
+# Prompt: Test6 WRITING WRITING TASK 1 You should spend about 20 minutes on this task. The maps below show the centre of a small town called /slip as it is now, and plans
+# 说明：预填为文本层乱码，仅作提示，请对照 PDF 手写图订正；改完把 STATUS 改成 DONE。
+# ====== ESSAY BODY BELOW (此行以下全部视为正文) ======
+The two maps of the centre of the towns of Islip give information about the city currently and in the future. Overall, a lot of modificakions can be observed during the forecast development..
+First of all, according to the current map the centre is close to a countryside. A main road deserves houses, a school, several shops and a park.
+Looking more closely at the map predicting the future development of the city, a lot of modifications can be observed. The size of the centre will increase in an oval shape ; therefore the countryside will disappear. Moreover, the single road will be replaced by a bigger dual carriageway . A pedestrian way will deserve the central area. New houses will be builk with new facilities such as a bus station and a parking. The shops will be grouped in a shopping mall. The next point is the garden area which will be smaller . As the city will have more people the school will be bigger.
+To sum up, between the actual map of Islip town centre and the future planned development, a lot of modifications are predicted. On the one hand the city will be bigger with more facilities. On the other hand the park will be reduced and the countryside will disappear. The city will have changed a great deal.

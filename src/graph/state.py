@@ -1,0 +1,36 @@
+"""批改 workflow 的 State schema 与结构化输出 schema。
+
+LangGraph 用法：State 是一个 TypedDict，作为整张图的「共享工作台」。
+每个 node 读它、返回一个局部更新 dict，LangGraph 合并进 State 再流向下个 node。
+本阶段是最薄竖切，字段只留四维打分必需的。
+"""
+from __future__ import annotations
+
+from typing import NotRequired, TypedDict
+
+from pydantic import BaseModel, Field
+
+# 官方四维（TA 在 task2 语义上是 Task Response，metadata key 仍统一为 TA）。
+CRITERIA = ["TA", "CC", "LR", "GRA"]
+
+
+class GradeState(TypedDict):
+    essay: str
+    task_type: int                 # 1 或 2
+    prompt: str
+    retrieved_rubric: dict         # {criterion: [{"band": int, "text": str}, ...]}
+    dimension_scores: dict         # {criterion: {"band": float, "evidence": str}}
+    overall_band: float
+    # 阶段 2 新增（可选，用 run_cfg 开关分档；缺省即 stage1 裸基线行为）
+    run_cfg: NotRequired[dict]     # {"anchored":bool,"reflect":bool,"score_tier":str,"thinking":bool,"max_retries":int}
+    essay_id: NotRequired[int]     # 被评作文 id，供 retrieve_exemplars 排除自身（防泄漏）
+    anchors: NotRequired[list]     # 锚定范文 [{"band","text","topic"}]，无锚定时为空
+    retries: NotRequired[int]      # reflection 回退计数
+    reflection_ok: NotRequired[bool]
+    reflection_feedback: NotRequired[dict]  # {criterion: 审查意见}，回退重评时注入
+
+
+class DimensionScore(BaseModel):
+    """约束 LLM 的结构化输出：一个 band + 一句依据。"""
+    band: float = Field(description="IELTS band for this criterion, 0-9 in steps of 0.5")
+    evidence: str = Field(description="One concise sentence justifying the band")

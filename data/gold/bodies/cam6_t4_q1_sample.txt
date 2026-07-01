@@ -1,0 +1,13 @@
+# GOLD ESSAY — cam6 Test4 Task1 — Band 6.5
+# STATUS: DONE
+# PDF 页(1-indexed): 15
+# Prompt: Test 4 WRITING WRITING TASK 1 You should spend about 20 minutes on this task. The charts below give information about USA marriage and divorce rates between 197
+# 说明：预填为文本层乱码，仅作提示，请对照 PDF 手写图订正；改完把 STATUS 改成 DONE。
+# ====== ESSAY BODY BELOW (此行以下全部视为正文) ======
+We are given two charts which show us a few sets of data about the marital status of the Americans between 1970 and 2000.
+
+The first chart compares the number of marriages and divorces in the United States of America between 1970 and 2000. We can see that data is given for each decade; the number of people who are getting married decreased slightly since 1980, as well as the divorces one. Nevertheless, divorces increased between 1970 and 1980.
+
+The second chart is more precise about the different marital status of the Americans between 1970 and 2000. The number of divorced people has risen more than the double during this two years, and the data for the never married people has also increased significantly. However, less and less people are married, as the first chart showed us; the widowed American number is also decreasing.
+
+As a conclusion, we can say that the marital status background of the Americans has maybe known the greatest change it had ever seen.

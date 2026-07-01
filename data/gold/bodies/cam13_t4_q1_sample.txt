@@ -1,0 +1,8 @@
+# GOLD ESSAY — cam13 Test4 Task1 — Band 6.5
+# STATUS: DONE
+# PDF 页(1-indexed): 16
+# Prompt: Test 4 WRITING WRITING TASK 1 You should spend about 20 minutes on this task. The plans below show the layout of a university^ sports centre now, and how it wil
+# 说明：预填为文本层乱码，仅作提示，请对照 PDF 手写图订正；改完把 STATUS 改成 DONE。
+# ====== ESSAY BODY BELOW (此行以下全部视为正文) ======
+The following plans illustrate the layout of the university's sports centre at the present moment and the way it will look after a reconstruction.
+According to the new layout, the redeveloped sports centre is going to become bigger. First, the gym is going to be larger and an additional changing room is going to appear. Besides, there is going to be a sports shop and a cafe in the reception zone. Apart from that, 2 dance studios are going to work opposite the gym. Finally, the sports centre is going to get a new leisure pool. It is going to be located in the place where the outdoor courts used to be. As can be seen from the new layout, both outdoor courts are going to be replaced by other facilities in the renovated sports centre. Furthermore, a sports hall is going to appear in the university sports centre. It is also clear from the second layout that the redeveloped sports centre is going to be a fully indoor one.

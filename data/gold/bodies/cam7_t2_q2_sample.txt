@@ -1,0 +1,16 @@
+# GOLD ESSAY — cam7 Test2 Task2 — Band 7.5
+# STATUS: DONE
+# PDF 页(1-indexed): 12
+# Prompt: Test 2 WRITING TASK 2 You should spend about 40 minutes on this task. Write about the following topic: Some people believe that there should be fixed punishment
+# 说明：预填为文本层乱码，仅作提示，请对照 PDF 手写图订正；改完把 STATUS 改成 DONE。
+# ====== ESSAY BODY BELOW (此行以下全部视为正文) ======
+Fixing punishments for each type of crime has been a debateable issue. There are many arguments supporting both views, those for and those against fixed punishments.
+On the one hand, fixed punishments will have a deterring effect on society. Individuals knowing that they will be subject to a certain punishment if they are convicted with a given crime, will reconsider committing this act in the first place.
+This deterring effect also leads to social stability and security, through minimising the number of crimes committed.
+If people knew they would be able to convince the court or the jury of a reason for having committed the crime they are accused of, penal decisions would be largely arbitrary. This would result into criminals getting away with their crimes and into a high level of injustice caused by the subjective approach of different courts.
+On the other hand, taking the circumstances of a crime and its motivation into consideration is a prerequisite for establishing and ensuring justice and equity.
+A person killing in self-defense cannot be compared to a serial killer, moving from one victim to the next. In my opinion an intermediary position between both solutions is the perfect way to establish and ensure justice and equity.
+There have to be fixed punishments for all crimes. However, criminal laws have to provide for a minimum and a maximum for the punishment and the laws also have to foresee certain cases of exemptions.
+An example for setting minimum and maximum penalties is Competition Law where a person being held liable of a crime under this law will be convicted to pay a fine, according to the harm caused by the violation and the profit gained by the violator through committing the crime.
+As for the exemptions, in some countries the law exempts thiefs stealing food during a period of famine taking into consideration the distress and hunger.
+Also, a person killing in self-defense will be exempted from punishent

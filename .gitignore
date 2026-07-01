@@ -1,0 +1,27 @@
+# 密钥
+.env
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+*.egg-info/
+.pytest_cache/
+
+# 持久化数据（向量库 / SQLite 主库）
+data/chroma/
+*.sqlite
+*.sqlite-journal
+
+# 原始数据：73M 版权剑桥 PDF + 大 CSV，不进 git（本地保留）
+data/raw/
+
+# 机器本地的 Claude 设置（保留 .claude/commands 里的项目 skill）
+.claude/settings.local.json
+
+# IDE / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

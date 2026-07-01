@@ -1,0 +1,9 @@
+# GOLD ESSAY — cam17 Test2 Task1 — Band 7.5
+# STATUS: DONE
+# PDF 页(1-indexed): 11
+# Prompt: WRITING WRITING TASK 1 You should spend about 20 minutes on this task. The table and charts below give information on the police budget for 2017 and 2018 in one
+# 说明：预填为文本层乱码，仅作提示，请对照 PDF 手写图订正；改完把 STATUS 改成 DONE。
+# ====== ESSAY BODY BELOW (此行以下全部视为正文) ======
+The table illustrates the data on the police budget in which the money came from and the two pie charts describe the distribution ofthamounofmoneyn the tw of year 2017 and 2018 in an area of Britain. Overall, there was an upward trend in all three different sources while the money spent on salaries was always the majority of contribution.
+Looking into more details, the highesamountofmonyon the police budget belonged to 'National Government', 175.5 million pounds in 2017 and it kept rising to 177.8 million pounds. Thus was followed by 'Local Taxes', at 91.2 million pounds in 2017, after one year, it increase significantly to102.3 million pounds.
+In term of the how the money was spent, the majority of police budget goes to salaries which was for officers and staff, dropping slightly from 75% in 2017 to 69% in 2018. Meanwhile, the proportion of 'Buildings and transport' remained constantly, at 17% each year. An opposite pattern can be seen in the category of technology, its figure rose sharply from 8% in 2017 to 14% in 2018, which was always the lowest rate during the given period.

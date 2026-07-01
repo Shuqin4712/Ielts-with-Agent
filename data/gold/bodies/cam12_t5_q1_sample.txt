@@ -1,0 +1,11 @@
+# GOLD ESSAY — cam12 Test5 Task1 — Band 5.0
+# STATUS: DONE
+# PDF 页(1-indexed): 9
+# Prompt: Writing f" o,..  c-,, tc -CH CH WRITING " y WRITING TASK 1 You should spend about 20 minutes on this task. The bar chart below shows the percentage of Australia
+# 说明：预填为文本层乱码，仅作提示，请对照 PDF 手写图订正；改完把 STATUS 改成 DONE。
+# ====== ESSAY BODY BELOW (此行以下全部视为正文) ======
+The bar chark below shows the percentage of Australia men and women in different age group who did regular physical ackivity in 2010. It's interesting to the bar chart. In IS to 2.4, , Australian men's percentage of doing regular physical activiky is 52.8 and women's percentage is 47.7. Compare with men and women, men's percent.age i.s higher than women's percent.age. However, bars's changed and interesting. After 25 to 64, men's percentage are increasing. In 2.5 t.o 34, men's percentage is 42.,2. Besides, In 35 to 44, the percentage more decrease until 39.5. After over 45 age, a few increase like 43.7, 45.1 and 46.7. However, the percentage couldn't over 50%.
+Then, women's percentages are increase until 54 age like 52.5, 53.3. Alkhough
+women's percent.ages are decrease after S5 age, the percentages are higher than men's percent.ages.
+In conclusion, men did regular physical activity more than women when they were teenager and mid twenties.
+After mi.d-twenties, however, men's percentage was decreased and women's percent.age was increase.
