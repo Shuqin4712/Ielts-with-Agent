@@ -89,7 +89,17 @@ pytest tests/test_stage2.py -v                  # 指标 + 泄漏断言（LLM-fr
 # 阶段 3：agentic 助手 REPL（LLM 自主选 tool，需 DeepSeek key）
 python scripts/assistant.py                     # 对话：升级词 / 拆解文章 / 查词 / 打分 / 存库
 pytest tests/test_stage3.py -v                  # 路由/CRUD LLM-free；工具+路由 smoke 需 RUN_LLM_TESTS=1
+
+# 阶段 4：记忆与个性化（需 DeepSeek key）
+python scripts/assistant.py --thread demo1      # 短期记忆：同 thread_id 多轮接续、落盘可续跑；--no-memory 关
+python scripts/grade_essay.py --essay-id 123 --user alice   # 个性化全图：出反馈 + 更新画像；无 --user = 纯打分（与 eval 对齐）
+python scripts/demo_memory.py                   # 演示：同 user 连批两篇，第二篇反馈「记得」第一篇（跑完清理）
+pytest tests/test_stage4.py -v                  # 画像/checkpointer/护栏 LLM-free；反馈+蒸馏 smoke 需 RUN_LLM_TESTS=1
+# 关键回归：关个性化跑纯打分管道，确认 QWK/±0.5 不漂移（记忆没污染打分）
+python -m src.eval.harness --config anchored_flash --no-fourdim
 ```
+
+- 短期记忆落 `data/checkpoints.sqlite`（与主库 `data/ielts.sqlite` 分开）；长期画像落主库 `student_profile` / `grading_history` 表。
 
 - 跑模块用 `python -m src.xxx.yyy`（如 `python -m src.rag.rubric`），脚本用 `python scripts/xxx.py`。
 - 阶段 0 全程只用本地 embedding，**不调 DeepSeek**；改了 `.env` 的 key 后用 smoke test 验证连通。
@@ -100,8 +110,8 @@ pytest tests/test_stage3.py -v                  # 路由/CRUD LLM-free；工具+
 - [阶段 1] 最薄竖切 ✅ **已完成**：最简 LangGraph（ingest→retrieve_rubric→四维顺序打分→aggregate）端到端出分；CLI `grade_essay.py` 出四维 band+依据+overall。
 - [阶段 2] 把打分做准 ✅ **已完成**：eval harness（gold holdout 上算 MAE/±0.5/±1.0/QWK，temp=0 可复现，并发+超时）；范文锚定把 QWK 0.532→0.597（消融证实）；reflection 本测试集无增益、已从默认管道移除（代码保留）。默认打分管道 = 锚定开/reflection 关。
 - [阶段 3] 工具 + 助手模式 + 成本路由 ✅ **已完成**：7 个工具（vocab_upgrade/deconstruct_article/grammar_check/dictionary_lookup/exemplar_provide/score_predict/save_to_library）；`create_react_agent` tool-calling 对话图 + CLI REPL；config 驱动成本路由（默认 flash）。**score_predict 复用阶段 2 打分管道**（测试锁死，无第二打分路径）。
-- **[阶段 4] 记忆与个性化** ← **当前在这里**。
-- [阶段 5] 前端 + 词库/素材库。
+- [阶段 4] 记忆与个性化 ✅ **已完成**：短期记忆用 LangGraph checkpointer（SQLite 后端，`thread_id` 隔离会话、跨进程断点续跑）；长期学生画像落 SQLite（episodic=band_history/grading_history 确定性 append；semantic=recurring_errors/weak_criteria/vocab_level）。`memory_write` 节点**增量蒸馏** semantic（只喂「旧画像 + 这一篇依据」，成本恒定）；批改会话外层图 `load_profile → grade → feedback → memory_write`（`src/graph/session.py`）。个性化只改**反馈措辞**，`grade` 节点只把 essay/task/prompt 喂进内层纯打分图，**profile 物理上进不了判分**（测试断言锁死）。回归实证：关个性化跑 gold holdout，QWK 0.597→0.605、±0.5 0.588→0.667（同一份打分代码的 API 抖动内，无向下漂移）。
+- **[阶段 5] 前端 + 词库/素材库** ← **当前在这里**。
 - [阶段 6] 可观测性 + README + 部署。
 
 > 每个阶段产出一个能跑的东西再进下一阶段。改动 scope 或决策前先和我确认。

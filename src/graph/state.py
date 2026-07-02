@@ -34,3 +34,23 @@ class DimensionScore(BaseModel):
     """约束 LLM 的结构化输出：一个 band + 一句依据。"""
     band: float = Field(description="IELTS band for this criterion, 0-9 in steps of 0.5")
     evidence: str = Field(description="One concise sentence justifying the band")
+
+
+class SessionState(TypedDict):
+    """批改会话外层图（阶段 4）的 State：记忆 + 个性化。
+
+    刻意与 GradeState 分开：GradeState 是纯打分工作台，**不含 profile**——这让
+    「学生画像进不了打分」在类型层面就一目了然。外层的 grade 节点调用内层图时，
+    只从这里挑 essay/task/prompt 传进 GradeState，profile 留在外层。
+    """
+    user_id: str
+    essay: str
+    task_type: int                 # 1 或 2
+    prompt: NotRequired[str]
+    essay_id: NotRequired[int]
+    run_cfg: NotRequired[dict]     # 透传给内层打分图的档位配置
+    personalize: NotRequired[bool] # 默认 True；关则跳过 semantic 蒸馏 + 反馈个性化
+    profile: NotRequired[dict]     # load_profile 注入的长期画像（只喂 feedback，不喂 grade）
+    dimension_scores: NotRequired[dict]
+    overall_band: NotRequired[float]
+    feedback: NotRequired[str]     # 批次 C 生成

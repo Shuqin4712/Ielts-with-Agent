@@ -2,6 +2,7 @@
 langchain-openai>=0.2
 langchain-core>=0.3
 langgraph>=0.2
+langgraph-checkpoint-sqlite>=3.0   # 短期记忆：checkpointer 的 SQLite 后端（阶段 4）
 chromadb>=0.5
 ollama>=0.3
 pypdf>=4.0

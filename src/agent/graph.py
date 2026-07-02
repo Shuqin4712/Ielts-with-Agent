@@ -86,7 +86,14 @@ _SYSTEM = (
 )
 
 
-def build_assistant():
-    """返回编译好的 ReAct agent（tool-calling 对话图）。"""
+def build_assistant(*, checkpointer=None):
+    """返回编译好的 ReAct agent（tool-calling 对话图）。
+
+    checkpointer：短期记忆（session 内多轮上下文 + 断点续跑）。传入后，调用时
+    带 config={"configurable": {"thread_id": ...}} 即按线程隔离并自动接续上文；
+    此时每轮只需喂**新消息**，历史由 checkpointer 恢复，无需手动累加。
+    None 时退化为无记忆的单轮 agent（阶段 3 行为，测试可用）。
+    """
     # 选 tool 的 LLM：flash + temperature=0，让路由更稳定可复现。
-    return create_react_agent(get_llm("flash", temperature=0), TOOLS, prompt=_SYSTEM)
+    return create_react_agent(get_llm("flash", temperature=0), TOOLS,
+                              prompt=_SYSTEM, checkpointer=checkpointer)
