@@ -85,6 +85,10 @@ pytest tests/test_stage1.py -v                  # LLM-free；全图 smoke 需 RU
 python -m src.eval.harness --config all         # baseline/anchored/reflect 全跑，写 results.jsonl
 python -m src.eval.harness --compare            # 看历史对比表
 pytest tests/test_stage2.py -v                  # 指标 + 泄漏断言（LLM-free）
+
+# 阶段 3：agentic 助手 REPL（LLM 自主选 tool，需 DeepSeek key）
+python scripts/assistant.py                     # 对话：升级词 / 拆解文章 / 查词 / 打分 / 存库
+pytest tests/test_stage3.py -v                  # 路由/CRUD LLM-free；工具+路由 smoke 需 RUN_LLM_TESTS=1
 ```
 
 - 跑模块用 `python -m src.xxx.yyy`（如 `python -m src.rag.rubric`），脚本用 `python scripts/xxx.py`。
@@ -95,8 +99,8 @@ pytest tests/test_stage2.py -v                  # 指标 + 泄漏断言（LLM-fr
 - [阶段 0] 数据地基 ✅ **已完成**：异构数据归一化进 SQLite（2267 篇 silver）；rubric 按 (criterion×band) 切块、范文按 task×band×topic 分层灌 ChromaDB；剑桥 gold 已入库（51 sample 评测集 holdout + 21 model 锚点）。
 - [阶段 1] 最薄竖切 ✅ **已完成**：最简 LangGraph（ingest→retrieve_rubric→四维顺序打分→aggregate）端到端出分；CLI `grade_essay.py` 出四维 band+依据+overall。
 - [阶段 2] 把打分做准 ✅ **已完成**：eval harness（gold holdout 上算 MAE/±0.5/±1.0/QWK，temp=0 可复现，并发+超时）；范文锚定把 QWK 0.532→0.597（消融证实）；reflection 本测试集无增益、已从默认管道移除（代码保留）。默认打分管道 = 锚定开/reflection 关。
-- **[阶段 3] 工具 + 助手模式 + 成本路由** ← **当前在这里**。
-- [阶段 4] 记忆与个性化。
+- [阶段 3] 工具 + 助手模式 + 成本路由 ✅ **已完成**：7 个工具（vocab_upgrade/deconstruct_article/grammar_check/dictionary_lookup/exemplar_provide/score_predict/save_to_library）；`create_react_agent` tool-calling 对话图 + CLI REPL；config 驱动成本路由（默认 flash）。**score_predict 复用阶段 2 打分管道**（测试锁死，无第二打分路径）。
+- **[阶段 4] 记忆与个性化** ← **当前在这里**。
 - [阶段 5] 前端 + 词库/素材库。
 - [阶段 6] 可观测性 + README + 部署。
 

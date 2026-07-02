@@ -54,6 +54,16 @@ SPLIT_SEED = 42          # 切分可复现
 HOLDOUT_FRAC = 0.12      # 从 silver 留作临时评测基线的比例（分层抽样）
 EXEMPLAR_PER_BUCKET = 2  # 每个 (task_type × band) 桶选几篇当锚点，控制锚点总量
 
+# ── 阶段 3 成本路由 ────────────────────────────────────────────────
+# tool 名 → 模型档位。默认 flash；pro 预留但暂不滥用（承接阶段 2「有证据才上 pro」）。
+# 将来若某工具有证据表明 pro 明显更好，在此登记即可，不改调用点。
+TOOL_MODEL_TIER: dict[str, str] = {}
+
+
+def tier_for(tool_name: str) -> str:
+    """按工具名取模型档位，默认 flash。"""
+    return TOOL_MODEL_TIER.get(tool_name, "flash")
+
 
 def require_api_key() -> str:
     """需要 DeepSeek 时调用，缺失就明确报错而非静默失败。"""
