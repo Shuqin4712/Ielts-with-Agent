@@ -13,6 +13,8 @@ venv/
 data/chroma/
 *.sqlite
 *.sqlite-journal
+*.sqlite-shm
+*.sqlite-wal
 
 # 原始数据：73M 版权剑桥 PDF + 大 CSV，不进 git（本地保留）
 data/raw/

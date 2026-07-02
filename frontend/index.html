@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>IELTS Writing Agent</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <header>
+    <h1>IELTS Writing Agent</h1>
+    <div class="user-box">
+      <label for="user_id">user_id</label>
+      <input id="user_id" value="demo" title="demo 用：多用户靠这个字段隔离数据" />
+    </div>
+  </header>
+
+  <!-- tab 切换：5 视图 -->
+  <nav class="tabs">
+    <button class="tab active" data-view="grade">批改</button>
+    <button class="tab" data-view="chat">对话</button>
+    <button class="tab" data-view="lookup">查词</button>
+    <button class="tab" data-view="vocab">词库</button>
+    <button class="tab" data-view="materials">素材库</button>
+  </nav>
+
+  <!-- ── 批改 ── -->
+  <section id="view-grade" class="view active">
+    <div class="row">
+      <label>Task</label>
+      <select id="grade-task">
+        <option value="2">Task 2（议论文）</option>
+        <option value="1">Task 1（图表描述）</option>
+      </select>
+    </div>
+    <input id="grade-prompt" placeholder="题目 prompt（可选）" />
+    <textarea id="grade-essay" rows="12" placeholder="粘贴你的作文…"></textarea>
+    <button id="grade-btn" class="primary">开始批改</button>
+    <div id="grade-status" class="status"></div>
+    <div id="grade-result"></div>
+  </section>
+
+  <!-- ── 对话 ── -->
+  <section id="view-chat" class="view">
+    <div id="chat-log" class="chat-log"></div>
+    <div class="chat-input">
+      <textarea id="chat-msg" rows="2" placeholder="问点什么：升级这句的 show / 拆解这篇 / delineate 什么意思 / 给我打个分… （Enter 发送，Shift+Enter 换行）"></textarea>
+      <button id="chat-send" class="primary">发送</button>
+    </div>
+    <div class="hint">同一 tab 内多轮记忆由后端 checkpointer 维持；「新会话」清空并换 thread。
+      <button id="chat-new" class="link">新会话</button></div>
+  </section>
+
+  <!-- ── 查词 ── -->
+  <section id="view-lookup" class="view">
+    <div class="row">
+      <input id="lookup-word" placeholder="输入单词，如 delineate" />
+      <button id="lookup-btn" class="primary">查</button>
+    </div>
+    <div id="lookup-status" class="status"></div>
+    <div id="lookup-result"></div>
+  </section>
+
+  <!-- ── 词库 ── -->
+  <section id="view-vocab" class="view">
+    <button id="vocab-refresh">刷新</button>
+    <div id="vocab-list" class="lib-list"></div>
+  </section>
+
+  <!-- ── 素材库 ── -->
+  <section id="view-materials" class="view">
+    <button id="materials-refresh">刷新</button>
+    <div id="materials-list" class="lib-list"></div>
+  </section>
+
+  <script src="/app.js"></script>
+</body>
+</html>

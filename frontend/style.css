@@ -1,0 +1,120 @@
+/* 简洁即可——这阶段重点是打通，不是好看。 */
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: system-ui, "Segoe UI", "Microsoft YaHei", sans-serif;
+  color: #1f2328;
+  background: #f6f8fa;
+  line-height: 1.5;
+}
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 20px;
+  background: #24292f;
+  color: #fff;
+}
+header h1 { font-size: 18px; margin: 0; }
+.user-box { font-size: 13px; }
+.user-box input {
+  width: 120px; padding: 4px 8px; border-radius: 6px;
+  border: 1px solid #57606a; background: #fff;
+}
+
+.tabs { display: flex; gap: 4px; padding: 8px 20px 0; background: #fff; border-bottom: 1px solid #d0d7de; }
+.tab {
+  border: none; background: none; padding: 10px 16px; cursor: pointer;
+  font-size: 14px; color: #57606a; border-bottom: 2px solid transparent;
+}
+.tab.active { color: #0969da; border-bottom-color: #0969da; font-weight: 600; }
+
+.view { display: none; max-width: 860px; margin: 0 auto; padding: 20px; }
+.view.active { display: block; }
+
+.row { display: flex; gap: 8px; align-items: center; margin-bottom: 10px; }
+.row input { flex: 1; }
+label { font-size: 13px; color: #57606a; }
+
+input, textarea, select {
+  font-family: inherit; font-size: 14px; padding: 8px 10px;
+  border: 1px solid #d0d7de; border-radius: 6px; width: 100%;
+}
+textarea { resize: vertical; }
+input#grade-prompt { margin-bottom: 10px; }
+#grade-essay { margin-bottom: 10px; }
+
+button {
+  cursor: pointer; font-size: 14px; padding: 8px 14px;
+  border: 1px solid #d0d7de; border-radius: 6px; background: #f6f8fa;
+}
+button:hover { background: #eaeef2; }
+button.primary { background: #1f883d; color: #fff; border-color: #1f883d; }
+button.primary:hover { background: #1a7f37; }
+button.primary:disabled { background: #94d3a2; border-color: #94d3a2; cursor: default; }
+button.link { border: none; background: none; color: #0969da; padding: 0 4px; }
+button.small { padding: 3px 8px; font-size: 12px; }
+button.danger { color: #cf222e; }
+
+.status { font-size: 13px; color: #57606a; margin: 10px 0; min-height: 18px; }
+.status.error { color: #cf222e; }
+
+/* 批改结果 */
+.crit-card {
+  background: #fff; border: 1px solid #d0d7de; border-radius: 8px;
+  padding: 12px 14px; margin-bottom: 10px;
+}
+.crit-head { display: flex; justify-content: space-between; align-items: center; }
+.crit-name { font-weight: 600; }
+.band-pill {
+  background: #0969da; color: #fff; border-radius: 12px;
+  padding: 2px 10px; font-size: 13px; font-weight: 600;
+}
+.overall-pill { background: #8250df; }
+.crit-ev { font-size: 13px; color: #424a53; margin-top: 6px; }
+.feedback-box {
+  background: #fff; border: 1px solid #d0d7de; border-radius: 8px;
+  padding: 14px; margin-top: 12px; white-space: pre-wrap; font-size: 14px;
+}
+.feedback-box h3 { margin-top: 0; }
+
+/* 对话 */
+.chat-log {
+  min-height: 320px; max-height: 52vh; overflow-y: auto;
+  background: #fff; border: 1px solid #d0d7de; border-radius: 8px;
+  padding: 14px; margin-bottom: 10px;
+}
+.msg { margin-bottom: 14px; }
+.msg .who { font-size: 12px; color: #57606a; margin-bottom: 3px; }
+.msg.user .bubble { background: #ddf4ff; }
+.msg.assistant .bubble { background: #f6f8fa; }
+.bubble {
+  display: inline-block; padding: 8px 12px; border-radius: 8px;
+  white-space: pre-wrap; max-width: 100%; font-size: 14px;
+}
+.tools-chip {
+  display: inline-block; font-size: 12px; color: #9a6700;
+  background: #fff8c5; border-radius: 10px; padding: 1px 8px; margin-left: 6px;
+}
+.msg-actions { margin-top: 4px; }
+.chat-input { display: flex; gap: 8px; align-items: flex-end; }
+.chat-input textarea { flex: 1; }
+.chat-input button { white-space: nowrap; }
+.hint { font-size: 12px; color: #8c959f; margin-top: 8px; }
+
+/* 查词结果 */
+.dict-card { background: #fff; border: 1px solid #d0d7de; border-radius: 8px; padding: 14px; }
+.dict-card ul { margin: 6px 0 0; padding-left: 20px; }
+.dict-card .ex { color: #424a53; font-style: italic; }
+
+/* 库列表 */
+.lib-list { margin-top: 12px; }
+.lib-item {
+  background: #fff; border: 1px solid #d0d7de; border-radius: 8px;
+  padding: 12px 14px; margin-bottom: 10px;
+}
+.lib-item .top { display: flex; justify-content: space-between; align-items: baseline; }
+.lib-item .word { font-weight: 600; }
+.lib-item .meta { font-size: 12px; color: #8c959f; }
+.lib-item .sub { font-size: 13px; color: #424a53; margin-top: 4px; }
+.empty { color: #8c959f; font-size: 14px; padding: 20px 0; text-align: center; }
