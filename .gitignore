@@ -9,8 +9,9 @@ venv/
 *.egg-info/
 .pytest_cache/
 
-# 持久化数据（向量库 / SQLite 主库）
+# 持久化数据（向量库 / SQLite 主库 / 运行日志）
 data/chroma/
+data/logs/
 *.sqlite
 *.sqlite-journal
 *.sqlite-shm

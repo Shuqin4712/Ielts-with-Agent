@@ -33,6 +33,7 @@ from ..agent.graph import build_assistant
 from ..db import library
 from ..graph.session import build_grading_session_graph
 from ..memory.checkpoint import get_checkpointer
+from ..obs import operation
 from ..tools.dictionary import dictionary_lookup
 
 # ── 前端静态目录 ──────────────────────────────────────────────────────
@@ -101,11 +102,12 @@ def grade(req: GradeReq):
     """
     if not req.essay.strip():
         raise HTTPException(400, "essay 不能为空")
-    final = _grading_graph.invoke(
-        {"user_id": req.user_id, "essay": req.essay, "task_type": req.task_type,
-         "prompt": req.prompt or "", "essay_id": None, "personalize": True},
-        {"configurable": {"thread_id": f"grade:{req.user_id}"}},
-    )
+    with operation("grade"):
+        final = _grading_graph.invoke(
+            {"user_id": req.user_id, "essay": req.essay, "task_type": req.task_type,
+             "prompt": req.prompt or "", "essay_id": None, "personalize": True},
+            {"configurable": {"thread_id": f"grade:{req.user_id}"}},
+        )
     return {
         "dimension_scores": final["dimension_scores"],   # {crit: {band, evidence}}
         "overall_band": final["overall_band"],
@@ -130,13 +132,15 @@ def _chat_stream(req: ChatReq):
         # stream_mode="messages"：拿到 LLM 的 token 级增量（AIMessageChunk）。
         # ⚠️ 只取 langgraph_node=="agent" 的 token：工具内部也会调 LLM 生成 JSON
         # （如 dictionary_lookup 的 call_json），那些跑在 "tools" 节点，绝不能流给用户。
-        for msg, meta in _assistant.stream(
-            {"messages": [HumanMessage(req.message)]}, cfg, stream_mode="messages"
-        ):
-            if (meta.get("langgraph_node") == "agent"
-                    and isinstance(msg, AIMessageChunk)
-                    and isinstance(msg.content, str) and msg.content):
-                yield _sse({"type": "token", "text": msg.content})
+        # operation("chat")：主 agent 调用记为 chat；工具内部的 call_json 会嵌套覆盖成工具名。
+        with operation("chat"):
+            for msg, meta in _assistant.stream(
+                {"messages": [HumanMessage(req.message)]}, cfg, stream_mode="messages"
+            ):
+                if (meta.get("langgraph_node") == "agent"
+                        and isinstance(msg, AIMessageChunk)
+                        and isinstance(msg.content, str) and msg.content):
+                    yield _sse({"type": "token", "text": msg.content})
 
         # 本轮调用了哪些工具：从最终 state 里抽（最后一条 Human 之后的 tool_calls）。
         tools = _tools_this_turn(cfg)

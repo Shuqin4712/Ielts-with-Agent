@@ -10,6 +10,7 @@ from langchain_openai import ChatOpenAI
 from tenacity import retry, stop_after_attempt, wait_exponential
 
 from . import config
+from . import obs
 
 
 def get_llm(tier: str = "flash", *, thinking: bool = False,
@@ -38,6 +39,11 @@ def get_llm(tier: str = "flash", *, thinking: bool = False,
         # thinking 模式下 temperature 无效、不能设；仅非 thinking 时钉温以求可复现。
         kwargs["temperature"] = temperature
 
+    # 可观测性：挂一个 passive callback 记录 token/延迟/档位（阶段 6）。
+    # 只观察不改行为；OBS_LOG=0 时它自身变空操作。业务侧无感知。
+    callbacks = kwargs.pop("callbacks", None) or []
+    callbacks = [*callbacks, obs.usage_callback]
+
     return ChatOpenAI(
         model=model,
         api_key=config.require_api_key(),
@@ -45,6 +51,7 @@ def get_llm(tier: str = "flash", *, thinking: bool = False,
         extra_body=extra_body or None,
         timeout=timeout,
         max_retries=0,
+        callbacks=callbacks,
         **kwargs,
     )
 

@@ -37,6 +37,14 @@ DEEPSEEK_API_KEY = os.getenv("DEEPSEEK_API_KEY", "")
 MODEL_FLASH = "deepseek-v4-flash"   # 快/省，1M 上下文
 MODEL_PRO = "deepseek-v4-pro"       # 推理/agentic
 
+# ── 定价（成本估算，阶段 6 可观测性用）──────────────────────────────
+# 每百万（1e6）token 的价格（USD）。⚠️ 占位估算值，请按 DeepSeek 官网实际价改。
+# 只影响 obs_summary 的成本估算显示，不进任何业务逻辑。
+PRICE_PER_MTOK: dict[str, dict[str, float]] = {
+    "flash": {"input": 0.07, "output": 0.28},
+    "pro": {"input": 0.55, "output": 2.19},
+}
+
 # ── 本地 Embedding（DeepSeek 不提供 embedding）─────────────────────
 # 后端目前只支持 "ollama"。模型可在 bge-m3 / nomic-embed-text 间切换：
 #   bge-m3          中英双语强，本项目首选
