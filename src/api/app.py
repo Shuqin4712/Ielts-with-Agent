@@ -33,7 +33,7 @@ from ..agent.graph import build_assistant
 from ..db import library
 from ..graph.session import build_grading_session_graph
 from ..memory.checkpoint import get_checkpointer
-from ..obs import operation
+from ..obs import operation, wrap_operation
 from ..tools.dictionary import dictionary_lookup
 
 # ── 前端静态目录 ──────────────────────────────────────────────────────
@@ -73,17 +73,25 @@ class VocabReq(BaseModel):
     context_sentence: str = ""
     alternatives: list = []
     nuance_note: str = ""
+    # v1.1 生词本字段（全部可空，旧客户端不传也能存）
+    pos: str | None = None
+    zh_def: str | None = None
+    en_def: str | None = None
+    ipa: str | None = None
+    examples: list = []
 
 
 class MaterialReq(BaseModel):
     user_id: str = "demo"
-    type: str = "exemplar"          # 'exemplar' | 'sentence_frame' | 'vocab'
+    # v1.1 枚举：advanced_vocab | synonym | phrase | sentence_frame | outline | exemplar
+    type: str = "exemplar"
     content: str
     outline: object | None = None
     topic: str | None = None
     band: float | None = None
     tags: object | None = None
     source_excerpt: str | None = None
+    note: str | None = None         # v1.1 讲解/用法
 
 
 # ── 全局异常兜底：坏输入/内部错误都回结构化 JSON，前端好提示、不白屏 ──
@@ -127,20 +135,21 @@ def _chat_stream(req: ChatReq):
     为何流式：对话是逐 token 生成的慢过程，SSE 让前端「打字机」式增量渲染，
     首字延迟从数秒降到几百毫秒——体验上从「卡住」变「在思考」。
     """
-    cfg = {"configurable": {"thread_id": req.conversation_id}}
+    # user_id 一并注入 config：save_* 工具经 RunnableConfig 取它落库（不进 LLM schema）
+    cfg = {"configurable": {"thread_id": req.conversation_id, "user_id": req.user_id}}
     try:
         # stream_mode="messages"：拿到 LLM 的 token 级增量（AIMessageChunk）。
         # ⚠️ 只取 langgraph_node=="agent" 的 token：工具内部也会调 LLM 生成 JSON
         # （如 dictionary_lookup 的 call_json），那些跑在 "tools" 节点，绝不能流给用户。
-        # operation("chat")：主 agent 调用记为 chat；工具内部的 call_json 会嵌套覆盖成工具名。
-        with operation("chat"):
-            for msg, meta in _assistant.stream(
-                {"messages": [HumanMessage(req.message)]}, cfg, stream_mode="messages"
-            ):
-                if (meta.get("langgraph_node") == "agent"
-                        and isinstance(msg, AIMessageChunk)
-                        and isinstance(msg.content, str) and msg.content):
-                    yield _sse({"type": "token", "text": msg.content})
+        # （操作标签由外层 wrap_operation("chat", ...) 按迭代打，不能在生成器体内
+        #   用 with operation()——跨 yield 的 contextvar token 会在别的线程上下文失效。）
+        for msg, meta in _assistant.stream(
+            {"messages": [HumanMessage(req.message)]}, cfg, stream_mode="messages"
+        ):
+            if (meta.get("langgraph_node") == "agent"
+                    and isinstance(msg, AIMessageChunk)
+                    and isinstance(msg.content, str) and msg.content):
+                yield _sse({"type": "token", "text": msg.content})
 
         # 本轮调用了哪些工具：从最终 state 里抽（最后一条 Human 之后的 tool_calls）。
         tools = _tools_this_turn(cfg)
@@ -167,7 +176,8 @@ def _tools_this_turn(cfg: dict) -> list[str]:
 def chat(req: ChatReq):
     if not req.message.strip():
         raise HTTPException(400, "message 不能为空")
-    return StreamingResponse(_chat_stream(req), media_type="text/event-stream")
+    return StreamingResponse(wrap_operation("chat", _chat_stream(req)),
+                             media_type="text/event-stream")
 
 
 # ── 查词 ──────────────────────────────────────────────────────────────
@@ -188,7 +198,8 @@ def get_vocab(user_id: str = "demo"):
 def post_vocab(req: VocabReq):
     sid = library.save_vocab(
         req.word, req.context_sentence, req.alternatives, req.nuance_note,
-        user_id=req.user_id)
+        user_id=req.user_id, pos=req.pos, zh_def=req.zh_def, en_def=req.en_def,
+        ipa=req.ipa, examples=req.examples or None)
     return {"saved_id": sid}
 
 
@@ -208,7 +219,7 @@ def post_materials(req: MaterialReq):
     sid = library.save_material(
         req.type, req.content, user_id=req.user_id, outline=req.outline,
         topic=req.topic, band=req.band, tags=req.tags,
-        source_excerpt=req.source_excerpt)
+        source_excerpt=req.source_excerpt, note=req.note)
     return {"saved_id": sid}
 
 

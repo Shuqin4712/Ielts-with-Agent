@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>IELTS Writing Agent</title>
-  <link rel="stylesheet" href="/style.css" />
+  <link rel="stylesheet" href="/style.css?v=1.1c" />
 </head>
 <body>
   <header>
@@ -47,7 +47,8 @@
       <textarea id="chat-msg" rows="2" placeholder="问点什么：升级这句的 show / 拆解这篇 / delineate 什么意思 / 给我打个分… （Enter 发送，Shift+Enter 换行）"></textarea>
       <button id="chat-send" class="primary">发送</button>
     </div>
-    <div class="hint">同一 tab 内多轮记忆由后端 checkpointer 维持；「新会话」清空并换 thread。
+    <div class="hint">想收藏内容？直接说「帮我把这些存进素材库 / 词库」，助手会逐条拆分入库。
+      多轮记忆由后端 checkpointer 维持；「新会话」清空并换 thread。
       <button id="chat-new" class="link">新会话</button></div>
   </section>
 
@@ -61,18 +62,29 @@
     <div id="lookup-result"></div>
   </section>
 
-  <!-- ── 词库 ── -->
+  <!-- ── 词库：生词本卡片墙 ── -->
   <section id="view-vocab" class="view">
-    <button id="vocab-refresh">刷新</button>
+    <div class="lib-toolbar">
+      <input id="vocab-search" placeholder="搜索单词 / 释义…" />
+      <select id="vocab-sort">
+        <option value="time">按添加时间</option>
+        <option value="alpha">按字母 A–Z</option>
+      </select>
+      <button id="vocab-refresh">刷新</button>
+    </div>
     <div id="vocab-list" class="lib-list"></div>
   </section>
 
-  <!-- ── 素材库 ── -->
+  <!-- ── 素材库：分类语料库 ── -->
   <section id="view-materials" class="view">
-    <button id="materials-refresh">刷新</button>
+    <div class="lib-toolbar">
+      <input id="materials-search" placeholder="搜索素材内容 / 讲解…" />
+      <button id="materials-refresh">刷新</button>
+    </div>
+    <div id="materials-chips" class="chips"></div>
     <div id="materials-list" class="lib-list"></div>
   </section>
 
-  <script src="/app.js"></script>
+  <script src="/app.js?v=1.1c"></script>
 </body>
 </html>

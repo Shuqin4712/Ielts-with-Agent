@@ -150,17 +150,8 @@ async function sendChat() {
       chip.textContent = "🔧 " + tools.join(", ");
       botDiv.querySelector(".who").appendChild(chip);
     }
-    // 从对话结果一键存素材库（存这条助手回复）。
-    if (fullText.trim()) {
-      const actions = document.createElement("div");
-      actions.className = "msg-actions";
-      const btn = document.createElement("button");
-      btn.className = "small";
-      btn.textContent = "＋ 存入素材库";
-      btn.addEventListener("click", () => saveMaterial(fullText, btn));
-      actions.appendChild(btn);
-      botDiv.appendChild(actions);
-    }
+    // v1.1：不再提供「整段回复存一条」按钮（那是素材库脏数据的根源）。
+    // 存库走 agent 指令：用户说「帮我把这些存进素材库/词库」，agent 逐条拆分入库。
   } catch (e) {
     bubble.textContent = "⚠️ 对话失败：" + e.message;
   } finally {
@@ -182,14 +173,28 @@ async function doLookup() {
   $("lookup-result").innerHTML = "";
   try {
     const data = await api("/lookup?word=" + encodeURIComponent(word));
-    let html = `<div class="dict-card"><div class="word">${esc(data.word)}</div>
-      <strong>释义</strong><ul>${(data.definitions || []).map((d) => `<li>${esc(d)}</li>`).join("")}</ul>
-      <strong>例句</strong><ul>${(data.examples || []).map((e) => `<li class="ex">${esc(e)}</li>`).join("")}</ul>
+    // v1.1 schema：ipa / pos / zh_def / en_def / examples[{en,zh}]（旧字段缺失时降级）
+    const exs = (data.examples || []).map((e) =>
+      typeof e === "string" ? { en: e, zh: "" } : e);
+    let html = `<div class="dict-card">
+      <div class="dict-head">
+        <span class="word">${esc(data.word)}</span>
+        ${data.ipa ? `<span class="ipa">/${esc(data.ipa)}/</span>` : ""}
+        ${data.pos ? `<span class="pos-chip">${esc(data.pos)}</span>` : ""}
+      </div>
+      ${data.zh_def ? `<div class="zh-def">${esc(data.zh_def)}</div>` : ""}
+      ${data.en_def ? `<div class="en-def">${esc(data.en_def)}</div>` : ""}
+      ${exs.length ? `<div class="ex-block">${exs.map((e) => `
+        <div class="ex-pair"><div class="ex">${esc(e.en)}</div>
+        ${e.zh ? `<div class="ex-zh">${esc(e.zh)}</div>` : ""}</div>`).join("")}</div>` : ""}
       <button class="small" id="save-word">＋ 存入词库</button></div>`;
     $("lookup-result").innerHTML = html;
     status.textContent = "";
-    $("save-word").addEventListener("click", (ev) =>
-      saveVocab(data.word, (data.examples || [])[0] || "", ev.target));
+    $("save-word").addEventListener("click", (ev) => saveVocab({
+      word: data.word, context_sentence: exs[0]?.en || "",
+      pos: data.pos || null, zh_def: data.zh_def || null,
+      en_def: data.en_def || null, ipa: data.ipa || null, examples: exs,
+    }, ev.target));
   } catch (e) {
     status.className = "status error"; status.textContent = "查询失败：" + e.message;
   }
@@ -198,44 +203,136 @@ $("lookup-btn").addEventListener("click", doLookup);
 $("lookup-word").addEventListener("keydown", (e) => { if (e.key === "Enter") doLookup(); });
 
 // ── 一键存库 ─────────────────────────────────────────────────────────
-async function saveVocab(word, context, btn) {
+async function saveVocab(entry, btn) {
+  // entry: {word, context_sentence, pos?, zh_def?, en_def?, ipa?, examples?}
   try {
     btn.disabled = true;
     await api("/vocab", {
       method: "POST", headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ user_id: userId(), word, context_sentence: context }),
+      body: JSON.stringify({ user_id: userId(), ...entry }),
     });
     btn.textContent = "✓ 已存入词库";
   } catch (e) { btn.disabled = false; alert("存词库失败：" + e.message); }
 }
 
-async function saveMaterial(content, btn) {
-  try {
-    btn.disabled = true;
-    await api("/materials", {
-      method: "POST", headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ user_id: userId(), type: "sentence_frame", content }),
-    });
-    btn.textContent = "✓ 已存入素材库";
-  } catch (e) { btn.disabled = false; alert("存素材库失败：" + e.message); }
-}
+// ── 词库：生词本卡片墙（搜索 / 排序 / 字母分组 / 点击展开） ──────────
+let vocabItems = [];
 
-// ── 词库 / 素材库 列表 + 删除 ────────────────────────────────────────
 async function loadVocab() {
   const box = $("vocab-list");
   box.innerHTML = "加载中…";
   try {
     const data = await api("/vocab?user_id=" + encodeURIComponent(userId()));
-    if (!data.items.length) { box.innerHTML = '<div class="empty">词库还是空的。查词后点「存入词库」。</div>'; return; }
-    box.innerHTML = data.items.map((it) => `
-      <div class="lib-item"><div class="top">
-        <span class="word">${esc(it.word)}</span>
-        <button class="small danger" data-del="${it.id}">删除</button></div>
-        ${it.context_sentence ? `<div class="sub">${esc(it.context_sentence)}</div>` : ""}
-        <div class="meta">${esc(it.created_at)}</div></div>`).join("");
-    box.querySelectorAll("[data-del]").forEach((b) =>
-      b.addEventListener("click", () => delItem("/vocab/", b.dataset.del, loadVocab)));
+    vocabItems = data.items;
+    renderVocab();
   } catch (e) { box.innerHTML = `<div class="status error">加载失败：${esc(e.message)}</div>`; }
+}
+
+function renderVocab() {
+  const box = $("vocab-list");
+  const q = $("vocab-search").value.trim().toLowerCase();
+  const sort = $("vocab-sort").value;
+
+  if (!vocabItems.length) {
+    box.innerHTML = '<div class="empty">生词本还是空的——在「查词」或对话里收藏，生词会出现在这里。</div>';
+    return;
+  }
+  let items = vocabItems.filter((it) => !q ||
+    [it.word, it.zh_def, it.en_def, it.context_sentence]
+      .some((f) => (f || "").toLowerCase().includes(q)));
+  if (!items.length) { box.innerHTML = '<div class="empty">没有匹配的生词。</div>'; return; }
+
+  if (sort === "alpha") {
+    items = [...items].sort((a, b) => (a.word || "").toLowerCase()
+      .localeCompare((b.word || "").toLowerCase()));
+  } else {
+    items = [...items].sort((a, b) => b.id - a.id);   // 新添加在前
+  }
+
+  let html = "", lastLetter = "";
+  for (const it of items) {
+    if (sort === "alpha") {                            // 字母分组头
+      const letter = ((it.word || "?")[0] || "?").toUpperCase();
+      if (letter !== lastLetter) {
+        html += `<div class="letter-head">${esc(letter)}</div>`;
+        lastLetter = letter;
+      }
+    }
+    html += vocabCard(it);
+  }
+  box.innerHTML = html;
+
+  box.querySelectorAll(".vocab-card").forEach((card) => {
+    card.addEventListener("click", (e) => {
+      if (e.target.closest("button")) return;          // 按钮点击不触发折叠
+      card.classList.toggle("open");
+    });
+  });
+  box.querySelectorAll("[data-del]").forEach((b) =>
+    b.addEventListener("click", () => delItem("/vocab/", b.dataset.del, loadVocab)));
+}
+
+function vocabCard(it) {
+  let exs = [];
+  try { exs = JSON.parse(it.examples || "[]") || []; } catch { exs = []; }
+  return `
+  <div class="lib-item vocab-card">
+    <div class="vc-head">
+      <span class="word">${esc(it.word)}</span>
+      ${it.ipa ? `<span class="ipa">/${esc(it.ipa)}/</span>` : ""}
+      ${it.pos ? `<span class="pos-chip">${esc(it.pos)}</span>` : ""}
+      <span class="vc-caret">›</span>
+    </div>
+    ${it.zh_def ? `<div class="zh-def">${esc(it.zh_def)}</div>` : ""}
+    <div class="vc-detail">
+      ${it.en_def ? `<div class="en-def">${esc(it.en_def)}</div>` : ""}
+      ${exs.map((e) => `<div class="ex-pair"><div class="ex">${esc(e.en || e)}</div>
+        ${e.zh ? `<div class="ex-zh">${esc(e.zh)}</div>` : ""}</div>`).join("")}
+      ${it.context_sentence ? `<div class="ex-pair"><div class="ex">${esc(it.context_sentence)}</div>
+        <div class="ex-zh">收藏时的语境句</div></div>` : ""}
+      ${it.nuance_note ? `<div class="note">💡 ${esc(it.nuance_note)}</div>` : ""}
+      <div class="vc-actions">
+        <span class="meta">${esc((it.created_at || "").slice(0, 10))}</span>
+        <button class="small danger" data-del="${it.id}">删除</button>
+      </div>
+    </div>
+  </div>`;
+}
+
+// ── 素材库：分类语料库（chips 筛选 / 搜索 / 展开 / 复制） ────────────
+const MAT_TYPES = {
+  advanced_vocab: "高级词汇", synonym: "同义替换", phrase: "短语",
+  sentence_frame: "句式模板", outline: "思路提纲", exemplar: "范文",
+};
+let materialItems = [], matFilter = "all";
+
+// 轻量 markdown 渲染：先 escape 防 XSS，再只处理粗体/行内代码/列表/引用。
+function mdLite(text) {
+  const lines = esc(text || "").split(/\r?\n/);
+  let html = "", inList = false;
+  const inline = (s) => s
+    .replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>")
+    .replace(/`([^`]+)`/g, "<code>$1</code>");
+  for (const raw of lines) {
+    const line = raw.trimEnd();
+    const li = line.match(/^\s*[-*]\s+(.*)$/);
+    if (li) {
+      if (!inList) { html += "<ul>"; inList = true; }
+      html += `<li>${inline(li[1])}</li>`;
+      continue;
+    }
+    if (inList) { html += "</ul>"; inList = false; }
+    if (/^\s*>\s?/.test(line)) html += `<blockquote>${inline(line.replace(/^\s*>\s?/, ""))}</blockquote>`;
+    else if (line.trim()) html += `<p>${inline(line)}</p>`;
+  }
+  if (inList) html += "</ul>";
+  return html;
+}
+
+// 句式模板：等宽 + 高亮 X/Y/Z 占位符
+function frameHtml(text) {
+  const body = esc(text || "").replace(/\b([XYZ])\b/g, '<span class="ph">$1</span>');
+  return `<div class="frame">${body}</div>`;
 }
 
 async function loadMaterials() {
@@ -243,16 +340,85 @@ async function loadMaterials() {
   box.innerHTML = "加载中…";
   try {
     const data = await api("/materials?user_id=" + encodeURIComponent(userId()));
-    if (!data.items.length) { box.innerHTML = '<div class="empty">素材库还是空的。对话里点「存入素材库」。</div>'; return; }
-    box.innerHTML = data.items.map((it) => `
-      <div class="lib-item"><div class="top">
-        <span class="word">${esc(it.type)}${it.topic ? " · " + esc(it.topic) : ""}</span>
-        <button class="small danger" data-del="${it.id}">删除</button></div>
-        <div class="sub">${esc((it.content || "").slice(0, 300))}${(it.content || "").length > 300 ? "…" : ""}</div>
-        <div class="meta">${esc(it.created_at)}</div></div>`).join("");
-    box.querySelectorAll("[data-del]").forEach((b) =>
-      b.addEventListener("click", () => delItem("/materials/", b.dataset.del, loadMaterials)));
+    materialItems = data.items;
+    renderMatChips();
+    renderMaterials();
   } catch (e) { box.innerHTML = `<div class="status error">加载失败：${esc(e.message)}</div>`; }
+}
+
+function renderMatChips() {
+  const counts = {};
+  for (const it of materialItems) counts[it.type] = (counts[it.type] || 0) + 1;
+  let html = `<button class="chip${matFilter === "all" ? " active" : ""}" data-f="all">全部 (${materialItems.length})</button>`;
+  for (const [t, label] of Object.entries(MAT_TYPES)) {
+    if (!counts[t]) continue;
+    html += `<button class="chip${matFilter === t ? " active" : ""}" data-f="${t}">${label} (${counts[t]})</button>`;
+  }
+  $("materials-chips").innerHTML = html;
+  $("materials-chips").querySelectorAll(".chip").forEach((c) =>
+    c.addEventListener("click", () => { matFilter = c.dataset.f; renderMatChips(); renderMaterials(); }));
+}
+
+function renderMaterials() {
+  const box = $("materials-list");
+  const q = $("materials-search").value.trim().toLowerCase();
+  if (!materialItems.length) {
+    box.innerHTML = '<div class="empty">素材库还是空的——在对话里让助手帮你存：如「把这些句式存进素材库」。</div>';
+    return;
+  }
+  const items = materialItems
+    .filter((it) => matFilter === "all" || it.type === matFilter)
+    .filter((it) => !q || [it.content, it.note, it.topic, it.source_excerpt]
+      .some((f) => (f || "").toLowerCase().includes(q)))
+    .sort((a, b) => b.id - a.id);
+  if (!items.length) { box.innerHTML = '<div class="empty">没有匹配的素材。</div>'; return; }
+  box.innerHTML = items.map(materialCard).join("");
+
+  box.querySelectorAll(".mat-card").forEach((card) => {
+    card.addEventListener("click", (e) => {
+      if (e.target.closest("button")) return;
+      card.classList.toggle("open");
+    });
+  });
+  box.querySelectorAll("[data-del]").forEach((b) =>
+    b.addEventListener("click", () => delItem("/materials/", b.dataset.del, loadMaterials)));
+  box.querySelectorAll("[data-copy]").forEach((b) =>
+    b.addEventListener("click", async () => {
+      const it = materialItems.find((x) => x.id === +b.dataset.copy);
+      try { await navigator.clipboard.writeText(it?.content || ""); b.textContent = "✓ 已复制"; }
+      catch { b.textContent = "复制失败"; }
+      setTimeout(() => { b.textContent = "复制"; }, 1500);
+    }));
+}
+
+function materialCard(it) {
+  const label = MAT_TYPES[it.type] || it.type;   // 旧枚举值显示原文（降级）
+  const long = (it.content || "").length > 300;
+  const body = it.type === "sentence_frame" ? frameHtml(it.content)
+    : `<div class="md">${mdLite(it.content)}</div>`;
+  const hasDetail = it.note || it.source_excerpt || it.topic || it.band;
+  return `
+  <div class="lib-item mat-card${long ? " clamped" : ""}">
+    <div class="top">
+      <span class="mat-badge">${esc(label)}</span>
+      <span class="mat-tools">
+        <button class="small" data-copy="${it.id}">复制</button>
+        <span class="vc-caret">›</span>
+      </span>
+    </div>
+    <div class="mat-body">${body}</div>
+    ${long ? '<div class="fade-hint">点击展开全文</div>' : ""}
+    <div class="mat-detail">
+      ${it.note ? `<div class="note">💡 ${esc(it.note)}</div>` : ""}
+      ${it.source_excerpt ? `<div class="ex-pair"><div class="ex">${esc(it.source_excerpt)}</div>
+        <div class="ex-zh">出处原句</div></div>` : ""}
+      <div class="vc-actions">
+        <span class="meta">${it.topic ? esc(it.topic) + " · " : ""}${it.band ? "band " + esc(it.band) + " · " : ""}${esc((it.created_at || "").slice(0, 10))}</span>
+        <button class="small danger" data-del="${it.id}">删除</button>
+      </div>
+    </div>
+    ${!hasDetail && !long ? "" : ""}
+  </div>`;
 }
 
 async function delItem(base, id, reload) {
@@ -262,4 +428,7 @@ async function delItem(base, id, reload) {
 }
 
 $("vocab-refresh").addEventListener("click", loadVocab);
+$("vocab-search").addEventListener("input", renderVocab);
+$("vocab-sort").addEventListener("change", renderVocab);
 $("materials-refresh").addEventListener("click", loadMaterials);
+$("materials-search").addEventListener("input", renderMaterials);

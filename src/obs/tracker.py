@@ -50,12 +50,39 @@ def operation(label: str):
     只在胶水层用（不改打分/记忆逻辑）：
         with operation("grade"):
             graph.invoke(...)
+
+    ⚠️ 不要用它包住会被 StreamingResponse 消费的**生成器体**——Starlette 把同步
+    生成器的每次 next() 放进独立的线程上下文跑，token 会跨 context 失效。
+    那种场景用 wrap_operation()。
     """
     token = _current_op.set(label)
     try:
         yield
     finally:
-        _current_op.reset(token)
+        try:
+            _current_op.reset(token)
+        except ValueError:          # 万一跨 context：观测绝不炸业务
+            _current_op.set(None)
+
+
+def wrap_operation(label: str, gen):
+    """给生成器**每次迭代**打操作标签（SSE 流式端点用）。
+
+    set/reset 成对发生在同一次 next() 的线程上下文里；LLM 调用都在 next()
+    执行期间发生，故标签能正确命中，且不会跨 yield 持有 token。
+    """
+    while True:
+        token = _current_op.set(label)
+        try:
+            item = next(gen)
+        except StopIteration:
+            return
+        finally:
+            try:
+                _current_op.reset(token)
+            except ValueError:
+                _current_op.set(None)
+        yield item
 
 
 def _extract_tokens(response) -> tuple[int, int, int]:

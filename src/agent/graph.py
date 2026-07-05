@@ -6,6 +6,7 @@ calling）→ 图执行 → 结果作为 ToolMessage 回灌 → LLM 再决策，
 """
 from __future__ import annotations
 
+from langchain_core.runnables import RunnableConfig
 from langchain_core.tools import tool
 from langgraph.prebuilt import create_react_agent
 
@@ -60,17 +61,42 @@ def score_predict(essay: str, task_type: int, prompt: str = "") -> dict:
     return _score(essay, task_type, prompt)
 
 
-@tool
-def save_vocab_entry(word: str, context_sentence: str, note: str = "") -> dict:
-    """把一个词条存进用户的私有【词库】(SQLite)。当用户说「存到词库」「记下这个词」时用。"""
-    return {"saved_id": library.save_vocab(word, context_sentence, [], note), "target": "vocab"}
+def _uid(config: RunnableConfig) -> str:
+    """从运行时 config 取当前用户（/chat 端点注入；CLI 未注入则回落 default）。"""
+    return (config.get("configurable") or {}).get("user_id") or "default"
 
 
 @tool
-def save_material_entry(content: str, kind: str = "exemplar", topic: str = "") -> dict:
-    """把一段写作素材（范文/句式模板等）存进用户的私有【素材库】(SQLite)。当用户说「存到素材库」「收藏这篇」时用。
-    kind 可为 'exemplar' | 'sentence_frame' | 'vocab'。"""
-    return {"saved_id": library.save_material(kind, content, topic=topic), "target": "material"}
+def save_vocab_entry(word: str, context_sentence: str, note: str = "",
+                     pos: str = "", zh_def: str = "", en_def: str = "",
+                     ipa: str = "", *, config: RunnableConfig) -> dict:
+    """把一个词条存进用户的私有【词库】(SQLite)。当用户说「存到词库」「记下这个词」时用。
+    尽量填全生词本字段：pos 词性（如 'v.'）、zh_def 中文释义、en_def 英文释义、ipa 音标
+    ——刚查过词/升级过词时你已经知道这些，不要留空。一次只存一个词；多个词就多次调用。"""
+    sid = library.save_vocab(word, context_sentence, [], note,
+                             pos=pos or None, zh_def=zh_def or None,
+                             en_def=en_def or None, ipa=ipa or None,
+                             user_id=_uid(config))
+    return {"saved_id": sid, "target": "vocab"}
+
+
+@tool
+def save_material_entry(content: str, kind: str, note: str = "",
+                        source_excerpt: str = "", topic: str = "",
+                        band: float | None = None, *,
+                        config: RunnableConfig) -> dict:
+    """把【一条】写作素材存进用户的私有素材库 (SQLite)。当用户说「存到素材库」「收藏这些」时用。
+
+    ⚠️ 粒度规则（必须遵守）：content 只放**单个条目本体**——一个高级词、一个句式模板、
+    一条短语、一份提纲或一篇范文正文。讲解/用法放 note，出处原句放 source_excerpt。
+    **禁止把你的整段回复原文塞进 content**。回复里有多个素材时，逐条多次调用本工具，
+    每条选对 kind：
+      advanced_vocab=高级词汇 | synonym=同义替换 | phrase=短语 |
+      sentence_frame=句式模板（含 X/Y 占位符）| outline=思路提纲 | exemplar=范文
+    """
+    return {"saved_id": library.save_material(
+        kind, content, note=note or None, source_excerpt=source_excerpt or None,
+        topic=topic or None, band=band, user_id=_uid(config)), "target": "material"}
 
 
 TOOLS = [vocab_upgrade, deconstruct_article, grammar_check, dictionary_lookup,
@@ -81,7 +107,11 @@ _SYSTEM = (
     "deconstruction, grammar checking, dictionary lookup, model-essay generation, essay "
     "scoring, and saving to the user's private libraries. For each user message, pick the "
     "single most appropriate tool; if none fits, answer directly. NEVER guess IELTS band "
-    "scores yourself — always use the score_predict tool for any scoring. Reply in the "
+    "scores yourself — always use the score_predict tool for any scoring. "
+    "When saving materials: split your answer into individual items and call "
+    "save_material_entry once per item with the right kind — NEVER dump a whole reply "
+    "into one entry. When saving vocabulary you already looked up or upgraded, include "
+    "pos/zh_def/ipa so the user's wordbook card is complete. Reply in the "
     "user's language (Chinese if they write Chinese)."
 )
 

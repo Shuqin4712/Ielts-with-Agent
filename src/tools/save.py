@@ -19,7 +19,8 @@ def save_to_library(target: str, item: dict, *, user_id: str = "default", db_pat
         sid = library.save_material(
             item.get("type", "exemplar"), item.get("content", ""), user_id=user_id,
             outline=item.get("outline"), topic=item.get("topic"), band=item.get("band"),
-            tags=item.get("tags"), source_excerpt=item.get("source_excerpt"), db_path=db_path)
+            tags=item.get("tags"), source_excerpt=item.get("source_excerpt"),
+            note=item.get("note"), db_path=db_path)
     else:
         raise ValueError(f"未知 target: {target}（应为 'vocab' 或 'material'）")
     return {"saved_id": sid, "target": target}

@@ -32,6 +32,11 @@ CREATE TABLE IF NOT EXISTS vocab_library (
     alternatives    TEXT,           -- JSON
     nuance_note     TEXT,
     source_essay_id INTEGER,
+    pos             TEXT,           -- v1.1 词性（如 'v. / n.'）
+    zh_def          TEXT,           -- v1.1 中文释义
+    en_def          TEXT,           -- v1.1 英文释义
+    ipa             TEXT,           -- v1.1 音标
+    examples        TEXT,           -- v1.1 JSON [{"en","zh"}]
     created_at      TIMESTAMP
 );
 
@@ -39,12 +44,15 @@ CREATE TABLE IF NOT EXISTS vocab_library (
 CREATE TABLE IF NOT EXISTS material_library (
     id          INTEGER PRIMARY KEY,
     user_id     TEXT,
-    type        TEXT,               -- 'exemplar' | 'sentence' | 'vocab'
-    content     TEXT,
+    type        TEXT,               -- v1.1 枚举：advanced_vocab | synonym | phrase
+                                    --   | sentence_frame | outline | exemplar
+    content     TEXT,               -- 单个条目本体（一个词/句式/范文，非整段回复）
     outline     TEXT,
     topic       TEXT,
     band        REAL,
     tags        TEXT,
+    source_excerpt TEXT,            -- 出处原句
+    note        TEXT,               -- v1.1 讲解/用法说明
     created_at  TIMESTAMP
 );
 
