@@ -13,7 +13,6 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 from src import config
 from src.db import library
-from src.tools.save import save_to_library
 
 # 需真调 LLM 的用例：设 RUN_LLM_TESTS=1 且有 key 才跑。
 _LLM = pytest.mark.skipif(
@@ -51,18 +50,19 @@ def test_vocab_crud(tmp_path):
     assert library.list_vocab(db_path=db) == []
 
 
-def test_save_to_library_material(tmp_path):
+def test_save_material_roundtrip(tmp_path):
     db = tmp_path / "lib.sqlite"
-    out = save_to_library("material", {
-        "type": "sentence_frame", "content": "It is widely argued that X.",
-        "source_excerpt": "It is widely argued that remote work boosts productivity.",
-        "topic": "work",
-    }, db_path=db)
-    assert out["target"] == "material"
+    mid = library.save_material(
+        "sentence_frame", "It is widely argued that X.",
+        source_excerpt="It is widely argued that remote work boosts productivity.",
+        note="万能开头句式", topic="work", db_path=db)
     rows = library.list_material(db_path=db)
-    assert len(rows) == 1
+    assert len(rows) == 1 and rows[0]["id"] == mid
     assert rows[0]["type"] == "sentence_frame"
     assert rows[0]["source_excerpt"].startswith("It is widely argued")
+    assert rows[0]["note"] == "万能开头句式"        # v1.1 note 列往返
+    assert library.delete_material(mid, db_path=db) == 1
+    assert library.list_material(db_path=db) == []
 
 
 @_LLM
