@@ -6,12 +6,20 @@ LangGraph 用法：State 是一个 TypedDict，作为整张图的「共享工作
 """
 from __future__ import annotations
 
-from typing import NotRequired, TypedDict
+from typing import Annotated, NotRequired, TypedDict
 
 from pydantic import BaseModel, Field
 
 # 官方四维（TA 在 task2 语义上是 Task Response，metadata key 仍统一为 TA）。
 CRITERIA = ["TA", "CC", "LR", "GRA"]
+# 四维并行打分的节点名（fan-out 目标；build 图与 reflection 回退路由共用，保持一处定义）。
+SCORE_NODES = [f"score_{c}" for c in CRITERIA]
+
+
+def merge_scores(old: dict | None, new: dict | None) -> dict:
+    """dimension_scores 的 reducer：四维打分节点并行 fan-out，各自只写自己那一维
+    {crit: {...}}，本函数按 criterion 合并成整字典。reflection 回退重评时同名维覆盖。"""
+    return {**(old or {}), **(new or {})}
 
 
 class GradeState(TypedDict):
@@ -19,7 +27,8 @@ class GradeState(TypedDict):
     task_type: int                 # 1 或 2
     prompt: str
     retrieved_rubric: dict         # {criterion: [{"band": int, "text": str}, ...]}
-    dimension_scores: dict         # {criterion: {"band": float, "evidence": str}}
+    # 自定义 reducer：并行四维各写一维，按 criterion 合并（见 merge_scores）。
+    dimension_scores: Annotated[dict, merge_scores]  # {criterion: {"band": float, "evidence": str}}
     overall_band: float
     # 阶段 2 新增（可选，用 run_cfg 开关分档；缺省即 stage1 裸基线行为）
     run_cfg: NotRequired[dict]     # {"anchored":bool,"reflect":bool,"score_tier":str,"thinking":bool,"max_retries":int}
@@ -54,3 +63,4 @@ class SessionState(TypedDict):
     dimension_scores: NotRequired[dict]
     overall_band: NotRequired[float]
     feedback: NotRequired[str]     # 批次 C 生成
+    revision: NotRequired[list]    # v1.2：最弱维度的 1-2 句改写示范 [{original,revised,why}]

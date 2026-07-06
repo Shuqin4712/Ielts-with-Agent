@@ -12,6 +12,7 @@ from src import config
 from src.eval import metrics
 from src.eval.harness import assert_no_leakage, load_gold_holdout
 from src.graph.nodes import _pick_spread, route_reflection
+from src.graph.state import SCORE_NODES
 from src.rag import store
 
 
@@ -32,10 +33,11 @@ def test_route_reflection():
     off = {"run_cfg": {"reflect": False}}
     on = lambda ok, r, mx=2: {"run_cfg": {"reflect": True, "max_retries": mx},
                               "reflection_ok": ok, "retries": r}
-    assert route_reflection(off) == "done"            # 不开 reflect → 直接收敛
-    assert route_reflection(on(True, 1)) == "done"    # 自洽 → 收敛
-    assert route_reflection(on(False, 1)) == "retry"  # 不自洽且没到上限 → 回退
-    assert route_reflection(on(False, 2)) == "done"   # 达到上限 → 收敛（防死循环）
+    # 收敛 → "aggregate"；回退 → 四维打分节点名列表（fan-out 回四维并行重评）。
+    assert route_reflection(off) == "aggregate"            # 不开 reflect → 直接收敛
+    assert route_reflection(on(True, 1)) == "aggregate"    # 自洽 → 收敛
+    assert route_reflection(on(False, 1)) == SCORE_NODES   # 不自洽且没到上限 → 回退
+    assert route_reflection(on(False, 2)) == "aggregate"   # 达到上限 → 收敛（防死循环）
 
 
 def test_mae_within():
