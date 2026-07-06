@@ -21,6 +21,7 @@ from langgraph.graph import END, START, StateGraph
 from ..data.topic import infer_topic
 from ..llm import get_llm, with_backoff
 from ..memory import profile as prof_mem
+from ..tools._json import call_json
 from .build import build_grade_graph
 from .state import CRITERIA, SessionState
 from .nodes import _criterion_full
@@ -98,6 +99,35 @@ def feedback(state: SessionState) -> dict:
     return {"feedback": text.strip()}
 
 
+def revision(state: SessionState) -> dict:
+    """挑**最弱维度**（band 最低），把作文中最能体现该弱点的 1–2 句改写成高一档水平的
+    示范，产出 [{original, revised, why}]（2–3 条）。
+
+    ⚠️ 只产「改写示范」这一段教学输出：band 由上游 grade 定死，这里不改分、不重评。
+    revision 只在外层会话图（有 user / web 批改）出现——纯打分图 / eval / score_predict
+    根本不经过本节点，故结构上不进评测。走 flash（call_json 已带坏 JSON 修复重试）。
+    """
+    ds, task = state["dimension_scores"], state["task_type"]
+    weakest = min(CRITERIA, key=lambda c: ds[c]["band"])
+    full = _criterion_full(weakest, task)
+    system = (
+        "You are an IELTS writing coach giving a concrete rewrite demonstration. You are "
+        "given an essay and its WEAKEST scoring criterion. Pick 2-3 sentences (or clauses) "
+        "from the essay that most clearly show that weakness, and rewrite each to roughly one "
+        "band higher — keeping the student's own meaning, just executing it better. For each, "
+        "explain in ONE short Chinese sentence what the rewrite fixes. Do NOT invent content "
+        "not implied by the original. Respond with ONLY a JSON object: "
+        '{"revisions":[{"original":str,"revised":str,"why":str}]}.'
+    )
+    human = (
+        f"Weakest criterion: {full} (band {ds[weakest]['band']}). "
+        f"Task {task}.\n\nEssay:\n{state['essay']}\n\n"
+        "Return 2-3 targeted sentence rewrites as JSON only."
+    )
+    data = call_json("revision", system, human)
+    return {"revision": data.get("revisions", [])}
+
+
 def memory_write(state: SessionState) -> dict:
     """批改结束后更新长期记忆：episodic 确定性 append + semantic LLM 增量蒸馏。
 
@@ -124,17 +154,19 @@ def memory_write(state: SessionState) -> dict:
 def build_grading_session_graph(*, checkpointer=None):
     """批改会话外层图。checkpointer 接短期记忆（thread_id 续跑）。
 
-    流程：load_profile → grade → feedback → memory_write。
+    流程：load_profile → grade → feedback → revision → memory_write。
     """
     b = StateGraph(SessionState)
     b.add_node("load_profile", load_profile)
     b.add_node("grade", grade)
     b.add_node("feedback", feedback)
+    b.add_node("revision", revision)
     b.add_node("memory_write", memory_write)
 
     b.add_edge(START, "load_profile")
     b.add_edge("load_profile", "grade")
     b.add_edge("grade", "feedback")
-    b.add_edge("feedback", "memory_write")
+    b.add_edge("feedback", "revision")
+    b.add_edge("revision", "memory_write")
     b.add_edge("memory_write", END)
     return b.compile(checkpointer=checkpointer)

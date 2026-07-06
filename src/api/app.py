@@ -120,6 +120,7 @@ def grade(req: GradeReq):
         "dimension_scores": final["dimension_scores"],   # {crit: {band, evidence}}
         "overall_band": final["overall_band"],
         "feedback": final.get("feedback", ""),
+        "revision": final.get("revision", []),           # [{original,revised,why}]
     }
 
 

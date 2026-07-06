@@ -79,7 +79,16 @@ function renderGrade(data) {
   html += `<div class="crit-card"><div class="crit-head">
       <span class="crit-name">Overall</span>
       <span class="band-pill overall-pill">band ${data.overall_band}</span></div></div>`;
-  if (data.feedback) html += `<div class="feedback-box"><h3>个性化反馈</h3>${esc(data.feedback)}</div>`;
+  if (data.feedback) html += `<div class="feedback-box"><h3>个性化反馈</h3><div class="md">${mdLite(data.feedback)}</div></div>`;
+  const revs = data.revision || [];
+  if (revs.length) {
+    html += `<div class="feedback-box"><h3>改写示范（针对最弱维度）</h3>${revs.map((r) => `
+      <div class="rev-item">
+        <div class="rev-orig">${esc(r.original || "")}</div>
+        <div class="rev-new">${esc(r.revised || "")}</div>
+        ${r.why ? `<div class="rev-why">💡 ${esc(r.why)}</div>` : ""}
+      </div>`).join("")}</div>`;
+  }
   $("grade-result").innerHTML = html;
 }
 
@@ -150,6 +159,9 @@ async function sendChat() {
       chip.textContent = "🔧 " + tools.join(", ");
       botDiv.querySelector(".who").appendChild(chip);
     }
+    // 流式期间是纯文本打字机；收到 done 后一次性把终稿渲染成 markdown
+    // （流式中途转会闪烁，故只在最后转）。mdLite 已 escape 防 XSS。
+    if (fullText.trim()) bubble.innerHTML = `<div class="md">${mdLite(fullText)}</div>`;
     // v1.1：不再提供「整段回复存一条」按钮（那是素材库脏数据的根源）。
     // 存库走 agent 指令：用户说「帮我把这些存进素材库/词库」，agent 逐条拆分入库。
   } catch (e) {
@@ -306,26 +318,50 @@ const MAT_TYPES = {
 };
 let materialItems = [], matFilter = "all";
 
-// 轻量 markdown 渲染：先 escape 防 XSS，再只处理粗体/行内代码/列表/引用。
+// 轻量 markdown 渲染：先 escape 防 XSS，再处理粗体/行内代码/列表/引用/表格。
+// 表格常见于词汇升级回复（替换词×语域×band 对照），故 demo 里值得渲染好。
 function mdLite(text) {
   const lines = esc(text || "").split(/\r?\n/);
-  let html = "", inList = false;
   const inline = (s) => s
     .replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>")
     .replace(/`([^`]+)`/g, "<code>$1</code>");
-  for (const raw of lines) {
-    const line = raw.trimEnd();
+  const cells = (l) => l.trim().replace(/^\||\|$/g, "").split("|").map((c) => c.trim());
+  const isSep = (l) => l.includes("-") && /^\s*\|?[\s:|-]+\|?\s*$/.test(l);
+  const isRow = (l) => /^\s*\|.*\|/.test(l);
+
+  let html = "", inList = false, i = 0;
+  const closeList = () => { if (inList) { html += "</ul>"; inList = false; } };
+
+  while (i < lines.length) {
+    const line = lines[i].trimEnd();
+    // 表格：一行 | … | 后紧跟分隔行 |---|---|
+    if (isRow(line) && i + 1 < lines.length && isSep(lines[i + 1])) {
+      closeList();
+      const head = cells(line).map((c) => `<th>${inline(c)}</th>`).join("");
+      i += 2;
+      let body = "";
+      while (i < lines.length && isRow(lines[i])) {
+        body += `<tr>${cells(lines[i]).map((c) => `<td>${inline(c)}</td>`).join("")}</tr>`;
+        i++;
+      }
+      html += `<table><thead><tr>${head}</tr></thead><tbody>${body}</tbody></table>`;
+      continue;
+    }
+    const h = line.match(/^(#{1,6})\s+(.*)$/);
+    if (h) { closeList(); const lvl = Math.min(h[1].length + 2, 4); html += `<h${lvl}>${inline(h[2])}</h${lvl}>`; i++; continue; }
+    if (/^\s*(-{3,}|\*{3,}|_{3,})\s*$/.test(line)) { closeList(); html += "<hr>"; i++; continue; }
     const li = line.match(/^\s*[-*]\s+(.*)$/);
     if (li) {
       if (!inList) { html += "<ul>"; inList = true; }
       html += `<li>${inline(li[1])}</li>`;
-      continue;
+      i++; continue;
     }
-    if (inList) { html += "</ul>"; inList = false; }
+    closeList();
     if (/^\s*>\s?/.test(line)) html += `<blockquote>${inline(line.replace(/^\s*>\s?/, ""))}</blockquote>`;
     else if (line.trim()) html += `<p>${inline(line)}</p>`;
+    i++;
   }
-  if (inList) html += "</ul>";
+  closeList();
   return html;
 }
 

@@ -84,6 +84,13 @@ def main() -> None:
 
     if args.user:
         print(f"\n── 个性化反馈（user={args.user}）──\n{final['feedback']}")
+        revs = final.get("revision") or []
+        if revs:
+            print("\n── 改写示范（最弱维度）──")
+            for r in revs:
+                print(f"  原句: {r.get('original','')}")
+                print(f"  改写: {r.get('revised','')}")
+                print(f"  为何: {r.get('why','')}\n")
         prof = final.get("profile") or {}
         print(f"\n[画像已更新] 历史 {len(prof.get('band_history') or [])} 篇 | "
               f"薄弱维度={prof.get('weak_criteria')} | 反复问题数={len(prof.get('recurring_errors') or [])}")

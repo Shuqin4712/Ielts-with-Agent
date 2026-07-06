@@ -150,6 +150,13 @@ button.danger:hover { border-color: var(--danger); }
 }
 .feedback-box h3 { margin-top: 0; font-family: var(--serif); color: var(--ink-strong); }
 
+/* 改写示范：原句删除线弱化 / 改写高亮 / 说明 */
+.rev-item { margin-bottom: 14px; padding-left: 12px; border-left: 3px solid var(--accent-soft); }
+.rev-item:last-child { margin-bottom: 0; }
+.rev-orig { color: var(--muted); text-decoration: line-through; font-size: 13.5px; }
+.rev-new { color: var(--ink-strong); font-weight: 500; margin-top: 4px; }
+.rev-why { color: var(--accent-deep); font-size: 13px; margin-top: 4px; }
+
 /* ── 对话 ────────────────────────────────────────────────────── */
 .chat-log {
   min-height: 320px; max-height: 52vh; overflow-y: auto;
@@ -170,7 +177,6 @@ button.danger:hover { border-color: var(--danger); }
   background: var(--accent-soft); border-radius: 999px;
   padding: 1px 10px; margin-left: 6px;
 }
-.msg-actions { margin-top: 6px; }
 .chat-input { display: flex; gap: 10px; align-items: flex-end; }
 .chat-input textarea { flex: 1; }
 .chat-input button { white-space: nowrap; }
@@ -276,6 +282,10 @@ button.danger:hover { border-color: var(--danger); }
 
 /* markdown-lite 排版 */
 .md p { margin: 4px 0; font-size: 14px; }
+.md h3, .md h4 { font-family: var(--serif); color: var(--ink-strong); margin: 10px 0 4px; }
+.md h3 { font-size: 16px; }
+.md h4 { font-size: 14.5px; }
+.md hr { border: none; border-top: 1px solid var(--border); margin: 10px 0; }
 .md ul { margin: 4px 0; padding-left: 22px; }
 .md li { margin: 2px 0; font-size: 14px; }
 .md blockquote {
@@ -287,6 +297,15 @@ button.danger:hover { border-color: var(--danger); }
   background: var(--card-soft); border: 1px solid var(--border);
   border-radius: 4px; padding: 0 4px;
 }
+.md table {
+  border-collapse: collapse; margin: 8px 0; font-size: 13px; width: 100%;
+}
+.md th, .md td {
+  border: 1px solid var(--border); padding: 5px 9px; text-align: left;
+  vertical-align: top;
+}
+.md th { background: var(--accent-soft); color: var(--accent-deep); font-weight: 600; }
+.md tbody tr:nth-child(even) { background: var(--card-soft); }
 
 /* ── 库列表（批次 B/C 再细化，此处先统一卡片基调） ───────────── */
 .lib-list { margin-top: 14px; }

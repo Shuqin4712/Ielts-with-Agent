@@ -6,12 +6,14 @@ calling）→ 图执行 → 结果作为 ToolMessage 回灌 → LLM 再决策，
 """
 from __future__ import annotations
 
+from langchain_core.messages import HumanMessage, SystemMessage
 from langchain_core.runnables import RunnableConfig
 from langchain_core.tools import tool
 from langgraph.prebuilt import create_react_agent
 
 from ..db import library
-from ..llm import get_llm
+from ..llm import get_llm, with_backoff
+from ..obs import operation
 from ..tools.deconstruct import deconstruct_article as _deconstruct
 from ..tools.dictionary import dictionary_lookup as _dict
 from ..tools.exemplar import exemplar_provide as _exemplar
@@ -116,6 +118,56 @@ _SYSTEM = (
 )
 
 
+# ── 滚动摘要（context engineering）─────────────────────────────────
+# 长会话里历史无限膨胀 → 每轮喂给 LLM 的 input token 线性涨、变慢变贵。
+# 对策：消息数超阈值时，把**较旧的轮次**压成一条摘要 SystemMessage + 保留最近若干条原文，
+# 只改「喂给 LLM 的视图」（llm_input_messages，不落 checkpointer——完整历史仍在）。
+_SUMMARY_TRIGGER = 12   # 消息数超过它才开始摘要（短会话零额外成本）
+_KEEP_TAIL = 6          # 至少保留最近多少条原文
+
+
+def _safe_cut(msgs: list, keep_tail: int) -> int:
+    """从「保留尾部 keep_tail 条」的位置往前退到最近一条 HumanMessage，作为切点。
+    保证 recent 从一个用户回合开头起，不切断 AI tool_calls ↔ ToolMessage 配对
+    （否则 create_react_agent 的历史校验会报错）。"""
+    i = max(0, len(msgs) - keep_tail)
+    while i > 0 and not isinstance(msgs[i], HumanMessage):
+        i -= 1
+    return i
+
+
+def _render(m) -> str:
+    role = getattr(m, "type", "msg")
+    return f"[{role}] {getattr(m, 'content', '')}"
+
+
+def _summarize(older: list) -> str:
+    llm = get_llm("flash", temperature=0)
+    transcript = "\n".join(_render(m) for m in older)
+    with operation("summarize"):     # obs 里单独归类，SSE 也靠 node 过滤不外泄
+        text = with_backoff(llm.invoke)([
+            SystemMessage(
+                "Summarize this IELTS tutoring conversation so far into a compact Chinese "
+                "paragraph: what the student asked, what was provided (words/rewrites/scores), "
+                "and anything saved to their library. Under 120 words. No preamble."),
+            HumanMessage(transcript)]).content
+    return text.strip()
+
+
+def _summarize_hook(state: dict) -> dict:
+    """create_react_agent 的 pre_model_hook：超阈值就摘要旧轮、保留近轮。
+    返回 llm_input_messages（只影响这次喂 LLM 的消息，不改 checkpointer 里的历史）。"""
+    msgs = state["messages"]
+    if len(msgs) <= _SUMMARY_TRIGGER:
+        return {}                     # 未超阈值：回退用完整 messages（无额外调用）
+    cut = _safe_cut(msgs, _KEEP_TAIL)
+    older, recent = msgs[:cut], msgs[cut:]
+    if not older:
+        return {}
+    summary = SystemMessage(f"（对话前情摘要）{_summarize(older)}")
+    return {"llm_input_messages": [summary, *recent]}
+
+
 def build_assistant(*, checkpointer=None):
     """返回编译好的 ReAct agent（tool-calling 对话图）。
 
@@ -123,7 +175,10 @@ def build_assistant(*, checkpointer=None):
     带 config={"configurable": {"thread_id": ...}} 即按线程隔离并自动接续上文；
     此时每轮只需喂**新消息**，历史由 checkpointer 恢复，无需手动累加。
     None 时退化为无记忆的单轮 agent（阶段 3 行为，测试可用）。
+
+    pre_model_hook=_summarize_hook：长会话滚动摘要，压平 input token 增长。
     """
     # 选 tool 的 LLM：flash + temperature=0，让路由更稳定可复现。
     return create_react_agent(get_llm("flash", temperature=0), TOOLS,
-                              prompt=_SYSTEM, checkpointer=checkpointer)
+                              prompt=_SYSTEM, checkpointer=checkpointer,
+                              pre_model_hook=_summarize_hook)
