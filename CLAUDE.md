@@ -7,7 +7,7 @@
 
 一个基于 LangGraph 的雅思写作（Task 1 + 2）批改与学习 Agent：批改模式按官方四维（TA/CC/LR/GRA）打分并给依据，助手模式按需调用工具，配套量化评测与跨会话记忆。定位是**可落地、有真实价值**的全栈项目。
 
-## 技术栈（钉死）
+## 技术栈
 
 - 编排：**LangGraph**（StateGraph + 子图 + 条件边 + checkpointer）
 - LLM：**DeepSeek API**，OpenAI 兼容，`base_url="https://api.deepseek.com"`，经 `langchain-openai` 的 `ChatOpenAI` 接入
@@ -16,7 +16,7 @@
 - 后端：**FastAPI**（`/chat` 走 SSE 流式）｜ 前端：**纯 HTML/CSS/JS**
 - 包管理：用 `uv` 或 venv；密钥走 `.env`（`DEEPSEEK_API_KEY`），**绝不硬编码进代码**
 
-### DeepSeek 注意事项（容易踩坑）
+### DeepSeek 注意事项
 
 - 模型名用 `deepseek-v4-flash`（快/省，1M 上下文）与 `deepseek-v4-pro`（推理/agentic）。
   **不要**用旧名 `deepseek-chat` / `deepseek-reasoner`（2026-07-24 停用）。
