@@ -20,8 +20,12 @@ data/logs/
 # 原始数据：73M 版权剑桥 PDF + 大 CSV，不进 git（本地保留）
 data/raw/
 
-# 机器本地的 Claude 设置（保留 .claude/commands 里的项目 skill）
+# 机器本地的 Claude 设置与个人对齐/交接文档（不进公开仓库，本地保留）
 .claude/settings.local.json
+.claude/commands/goal.md
+
+# 内部交接笔记（含迭代过程，不对外公开；本地保留供跨会话续接）
+PROGRESS.md
 
 # IDE / OS
 .vscode/

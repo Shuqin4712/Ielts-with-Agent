@@ -49,7 +49,7 @@ python -m uvicorn src.api.app:app --port 8000   # 浏览器开 http://127.0.0.1:
 
 `http://127.0.0.1:8000/docs` 有 Swagger 逐端点手测。可选：`pytest tests/`（LLM-free 部分无需 key）、`python scripts/obs_summary.py`（成本/延迟汇总）、`python -m src.eval.harness --config all`（复现评测）。
 
-**技术栈**：LangGraph · DeepSeek API（`v4-flash`/`v4-pro`，OpenAI 兼容）· 本地 bge-m3（Ollama）· ChromaDB · SQLite · FastAPI（SSE 流式）· 纯 HTML/CSS/JS。锁定决策见 [CLAUDE.md](CLAUDE.md)，深度设计见 [设计文档](IELTS-Writing-Agent-设计文档.md)。
+**技术栈**：LangGraph · DeepSeek API（`v4-flash`/`v4-pro`，OpenAI 兼容）· 本地 bge-m3（Ollama）· ChromaDB · SQLite · FastAPI（SSE 流式）· 纯 HTML/CSS/JS。锁定决策见 [CLAUDE.md](CLAUDE.md)，深度设计见 [DESIGN.md](DESIGN.md)。
 
 ## 复现边界与已知局限（如实说明）
 

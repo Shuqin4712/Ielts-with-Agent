@@ -21,7 +21,7 @@
 
 ### 1.2 技术定位与差异化
 
-这类 Agent 项目最常见的两种死法是"什么都做但都浅"和"又一个 RAG 套壳 chatbot"。本项目刻意规避两者：scope 窄（只做写作），但在三个硬技术点上有深度——**结构感知的 RAG、跨会话记忆、量化评测（evaluation）**。其中 evaluation 是许多同类项目缺失的部分，也是本项目最大的差异化资产：可量化得出"在考官标注的测试集上，overall band 的 ±0.5 一致率达 X%"这种可量化的结论。
+本项目刻意规避两种常见形态——"什么都做但都浅"和"又一个 RAG 套壳 chatbot"：scope 窄（只做写作），但在三个硬技术点上求深度——**结构感知的 RAG、跨会话记忆、量化评测（evaluation）**。其中 evaluation 是核心差异化资产：在考官标注的测试集上量化验证打分质量（overall band 的 ±0.5 一致率 / QWK），而非自说自话。
 
 ### 1.3 官方评分四维（贯穿全项目的领域核心）
 
@@ -153,7 +153,7 @@ ingest（解析作文、识别 task 类型）
   → memory_write（更新学生画像）
 ```
 
-**reflection 的条件边是本设计的亮点**：当出现"打了 6 分但依据像 7 分"时回退重评，这条自我纠错回路是把 workflow 升级成 agent 的关键，也是值得深究的点。
+**reflection 的条件边是本设计的亮点**：当出现"打了 6 分但依据像 7 分"时回退重评，这条自我纠错回路是把 workflow 升级成 agent 的关键。
 
 **并行 vs 串行**：四维打分用 fan-out / fan-in 并行更快，但需注意 DeepSeek 并发限流（HTTP 429），要配合指数退避（exponential backoff）。demo 初期可先串行，跑通后再并行优化。
 
@@ -179,7 +179,7 @@ ingest（解析作文、识别 task 类型）
 - **rubric（band descriptors）**：**不**用固定大小切分，而是按 `(criterion, band)` 这个逻辑单元切块，每块挂 metadata `{criterion, band}`。检索时先按 criterion + 目标 band 窗口过滤，再做向量召回。
 - **范文**：按整篇切块，metadata `{task_type, band, topic, tier}`。
 
-> 要点："我没有用固定大小切分，而是按文档的逻辑结构切，并附带 metadata 做 filtered retrieval。"——比"我用了 RAG"高一个段位。
+> 关键点：不用固定大小切分，而是按文档的逻辑结构（criterion, band）切，并附带 metadata 做 filtered retrieval——检索质量显著优于朴素分块。
 
 #### Embedding
 
@@ -222,7 +222,7 @@ DeepSeek 不提供可用的 embedding 模型，因此 embedding 层独立：**LL
 | 语法检查 / 查词 / 简单词汇升级 | `v4-flash`（非 thinking） | 简单、量大、要便宜 |
 | band 判分 / reflection 一致性检查 | `v4-pro` + thinking 模式 | 需要细致推理 |
 
-> 要点："我根据子任务难度路由不同档位的模型来平衡质量与成本。"
+> 设计要点：按子任务难度路由不同档位的模型，平衡质量与成本。
 
 ### 4.8 评测体系（Evaluation Harness）—— 核心资产
 
@@ -243,7 +243,7 @@ DeepSeek 不提供可用的 embedding 模型，因此 embedding 层独立：**LL
 
 #### 关键实验：锚定消融（ablation）
 
-对比"有锚点 / 无锚点"两种打分的校准度，证明范文锚定确实提升准确率——这是一个能写进 README、可深入讨论的硬核实验，把 RAG 与打分准确度直接绑定。
+对比"有锚点 / 无锚点"两种打分的校准度，证明范文锚定确实提升准确率——一个把 RAG 与打分准确度直接绑定的硬核实验。
 
 ---
 
@@ -330,7 +330,7 @@ CREATE TABLE grading_history (
 
 ## 7. 开发路线（Roadmap）
 
-核心思路：**先打通一条最薄的竖切，再逐层加深**——而非先把所有基础设施搭完才看到东西跑起来。贴合"迭代推进"的节奏，也正好是 LangGraph 实战靶场。
+核心思路：**先打通一条最薄的竖切，再逐层加深**——而非先把所有基础设施搭完才看到东西跑起来。每个阶段产出一个能跑的东西再进下一阶段。
 
 ### 阶段 0 · 数据地基
 异构数据归一化进 SQLite（统一 schema：task 类型、题目、正文、overall、小分可空、评语可空、来源 tier、话题）；rubric 按 (criterion × band) 结构感知切块、范文按整篇带 metadata 灌进 ChromaDB；切出 held-out 评测集。
@@ -379,23 +379,12 @@ FastAPI 端点 + 纯 HTML 四视图，词库/素材库 CRUD、从工具一键归
 
 ## 9. 技术要点总结
 
-### 9.1 技术要点
-
-- 设计并实现一个基于 **LangGraph** 的双模式（确定性批改 workflow + agentic 助手）雅思写作 Agent。
-- 采用**结构感知 chunking + metadata 过滤检索**的 RAG，覆盖官方评分标准与标注范文。
-- 构建**量化评测体系**：在考官标注的测试集上，overall band ±0.5 一致率达 X%（QWK = Y）。
-- 通过**范文 in-context 锚定**提升打分校准度（消融实验显示提升 Z%）。
-- 实现**跨会话长期记忆**（episodic + semantic），反馈随学生画像个性化。
-- **成本感知模型路由**，按任务难度在 DeepSeek flash / pro 间切换。
-
-### 9.2 每个技术点的"能讲 10 分钟"角度
-
-- **框架**：为什么选 LangGraph 而非裸 loop / 多智能体；workflow 与 agent 的边界判断。
-- **RAG**：为什么按 (criterion, band) 结构切而非固定大小；metadata 过滤如何提升召回质量。
-- **打分校准**：LLM 打分为什么不稳，范文锚定 + reflection 如何缓解，怎么用 QWK 量化。
-- **评测**：为什么只用 gold tier；锚定消融实验怎么设计。
-- **记忆**：episodic 与 semantic 的区别；memory_write 如何蒸馏语义记忆。
-- **工程**：成本路由、并发限流、上下文工程的取舍。
+- **框架**：双模式（确定性批改 workflow + agentic 助手）；为什么选 LangGraph 而非裸 loop / 多智能体；workflow 与 agent 的边界判断。
+- **RAG**：结构感知 chunking——按 (criterion, band) 逻辑单元切而非固定大小；metadata 过滤如何提升召回质量。
+- **打分校准**：LLM 打分为什么不稳，范文 in-context 锚定 + reflection 如何缓解，怎么用 QWK 量化（锚定消融实测提升见 `docs/EVALUATION.md`）。
+- **评测**：为什么只用 gold tier；零泄漏；锚定消融实验怎么设计。
+- **记忆**：跨会话长期记忆——episodic 与 semantic 的区别；memory_write 如何增量蒸馏语义记忆；打分路径物理隔离（画像进不了判分）。
+- **工程**：成本感知路由、并发限流、上下文工程、可观测性的取舍。
 
 ---
 
