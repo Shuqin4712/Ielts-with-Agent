@@ -15,17 +15,26 @@ from ..llm import get_llm, with_backoff
 from ..obs import operation
 
 
+def loads_or_repair(raw: str, llm) -> dict:
+    """解析 JSON；失败则把坏输出回灌给模型修复一次再解析（兜底但不无限重试）。
+
+    打分节点（graph/nodes.py）与工具的 call_json 共用这一份逻辑——修复只影响
+    「能不能解析出来」，不影响模型已给出的内容本身。
+    """
+    try:
+        return json.loads(raw)
+    except json.JSONDecodeError:
+        fixed = with_backoff(llm.invoke)([
+            SystemMessage("Return ONLY valid minified JSON — no prose, no code fences."),
+            HumanMessage(f"Fix this into valid JSON:\n{raw}"),
+        ]).content
+        return json.loads(fixed)   # 仍失败则抛出，让调用方感知（不静默吞）
+
+
 def call_json(tool_name: str, system: str, human: str, *, temperature: float = 0) -> dict:
     llm = get_llm(config.tier_for(tool_name), temperature=temperature).bind(
         response_format={"type": "json_object"})
     # 给这次调用打上操作标签（=工具名），供 obs 日志按工具归类成本/延迟。
     with operation(tool_name):
         raw = with_backoff(llm.invoke)([SystemMessage(system), HumanMessage(human)]).content
-        try:
-            return json.loads(raw)
-        except json.JSONDecodeError:
-            fixed = with_backoff(llm.invoke)([
-                SystemMessage("Return ONLY valid minified JSON — no prose, no code fences."),
-                HumanMessage(f"Fix this into valid JSON:\n{raw}"),
-            ]).content
-            return json.loads(fixed)   # 仍失败则抛出，让调用方感知（不静默吞）
+        return loads_or_repair(raw, llm)
