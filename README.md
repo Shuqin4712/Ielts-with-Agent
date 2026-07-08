@@ -4,12 +4,33 @@
 
 > **核心卖点**：在剑桥考官标注的 holdout 测试集（**n=51、`temperature=0` 可复现**）上量化验证打分质量——范文 in-context 锚定经**消融实验**证实把 QWK 从 0.532 提升到 0.597（+0.065）。评测纪律严谨（gold-only ground truth、零泄漏、silver 不作基准）。它是一个**能被量化检验**的批改 Agent，而非自说自话的"打分器"。
 
-| gold holdout, n=51, temp=0 | MAE | ±0.5 | QWK |
-|---|---|---|---|
-| baseline（无锚定） | 0.667 | 64.7% | 0.532 |
-| **anchored（范文锚定）** | **0.637** | 58.8% | **0.597** |
+| gold holdout, n=51, temp=0 | MAE       | ±0.5  | QWK       |
+| -------------------------- | --------- | ----- | --------- |
+| baseline（无锚定）         | 0.667     | 64.7% | 0.532     |
+| **anchored（范文锚定）**   | **0.637** | 58.8% | **0.597** |
 
 完整评测方法、消融取舍、并行化质量回归、已知局限 → **[docs/EVALUATION.md](docs/EVALUATION.md)**
+
+## 演示
+
+**批改模式** — 提交作文 → 四维 band + 依据 → 个性化反馈 + 改写示范（针对最弱维度）：
+![作文评分界面](docs/demo/grade.png)
+![四维打分与依据](docs/demo/grade-scores.png)
+![个性化反馈与改写示范](docs/demo/grade-feedback-revision.png)
+
+**助手模式** — 对话式，LLM 自主选工具并链式调用，Markdown 流式渲染；可一键逐条存入词库/素材库：
+
+![词汇升级](docs/demo/chat-vocab-upgrade.png)
+![查词并逐条存入词库](docs/demo/chat-save-vocab.png)
+
+**查词界面** - 查询单词，可存入词库
+![查询](docs/demo/search.png)
+
+**词库界面** - 词库，可检索，可查看基本释义和例句
+![词库](docs/demo/vocab.png)
+
+**素材库界面** - 素材库库，可检索，可查看高级词汇，短语，句式
+![素材库](docs/demo/material.png)
 
 ## 架构
 
