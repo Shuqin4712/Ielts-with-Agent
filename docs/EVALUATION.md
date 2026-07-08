@@ -44,6 +44,40 @@
 
 两次并行运行 QWK {0.585, 0.624} **bracket** 两次串行 {0.597, 0.605}，并行均值 0.605 ≥ 串行均值 0.601——**无系统性下移**，差异是 temp=0 的 API 抖动（4 样本显示 QWK 在 ~0.60 ± 0.02）。单篇批改延迟：四维之和 ~25.5s → 并行墙钟 ~13.3s（**~1.9×**）。**调度优化与打分质量解耦。**
 
+## 检索层评测：metadata 过滤不是装饰（v1.3）
+
+端到端 QWK 只能证明「检索 + 锚定」整体有价值，定位不了检索环节自身的损耗，
+故给范文检索补一个**分环节指标**：给一道 holdout 题目（prompt），召回结果里
+同 (task_type, topic) 的范文算相关，量化 Hit@1 / Recall@5 / MRR@10。
+
+**纪律**：查询集 n=27（每个库存 ≥5 的 task×topic 格确定性采样 1 题，seed 固定），
+全部来自 `split='holdout'`，与被检索语料（`split='exemplar'`）零重叠；
+查询集落盘为 `data/eval/retrieval_queries.jsonl`，**人工可校对**——它就是标注文件。
+
+| 检索策略（n=27, bge-m3） | Hit@1 | Recall@5 | MRR@10 |
+|---|---|---|---|
+| vector（纯向量，无过滤） | 0.370 | 0.341 | 0.513 |
+| vector_task（task 过滤 + 向量） | 0.407 | 0.378 | 0.551 |
+| **filtered（生产路径：task+topic 过滤 + 向量）** | **1.000** | **1.000** | **1.000** |
+
+**结论**：纯向量召回的同话题命中率只有 ~34%——「题目 → 范文正文」是**短查询对长文档的
+跨形态检索**，embedding 相似度大量被写作风格/文体信号占据，话题信号弱。结构感知
+RAG 的 metadata 过滤把话题命中锚死在 100%（按构造），**过滤是必要设计而非装饰**；
+向量相似度在过滤后的池内只负责排序。
+
+**错例分析**：vector 档最差的查询全是 Task 1（Task 1 MRR 0.424 vs Task 2 0.585）——
+图表题题干是「The chart shows...」式描述，话题词汇稀薄，向量召回天然吃亏；
+Task 2 议论文题干携带完整话题语义，表现明显更好。
+
+**局限**：相关性标注 = 规则打的 topic 标签（弱标注，`filtered` 档的 1.000 是按构造成立的
+sanity 上限，不是「检索完美」）；n=27 小样本。换 embedding 做消融时须用新模型**重建索引**
+到独立集合再跑（查询侧单边换模型 = 跨向量空间检索，结果无效）。
+
+```powershell
+python -m src.eval.retrieval                    # 只用本地 embedding，不调 DeepSeek
+pytest tests/test_retrieval_eval.py -v          # 指标纯函数 + 查询集契约（LLM-free）
+```
+
 ## 已知局限（诚实披露）
 
 - **四维小分未评测**：gold holdout 只有官方 overall band，无 TA/CC/LR/GRA 小分标注（`has_sub=0`），故小分准确度**无法量化**，只有 overall 有 ground truth。

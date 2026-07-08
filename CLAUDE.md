@@ -85,6 +85,9 @@ pytest tests/test_stage1.py -v                  # LLM-free；全图 smoke 需 RU
 python -m src.eval.harness --config all         # baseline/anchored/reflect 全跑，写 results.jsonl
 python -m src.eval.harness --compare            # 看历史对比表
 pytest tests/test_stage2.py -v                  # 指标 + 泄漏断言（LLM-free）
+# 检索层评测（v1.3）：范文检索 Recall@5/MRR@10 三档对比（只用本地 embedding，不调 DeepSeek）
+python -m src.eval.retrieval                    # 查询集落 data/eval/retrieval_queries.jsonl，可人工校对
+pytest tests/test_retrieval_eval.py -v          # 指标纯函数 + 查询集契约（LLM-free）
 
 # 阶段 3：agentic 助手 REPL（LLM 自主选 tool，需 DeepSeek key）
 python scripts/assistant.py                     # 对话：升级词 / 拆解文章 / 查词 / 打分 / 存库
@@ -124,6 +127,7 @@ python -m uvicorn src.api.app:app --host 127.0.0.1 --port 8000
 
 - [v1.1] 前端体验升级 ✅：暖色主题（CSS 变量 + Baskerville 衬线标题）；词库=生词本卡片墙（dictionary schema 加 pos/zh_def/ipa/双语例句，vocab 表迁移）；素材库=分类语料库（入库粒度根因修复：save_material_entry 逐条拆分、禁止整段存）；移除对话整段存按钮、存库走 agent 指令。★坑★ 改前端资源必 bump `index.html` 里 `?v=`（否则浏览器缓存看不到新版）。
 - [v1.2] 作品集深度 + 卫生 ✅：**四维打分并行化**（fan-out/fan-in + dict reducer，只改调度不改打分逻辑；harness 实证 QWK 无向下漂移、单篇延迟 ~1.9×，见 docs/EVALUATION.md）；补齐三个设计承诺——**revision 改写示范**（外层图新节点，纯打分图/eval 不经过）、**助手滚动摘要**（pre_model_hook，超阈值压旧轮、只改喂 LLM 视图不落 checkpointer）、**对话/反馈 markdown 渲染**（mdLite：粗体/列表/引用/表格/标题）。删铁冗余 `save_to_library`。README 精简、Evaluation 详解迁 `docs/EVALUATION.md`。
+- [v1.3] 检索层评测 ✅：`src/eval/retrieval.py` 给范文检索补分环节指标（Hit@1/Recall@5/MRR@10），27 条 holdout 题目查询（确定性采样、与 exemplar 语料零重叠、查询集落盘可人工校对）× 三档检索策略对比。**实证 metadata 过滤是必要设计**：纯向量召回同话题命中 ~34%（题目→范文正文是短查询对长文档的跨形态检索，话题信号弱，Task 1 尤甚），生产路径（task+topic 过滤 + 向量排序）按构造 100%。换 embedding 消融须重建索引再跑（跨向量空间检索无效）。详见 docs/EVALUATION.md。
 
 > 每个阶段产出一个能跑的东西再进下一阶段。改动 scope 或决策前先和我确认。
 

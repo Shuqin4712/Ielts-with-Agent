@@ -1,0 +1,3 @@
+{"ts": "2026-07-08 21:34:23", "embed_model": "bge-m3", "k": 10, "variant": "vector", "n": 27, "hit1": 0.37, "recall5": 0.341, "mrr10": 0.513}
+{"ts": "2026-07-08 21:34:23", "embed_model": "bge-m3", "k": 10, "variant": "vector_task", "n": 27, "hit1": 0.407, "recall5": 0.378, "mrr10": 0.551}
+{"ts": "2026-07-08 21:34:23", "embed_model": "bge-m3", "k": 10, "variant": "filtered", "n": 27, "hit1": 1.0, "recall5": 1.0, "mrr10": 1.0}
