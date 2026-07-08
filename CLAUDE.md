@@ -11,7 +11,7 @@
 
 - 编排：**LangGraph**（StateGraph + 子图 + 条件边 + checkpointer）
 - LLM：**DeepSeek API**，OpenAI 兼容，`base_url="https://api.deepseek.com"`，经 `langchain-openai` 的 `ChatOpenAI` 接入
-- Embedding：**本地** `bge-m3`（或 Ollama 的 `nomic-embed-text`）——DeepSeek 不提供 embedding
+- Embedding：**本地** `bge-m3`（Ollama）——DeepSeek 不提供 embedding
 - 向量库：**ChromaDB** ｜ 结构化存储：**SQLite**
 - 后端：**FastAPI**（`/chat` 走 SSE 流式）｜ 前端：**纯 HTML/CSS/JS**
 - 包管理：用 `uv` 或 venv；密钥走 `.env`（`DEEPSEEK_API_KEY`），**绝不硬编码进代码**

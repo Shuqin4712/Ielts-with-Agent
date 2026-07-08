@@ -1,7 +1,7 @@
 """本地 embedding 封装（经 Ollama）。
 
 DeepSeek 不提供 embedding，所以这一层完全独立于 LLM：
-LLM = DeepSeek API，Embedding = 本地 Ollama（bge-m3 / nomic-embed-text）。
+LLM = DeepSeek API，Embedding = 本地 Ollama（bge-m3）。
 业务代码只调 `embed_text` / `embed_texts`，不关心底层是哪个模型。
 """
 from __future__ import annotations

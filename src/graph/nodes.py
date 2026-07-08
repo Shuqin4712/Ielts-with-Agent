@@ -36,7 +36,7 @@ def ielts_round(avg: float) -> float:
     return max(0.0, min(9.0, math.floor(avg * 2 + 0.5) / 2))
 
 
-# ── 节点 ───────────────────────────────────────────────────────────
+# 节点 
 def ingest(state: GradeState) -> dict:
     """入口：轻量校验必需字段（作文/题目/task 类型都由调用方传入）。"""
     if state["task_type"] not in (1, 2):

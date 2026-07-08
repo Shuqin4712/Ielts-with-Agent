@@ -25,12 +25,12 @@
 
 ### 1.3 官方评分四维（贯穿全项目的领域核心）
 
-| 维度 | 英文 | 评估内容 |
-|---|---|---|
-| 任务完成 | Task Achievement / Response (TA/TR) | 是否完整回应题目要求（Task 1 数据描述准确性 / Task 2 论点完整性） |
-| 连贯衔接 | Coherence & Cohesion (CC) | 逻辑组织、段落划分、衔接手段 |
-| 词汇资源 | Lexical Resource (LR) | 词汇丰富度、准确性、搭配、地道程度 |
-| 语法多样与准确 | Grammatical Range & Accuracy (GRA) | 句式多样性、语法准确率 |
+| 维度           | 英文                                | 评估内容                                                          |
+| -------------- | ----------------------------------- | ----------------------------------------------------------------- |
+| 任务完成       | Task Achievement / Response (TA/TR) | 是否完整回应题目要求（Task 1 数据描述准确性 / Task 2 论点完整性） |
+| 连贯衔接       | Coherence & Cohesion (CC)           | 逻辑组织、段落划分、衔接手段                                      |
+| 词汇资源       | Lexical Resource (LR)               | 词汇丰富度、准确性、搭配、地道程度                                |
+| 语法多样与准确 | Grammatical Range & Accuracy (GRA)  | 句式多样性、语法准确率                                            |
 
 ---
 
@@ -50,7 +50,7 @@
 - 口语 / 听力 / 阅读（保持 scope 收窄，深度优先）。
 - 多智能体（multi-agent）架构——对单一职责的写作教练是错误抽象，徒增延迟与成本。
 - 移动端原生 App、用户系统与鉴权（demo 阶段单用户或简单 user_id 即可）。
-- 自训练 / 微调模型（用 DeepSeek API + 提示工程 + 锚定，足够且更省）。
+- 自训练 / 微调模型（用 DeepSeek API + 提示工程）。
 
 ---
 
@@ -86,16 +86,16 @@ flowchart TD
 
 ### 3.2 技术栈一览
 
-| 层 | 选型 | 说明 |
-|---|---|---|
-| 编排框架 | **LangGraph** | StateGraph + 子图 + 条件边 + checkpointer |
-| LLM | **DeepSeek API** | `deepseek-v4-flash`（快/省，1M 上下文）/ `deepseek-v4-pro`（推理/agentic）；OpenAI 兼容 |
-| Embedding | **本地 bge-m3** 或 nomic-embed-text（Ollama） | DeepSeek 不提供 embedding，单独解决；本地零成本、中英双语强 |
-| 向量库 | **ChromaDB** | rubric 与范文两个集合，带 metadata 过滤 |
-| 结构化存储 | **SQLite** | 作文语料、词库、素材库、学生画像、批改历史 |
-| 后端 | **FastAPI** | 包住 LangGraph，SSE 流式 |
-| 前端 | **纯 HTML/CSS/JS** | 薄客户端，四视图 + tab 切换 |
-| 可观测性 | 日志 / trace + 成本统计 | 阶段 6 接入 |
+| 层         | 选型                      | 说明                                                                                    |
+| ---------- | ------------------------- | --------------------------------------------------------------------------------------- |
+| 编排框架   | **LangGraph**             | StateGraph + 子图 + 条件边 + checkpointer                                               |
+| LLM        | **DeepSeek API**          | `deepseek-v4-flash`（快/省，1M 上下文）/ `deepseek-v4-pro`（推理/agentic）；OpenAI 兼容 |
+| Embedding  | **本地 bge-m3**（Ollama） | DeepSeek 不提供 embedding，单独解决；本地零成本、中英双语强                             |
+| 向量库     | **ChromaDB**              | rubric 与范文两个集合，带 metadata 过滤                                                 |
+| 结构化存储 | **SQLite**                | 作文语料、词库、素材库、学生画像、批改历史                                              |
+| 后端       | **FastAPI**               | 包住 LangGraph，SSE 流式                                                                |
+| 前端       | **纯 HTML/CSS/JS**        | 薄客户端，四视图 + tab 切换                                                             |
+| 可观测性   | 日志 / trace + 成本统计   | 阶段 6 接入                                                                             |
 
 > **DeepSeek 接入注意**：base_url 设为 `https://api.deepseek.com`，用 `langchain-openai` 的 `ChatOpenAI` 即可。旧模型名 `deepseek-chat` / `deepseek-reasoner` 将于 2026-07-24 停用，新项目直接用 `v4-flash` / `v4-pro`。thinking 模式通过 `reasoning_effort` + `extra_body={"thinking": {"type": "enabled"}}` 开启，且 thinking 模式下 `temperature` 等采样参数不生效。
 
@@ -161,14 +161,14 @@ ingest（解析作文、识别 task 类型）
 
 对话式入口，LLM 通过 function calling 自主选工具。工具集（不限于）：
 
-| 工具 | 输入 | 输出 | 关联 |
-|---|---|---|---|
-| `vocab_upgrade` | 目标词 + **所在整句** | 3–5 个语境贴合的替换，各带 register / band 暗示 / 搭配陷阱提醒 | → 词库 |
-| `exemplar_provide` | 题目 + task 类型 + 目标 band | 范文 + **写作思路/提纲** + 亮点句 + 高级词 | → 素材库 |
-| `grammar_check` | 文本片段 | 错误定位 + 解释 + 修改建议 | — |
-| `dictionary_lookup` | 单词 | 释义 / 例句（查词界面） | → 词库 |
-| `score_predict` | 作文 + task 类型 | 快速 band 预测（带锚定） | 复用批改逻辑的轻量版 |
-| `save_to_library` | 条目 + 目标库 | 写入词库 / 素材库 | — |
+| 工具                | 输入                         | 输出                                                           | 关联                 |
+| ------------------- | ---------------------------- | -------------------------------------------------------------- | -------------------- |
+| `vocab_upgrade`     | 目标词 + **所在整句**        | 3–5 个语境贴合的替换，各带 register / band 暗示 / 搭配陷阱提醒 | → 词库               |
+| `exemplar_provide`  | 题目 + task 类型 + 目标 band | 范文 + **写作思路/提纲** + 亮点句 + 高级词                     | → 素材库             |
+| `grammar_check`     | 文本片段                     | 错误定位 + 解释 + 修改建议                                     | —                    |
+| `dictionary_lookup` | 单词                         | 释义 / 例句（查词界面）                                        | → 词库               |
+| `score_predict`     | 作文 + task 类型             | 快速 band 预测（带锚定）                                       | 复用批改逻辑的轻量版 |
+| `save_to_library`   | 条目 + 目标库                | 写入词库 / 素材库                                              | —                    |
 
 **词汇升级的设计要点**：必须吃进整句上下文，否则退化成同义词词典。要敢于标注误用陷阱——`illustrate` 强调"举例说明"、`delineate` 偏"勾勒轮廓"，乱替会扣 LR 分。"会提示误用"正是它高于市面 thesaurus 套壳的地方。
 
@@ -183,14 +183,14 @@ ingest（解析作文、识别 task 类型）
 
 #### Embedding
 
-DeepSeek 不提供可用的 embedding 模型，因此 embedding 层独立：**LLM = DeepSeek API，Embedding = 本地**。推荐 `bge-m3`（中英双语强，能跑在 8GB 显存）或沿用 `nomic-embed-text`（Ollama）。落入 ChromaDB，**务必用上 metadata filtering**（与 chunk 策略配套）。
+DeepSeek 不提供可用的 embedding 模型，因此 embedding 层独立：**LLM = DeepSeek API，Embedding = 本地**。用 `bge-m3`（中英双语强，能跑在 8GB 显存，Ollama）。落入 ChromaDB，**务必用上 metadata filtering**（与 chunk 策略配套）。
 
 #### 两个集合
 
-| 集合 | 内容 | chunk 粒度 | metadata |
-|---|---|---|---|
-| `rubric_descriptors` | 官方评分标准 | per (criterion, band) | criterion, band |
-| `exemplar_essays` | 标注 band 的范文 | per essay | task_type, band, topic, tier |
+| 集合                 | 内容             | chunk 粒度            | metadata                     |
+| -------------------- | ---------------- | --------------------- | ---------------------------- |
+| `rubric_descriptors` | 官方评分标准     | per (criterion, band) | criterion, band              |
+| `exemplar_essays`    | 标注 band 的范文 | per essay             | task_type, band, topic, tier |
 
 > 注意：**不要把全部 ~2000 篇范文都灌进向量库当锚点**。用作 in-context 锚点的范文，质量远比数量重要——精选一个按 (task × band × topic) 分层、标注可靠的子集；其余留作测试集与话题覆盖。
 
@@ -217,10 +217,10 @@ DeepSeek 不提供可用的 embedding 模型，因此 embedding 层独立：**LL
 
 按子任务难度路由不同档位模型，平衡质量与成本：
 
-| 任务 | 模型 | 理由 |
-|---|---|---|
-| 语法检查 / 查词 / 简单词汇升级 | `v4-flash`（非 thinking） | 简单、量大、要便宜 |
-| band 判分 / reflection 一致性检查 | `v4-pro` + thinking 模式 | 需要细致推理 |
+| 任务                              | 模型                      | 理由               |
+| --------------------------------- | ------------------------- | ------------------ |
+| 语法检查 / 查词 / 简单词汇升级    | `v4-flash`（非 thinking） | 简单、量大、要便宜 |
+| band 判分 / reflection 一致性检查 | `v4-pro` + thinking 模式  | 需要细致推理       |
 
 > 设计要点：按子任务难度路由不同档位的模型，平衡质量与成本。
 
@@ -228,10 +228,10 @@ DeepSeek 不提供可用的 embedding 模型，因此 embedding 层独立：**LL
 
 #### 数据分层（provenance tiering）
 
-| Tier | 来源 | 用途 |
-|---|---|---|
-| **Gold** | 剑桥真题官方范文（含考官评语 / 评分） | **唯一的 ground truth**，用于评测基准 + few-shot 锚点 |
-| **Silver** | 网络搜集数据集（自评 / 非官方，噪声大） | 话题覆盖、辅助检索，**不**作评测基准 |
+| Tier       | 来源                                    | 用途                                                  |
+| ---------- | --------------------------------------- | ----------------------------------------------------- |
+| **Gold**   | 剑桥真题官方范文（含考官评语 / 评分）   | **唯一的 ground truth**，用于评测基准 + few-shot 锚点 |
+| **Silver** | 网络搜集数据集（自评 / 非官方，噪声大） | 话题覆盖、辅助检索，**不**作评测基准                  |
 
 > 关键原则：用带噪声的网络标注当标准答案算出来的准确率是没有意义的。**评测只用 gold tier。**
 
@@ -312,13 +312,13 @@ CREATE TABLE grading_history (
 
 ### 6.1 后端 FastAPI 端点（示意）
 
-| 端点 | 方法 | 功能 |
-|---|---|---|
-| `/grade` | POST | 提交作文，走批改流水线，返回结构化 band + 反馈 + 改写 |
-| `/chat` | POST (SSE) | agentic 对话，流式返回 |
-| `/lookup` | GET | 查词 |
-| `/vocab` | GET/POST/DELETE | 词库增删查 |
-| `/materials` | GET/POST/DELETE | 素材库增删查 |
+| 端点         | 方法            | 功能                                                  |
+| ------------ | --------------- | ----------------------------------------------------- |
+| `/grade`     | POST            | 提交作文，走批改流水线，返回结构化 band + 反馈 + 改写 |
+| `/chat`      | POST (SSE)      | agentic 对话，流式返回                                |
+| `/lookup`    | GET             | 查词                                                  |
+| `/vocab`     | GET/POST/DELETE | 词库增删查                                            |
+| `/materials` | GET/POST/DELETE | 素材库增删查                                          |
 
 > 为什么不用 Chainlit：对话历史它几乎免费给，但查词 / 词库 / 素材库是三个独立面板，已超出 Chainlit 舒适区。FastAPI + 静态 HTML 更灵活。
 
@@ -333,47 +333,52 @@ CREATE TABLE grading_history (
 核心思路：**先打通一条最薄的竖切，再逐层加深**——而非先把所有基础设施搭完才看到东西跑起来。每个阶段产出一个能跑的东西再进下一阶段。
 
 ### 阶段 0 · 数据地基
+
 异构数据归一化进 SQLite（统一 schema：task 类型、题目、正文、overall、小分可空、评语可空、来源 tier、话题）；rubric 按 (criterion × band) 结构感知切块、范文按整篇带 metadata 灌进 ChromaDB；切出 held-out 评测集。
 **产出**：能检索"环境话题的 band 7 Task 2 范文"。
 
 ### 阶段 1 · 最薄竖切（能跑就行）
+
 最简 LangGraph：收作文 → 检索 rubric → 顺序打四维 → 聚合 → 输出结构化 band + 简短反馈。DeepSeek 接入。**不要** reflection / memory / 锚定。
 **产出**：贴一篇作文，终端出分。
 
 ### 阶段 2 · 把打分做准（核心资产）
+
 加入范文锚定、reflection 节点 + 条件回环、搭起 eval harness（gold 集上算 ±0.5 一致率 / QWK，LLM-as-judge 评反馈）。反复迭代把数字提上去；做锚定消融实验。
 **产出**：可量化的打分质量结论。
 
 ### 阶段 3 · 工具 + agentic 助手模式
+
 实现工具集（词汇升级 / 范文生成 / 语法检查 / 查词），搭 agentic 对话图（function calling 自主选 tool），接入成本感知路由。
 **产出**：能对话的助手。
 
 ### 阶段 4 · 记忆与个性化
+
 短期用 checkpointer，长期建学生画像落 SQLite，加 `memory_write` 总结节点，反馈随画像个性化。
 **产出**：跨 session 个性化 demo。
 
 ### 阶段 5 · 前端 + 词库/素材库
+
 FastAPI 端点 + 纯 HTML 四视图，词库/素材库 CRUD、从工具一键归档，对话 SSE 流式。
 **产出**：能用的 web app。
 
 ### 阶段 6 · 作品集打磨
+
 可观测性（日志/trace、成本统计）、README（架构图 + eval 结果 + 设计决策）、部署。
 **产出**：可展示、可讲述的完整作品。
-
-> **优先级提示**：阶段 0–2 是"项目有没有价值"的分水岭，应尽早压实。
 
 ---
 
 ## 8. 风险与对策
 
-| 风险 | 对策 |
-|---|---|
-| LLM 打分波动大 | 范文 in-context 锚定 + reflection 一致性回环 + 评测量化监控 |
-| 数据标注噪声 | provenance tiering，评测只用 gold |
-| DeepSeek 并发限流（429） | 指数退避重试，set timeout，并行打分控制并发数 |
-| 成本失控 | 成本感知路由 + 上下文按需组装 + 缓存（DeepSeek 自带 context caching） |
-| 用户作文中的提示注入 | 作文内容当数据处理，不当指令执行；评分提示与用户内容隔离 |
-| 反馈幻觉 | 反馈须引用检索到的 rubric 依据；引导式而非编造 |
+| 风险                     | 对策                                                                  |
+| ------------------------ | --------------------------------------------------------------------- |
+| LLM 打分波动大           | 范文 in-context 锚定 + reflection 一致性回环 + 评测量化监控           |
+| 数据标注噪声             | provenance tiering，评测只用 gold                                     |
+| DeepSeek 并发限流（429） | 指数退避重试，set timeout，并行打分控制并发数                         |
+| 成本失控                 | 成本感知路由 + 上下文按需组装 + 缓存（DeepSeek 自带 context caching） |
+| 用户作文中的提示注入     | 作文内容当数据处理，不当指令执行；评分提示与用户内容隔离              |
+| 反馈幻觉                 | 反馈须引用检索到的 rubric 依据；引导式而非编造                        |
 
 ---
 
@@ -391,6 +396,6 @@ FastAPI 端点 + 纯 HTML 四视图，词库/素材库 CRUD、从工具一键归
 ## 附录：关键技术约束速查
 
 - DeepSeek 模型：`deepseek-v4-flash`（1M 上下文，快/省）、`deepseek-v4-pro`（推理/agentic）。旧名 2026-07-24 停用。
-- DeepSeek **不提供 embedding** → 本地 bge-m3 / nomic-embed-text。
+- DeepSeek **不提供 embedding** → 本地 bge-m3（Ollama）。
 - DeepSeek 支持 OpenAI 风格 function calling；thinking 模式忽略 temperature 等采样参数。
 - 向量库 ChromaDB；结构化 SQLite；编排 LangGraph；后端 FastAPI；前端纯 HTML。

@@ -15,8 +15,8 @@ from dotenv import load_dotenv
 # 过期的系统级环境变量（否则改了 .env 却被旧系统变量盖掉，极难排查）。
 load_dotenv(override=True)
 
-# ── 路径 ────────────────────────────────────────────────────────────
-# PROJECT_ROOT = 仓库根（本文件在 src/ 下，往上一级）。
+# 路径 
+# PROJECT_ROOT = 仓库根（本文件在 src/ 下，往上一级）
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
 DATA_DIR = PROJECT_ROOT / "data"
 RAW_DIR = DATA_DIR / "raw"
@@ -27,42 +27,39 @@ CHROMA_DIR = DATA_DIR / "chroma"
 SQLITE_PATH = DATA_DIR / "ielts.sqlite"
 GOLD_DIR = DATA_DIR / "gold"            # 剑桥 gold：manifest.json + bodies/<id>.txt（人工转写）
 
-# ── DeepSeek（OpenAI 兼容）─────────────────────────────────────────
+#  DeepSeek（OpenAI 兼容）
 # 经 langchain-openai 的 ChatOpenAI 接入：只需改 base_url + 模型名。
 DEEPSEEK_BASE_URL = "https://api.deepseek.com"
 DEEPSEEK_API_KEY = os.getenv("DEEPSEEK_API_KEY", "")
 
 # 成本路由：简单工具用 flash，判分/反思用 pro(+thinking)。
-# 注意：不要用旧名 deepseek-chat / deepseek-reasoner（2026-07-24 停用）。
 MODEL_FLASH = "deepseek-v4-flash"   # 快/省，1M 上下文
 MODEL_PRO = "deepseek-v4-pro"       # 推理/agentic
 
-# ── 定价（成本估算，阶段 6 可观测性用）──────────────────────────────
-# 每百万（1e6）token 的价格（USD）。⚠️ 占位估算值，请按 DeepSeek 官网实际价改。
+#定价（成本估算，阶段 6 可观测性用）
+# 每百万（1e6）token 的价格（USD）
 # 只影响 obs_summary 的成本估算显示，不进任何业务逻辑。
 PRICE_PER_MTOK: dict[str, dict[str, float]] = {
-    "flash": {"input": 0.07, "output": 0.28},
-    "pro": {"input": 0.55, "output": 2.19},
+    "flash": {"input": 1, "output": 2},
+    "pro": {"input": 3, "output": 6},
 }
 
-# ── 本地 Embedding（DeepSeek 不提供 embedding）─────────────────────
-# 后端目前只支持 "ollama"。模型可在 bge-m3 / nomic-embed-text 间切换：
-#   bge-m3          中英双语强，本项目首选
-#   nomic-embed-text 备选（已就绪，想省下载时用）
+# 本地 Embedding（DeepSeek 不提供 embedding）
+# 后端目前只支持 "ollama"；模型用 bge-m3（中英双语强）。
 EMBED_BACKEND = "ollama"
 EMBED_MODEL = "bge-m3"
 OLLAMA_HOST = os.getenv("OLLAMA_HOST", "http://localhost:11434")
 
-# ── ChromaDB 集合名 ────────────────────────────────────────────────
+# ChromaDB 集合名
 COLL_RUBRIC = "rubric_descriptors"     # metadata: criterion, band, task_type
 COLL_EXEMPLAR = "exemplar_essays"      # metadata: task_type, band, topic, tier
 
-# ── 阶段 0 数据切分 ────────────────────────────────────────────────
+# 阶段 0 数据切分
 SPLIT_SEED = 42          # 切分可复现
 HOLDOUT_FRAC = 0.12      # 从 silver 留作临时评测基线的比例（分层抽样）
 EXEMPLAR_PER_BUCKET = 2  # 每个 (task_type × band) 桶选几篇当锚点，控制锚点总量
 
-# ── 阶段 3 成本路由 ────────────────────────────────────────────────
+# 阶段 3 成本路由 
 # tool 名 → 模型档位。默认 flash；pro 预留但暂不滥用（承接阶段 2「有证据才上 pro」）。
 # 将来若某工具有证据表明 pro 明显更好，在此登记即可，不改调用点。
 TOOL_MODEL_TIER: dict[str, str] = {}
