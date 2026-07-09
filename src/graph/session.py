@@ -1,6 +1,6 @@
 """批改会话外层图（阶段 4）：在纯打分管道外面套一层「记忆 + 个性化」。
 
-    START → load_profile → grade → memory_write → END
+    START → load_profile → grade → feedback → revision → memory_write → END
                              │
                              └─ 内部 invoke build_grade_graph()（纯打分，不传 profile）
 
