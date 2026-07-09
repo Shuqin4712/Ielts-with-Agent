@@ -181,6 +181,10 @@ def build_assistant(*, checkpointer=None):
     pre_model_hook=_summarize_hook：长会话滚动摘要，压平 input token 增长。
     """
     # 选 tool 的 LLM：flash + temperature=0，让路由更稳定可复现。
-    return create_react_agent(get_llm("flash", temperature=0), TOOLS,
+    # max_retries=3：这个 llm 由 create_react_agent 内部 invoke，业务侧没有
+    # 插桩点套 with_backoff（其余直调 invoke 的地方都套了）。所以这里破例放开
+    # 客户端重试来兜 429——它不会与 with_backoff 叠乘，因为这条路径压根没有
+    # 那一层。别把它复制到别处：默认 max_retries=0 是为了避免双层重试相乘。
+    return create_react_agent(get_llm("flash", temperature=0, max_retries=3), TOOLS,
                               prompt=_SYSTEM, checkpointer=checkpointer,
                               pre_model_hook=_summarize_hook)

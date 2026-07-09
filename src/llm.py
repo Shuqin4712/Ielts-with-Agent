@@ -25,8 +25,15 @@ def get_llm(tier: str = "flash", *, thinking: bool = False,
               （否则批量评测会挂死）。pro+thinking 慢，可调大。
 
     DeepSeek 是 OpenAI 兼容接口，所以这里复用 langchain-openai 的
-    ChatOpenAI，只把 base_url 指到 DeepSeek 即可。max_retries=0：客户端不自动
-    重试，重试统一交给业务侧的 with_backoff（带指数退避，专治 429）。
+    ChatOpenAI，只把 base_url 指到 DeepSeek 即可。
+
+    max_retries 默认 0：客户端不自动重试，重试统一交给业务侧的 with_backoff
+    （指数退避，专治 429）。这是为了避免**两层重试相乘**——ChatOpenAI 默认
+    max_retries=2 会在 SDK 内部静默重试，叠上 with_backoff 的 5 次就是 15 次
+    请求，且 timeout 从「单次调用上限」退化成「每次尝试上限」，批量评测会挂死。
+
+    唯一例外：LLM 被框架托管、业务侧拿不到 invoke 插桩点时（create_react_agent），
+    显式传 max_retries=3 退回客户端重试。此时不存在 with_backoff，不会相乘。
     """
     model = config.MODEL_PRO if tier == "pro" else config.MODEL_FLASH
 
@@ -44,13 +51,16 @@ def get_llm(tier: str = "flash", *, thinking: bool = False,
     callbacks = kwargs.pop("callbacks", None) or []
     callbacks = [*callbacks, obs.usage_callback]
 
+    # max_retries 默认 0，但允许调用方覆盖：框架托管的调用（如 create_react_agent
+    # 内部 invoke）套不上 with_backoff，只能退回客户端重试。见下方注释。
+    kwargs.setdefault("max_retries", 0)
+
     return ChatOpenAI(
         model=model,
         api_key=config.require_api_key(),
         base_url=config.DEEPSEEK_BASE_URL,
         extra_body=extra_body or None,
         timeout=timeout,
-        max_retries=0,
         callbacks=callbacks,
         **kwargs,
     )
