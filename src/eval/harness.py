@@ -34,6 +34,9 @@ _TRUE_COL = {"TA": "ta_band", "CC": "cc_band", "LR": "lr_band", "GRA": "gra_band
 CONFIGS: dict[str, dict] = {
     "baseline_flash":        {"anchored": False, "reflect": False, "score_tier": "flash", "thinking": False, "max_retries": 0},
     "anchored_flash":        {"anchored": True,  "reflect": False, "score_tier": "flash", "thinking": False, "max_retries": 0},
+    # v1.4 消融：锚点选取从「band 均匀采样」换成「池内向量排序 + 跨 band 铺开」，
+    # 其余与 anchored_flash 完全一致 → 单变量对照，隔离出向量排序对 QWK 的影响。
+    "anchored_vec_flash":    {"anchored": True,  "reflect": False, "score_tier": "flash", "thinking": False, "max_retries": 0, "anchor_rank": "vector"},
     "anchored_reflect_pro":  {"anchored": True,  "reflect": True,  "score_tier": "flash", "thinking": False, "max_retries": 2},
     "noanchor_reflect_pro":  {"anchored": False, "reflect": True,  "score_tier": "flash", "thinking": False, "max_retries": 2},
 }

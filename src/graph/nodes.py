@@ -76,21 +76,43 @@ def _anchor_block(anchors: list, task_type: int) -> str:
     ).format(t=task_type, ex="\n\n".join(lines))
 
 
+def _spread_indices(n: int, k: int) -> list[int]:
+    """在 [0, n) 上取 k 个均匀铺开的下标（含首尾），去重后升序。k>=n 则取全部。"""
+    if k >= n:
+        return list(range(n))
+    return sorted({round(i * (n - 1) / (k - 1)) for i in range(k)})
+
+
+def _as_anchor(c: dict) -> dict:
+    """候选（get/search 返回的 {document, metadata}）→ 锚点 {band, text, topic}。"""
+    return {"band": c["metadata"]["band"], "text": c["document"],
+            "topic": c["metadata"].get("topic")}
+
+
 def _pick_spread(cands: list[dict], k: int = 3, exclude_id=None) -> list[dict]:
     """从候选范文里挑一组「跨 band」的锚点：按 band 排序后均匀取 k 个，
-    必然含最高 band（gold band-9 高锚）与最低 band，给模型一把校准梯子。"""
+    必然含最高 band（gold band-9 高锚）与最低 band，给模型一把校准梯子。
+    池内不看话题相关性——纯按 band 位置选，撞到哪篇是哪篇（v1.2 默认行为）。"""
     cands = [c for c in cands if c["metadata"].get("essay_id") != exclude_id]
     if not cands:
         return []
     cands.sort(key=lambda c: c["metadata"]["band"])
-    n = len(cands)
-    if k >= n:
-        picks = cands
-    else:
-        idxs = sorted({round(i * (n - 1) / (k - 1)) for i in range(k)})
-        picks = [cands[i] for i in idxs]
-    return [{"band": c["metadata"]["band"], "text": c["document"],
-             "topic": c["metadata"].get("topic")} for c in picks]
+    return [_as_anchor(cands[i]) for i in _spread_indices(len(cands), k)]
+
+
+def _pick_vector_spread(ranked: list[dict], k: int = 3, exclude_id=None) -> list[dict]:
+    """池内向量排序 + 跨 band 铺开：`ranked` 已按与本题的向量相似度升序
+    （distance 小=更贴）。每个 band 只留最贴本题的那篇（相似度序里首次出现即最优），
+    再在这些 band 上均匀铺开。既保留校准梯子的跨 band 结构，又让每一档锚文的
+    话题/文体尽量贴近被评作文——比 _pick_spread 的「band 位置随机撞」更有的放矢。"""
+    ranked = [c for c in ranked if c["metadata"].get("essay_id") != exclude_id]
+    if not ranked:
+        return []
+    best_at_band: dict[float, dict] = {}
+    for c in ranked:                          # ranked 按相似度升序 → 每 band 首见即最贴
+        best_at_band.setdefault(c["metadata"]["band"], c)
+    bands = sorted(best_at_band)
+    return [_as_anchor(best_at_band[bands[i]]) for i in _spread_indices(len(bands), k)]
 
 
 def retrieve_exemplars(state: GradeState) -> dict:
@@ -98,16 +120,30 @@ def retrieve_exemplars(state: GradeState) -> dict:
 
     锚点全部来自 exemplar 集合（split='exemplar'，与 gold holdout 天然不相交），
     再排除被评本身 essay_id，双保险防泄漏。topic 现算（关键词规则），图自足。
+
+    选锚策略由 run_cfg.anchor_rank 分档（v1.4 消融）：
+      - 缺省 / "spread"：band 均匀采样，池内不看话题相关性（v1.2 行为，评测基线）。
+      - "vector"：先按与本题 prompt 的向量相似度召回排序，再跨 band 铺开——
+        让 ChromaDB 的向量真正进入生产打分路径（此前只在检索评测里用）。
     """
     cfg = state.get("run_cfg") or {}
     if not cfg.get("anchored"):
         return {"anchors": []}
 
-    task, topic = state["task_type"], infer_topic(state["prompt"], state["essay"])
+    task = state["task_type"]
+    topic = infer_topic(state["prompt"], state["essay"])
     qid = state.get("essay_id")
-    cands = store.get_by_meta(config.COLL_EXEMPLAR, {"task_type": task, "topic": topic})
-    if len(cands) < 5:                       # 话题样本太少 → 放宽到只按 task
-        cands = store.get_by_meta(config.COLL_EXEMPLAR, {"task_type": task})
+    # 话题样本太少 → 放宽到只按 task（话题命中天然低的 Task1 优雅降级，见 v1.3 评测）。
+    where = {"task_type": task, "topic": topic}
+    if len(store.get_by_meta(config.COLL_EXEMPLAR, where)) < 5:
+        where = {"task_type": task}
+
+    if cfg.get("anchor_rank") == "vector":
+        query = (state.get("prompt") or state["essay"]).strip()
+        ranked = store.search(config.COLL_EXEMPLAR, query, where=where, n=50)
+        return {"anchors": _pick_vector_spread(ranked, k=5, exclude_id=qid)}
+
+    cands = store.get_by_meta(config.COLL_EXEMPLAR, where)
     return {"anchors": _pick_spread(cands, k=5, exclude_id=qid)}
 
 

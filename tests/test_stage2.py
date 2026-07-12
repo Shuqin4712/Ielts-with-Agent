@@ -11,7 +11,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 from src import config
 from src.eval import metrics
 from src.eval.harness import assert_no_leakage, load_gold_holdout
-from src.graph.nodes import _pick_spread, route_reflection
+from src.graph.nodes import _pick_spread, _pick_vector_spread, route_reflection
 from src.graph.state import SCORE_NODES
 from src.rag import store
 
@@ -27,6 +27,23 @@ def test_pick_spread():
     assert bands == [3.0, 6.5, 9.0]                 # 低/中/高，含最高 band 高锚
     # 排除被评本身
     assert all(p["band"] != 9.0 for p in _pick_spread(cands, k=3, exclude_id=4))
+
+
+def test_pick_vector_spread():
+    """池内向量排序选锚：跨 band 铺开 + 每 band 取相似度序里最贴的那篇 + 排除自身。"""
+    # ranked 模拟 store.search 输出：已按相似度升序（越靠前越贴本题）。
+    ranked = [
+        {"document": "close7", "metadata": {"band": 7.0, "essay_id": 1, "topic": "x"}},
+        {"document": "far7",   "metadata": {"band": 7.0, "essay_id": 2, "topic": "x"}},
+        {"document": "close5", "metadata": {"band": 5.0, "essay_id": 3, "topic": "x"}},
+        {"document": "close9", "metadata": {"band": 9.0, "essay_id": 4, "topic": "x"}},
+    ]
+    picks = _pick_vector_spread(ranked, k=3)
+    assert sorted(p["band"] for p in picks) == [5.0, 7.0, 9.0]     # 跨 band 铺开
+    # band 7 有两篇 → 取相似度序里首见（更贴）的 close7，而非 far7
+    assert next(p["text"] for p in picks if p["band"] == 7.0) == "close7"
+    # 排除被评本身（essay_id=4 的 band-9 高锚被剔除）
+    assert all(p["band"] != 9.0 for p in _pick_vector_spread(ranked, k=3, exclude_id=4))
 
 
 def test_route_reflection():

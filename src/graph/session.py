@@ -26,8 +26,9 @@ from .build import build_grade_graph
 from .state import CRITERIA, SessionState
 from .nodes import _criterion_full
 
-# 与阶段 2 验证的默认打分配置一致（锚定开 / reflection 关）——和 score_predict 同一条。
-_DEFAULT_GRADE_CFG = {"anchored": True, "reflect": False, "score_tier": "flash"}
+# 默认打分配置（锚定开 / reflection 关 / 池内向量选锚）——和 score_predict 同一条。
+# anchor_rank="vector"：v1.4 消融确认池内向量选锚 QWK 优于 band 均匀采样，已设为生产默认。
+_DEFAULT_GRADE_CFG = {"anchored": True, "reflect": False, "score_tier": "flash", "anchor_rank": "vector"}
 
 
 @lru_cache(maxsize=1)
@@ -150,7 +151,7 @@ def memory_write(state: SessionState) -> dict:
     return {"profile": updated}
 
 
-# ── 组装 ───────────────────────────────────────────────────────────
+#  组装
 def build_grading_session_graph(*, checkpointer=None):
     """批改会话外层图。checkpointer 接短期记忆（thread_id 续跑）。
 

@@ -8,8 +8,9 @@ from __future__ import annotations
 
 from ..graph.build import build_grade_graph
 
-# 与阶段 2 验证的默认打分配置一致（见 README Evaluation / grade_essay.py）。
-_GRADE_CFG = {"anchored": True, "reflect": False, "score_tier": "flash"}
+# 与默认打分配置一致（见 README Evaluation / grade_essay.py）。
+# anchor_rank="vector"：v1.4 消融确认池内向量选锚 QWK 优于 band 均匀采样，已设为生产默认。
+_GRADE_CFG = {"anchored": True, "reflect": False, "score_tier": "flash", "anchor_rank": "vector"}
 
 
 def score_predict(essay: str, task_type: int, prompt: str = "") -> dict:
