@@ -12,4 +12,5 @@ python-dotenv==1.2.2
 tenacity==9.1.4
 fastapi==0.139.0         # 阶段 5：后端；SSE 用其自带 StreamingResponse
 uvicorn==0.49.0          # 阶段 5：ASGI server（起后端）
+mcp==1.28.1              # v1.5：MCP server（把工具层暴露给 Claude Desktop 等 MCP 客户端）
 pytest==9.1.1

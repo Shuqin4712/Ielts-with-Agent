@@ -131,6 +131,8 @@ python -m uvicorn src.api.app:app --host 127.0.0.1 --port 8000
 
 - [v1.4] 池内向量选锚 ✅：修掉「ChromaDB 向量不进生产打分路径」的窟窿——范文锚点选取从 `_pick_spread`（band 均匀采样、池内不看话题）换成 `_pick_vector_spread`（过滤后的池**先按与本题 prompt 的向量相似度排序、每 band 取最贴的那篇、再跨 band 铺开**）。`run_cfg.anchor_rank` 分档（`spread`=旧行为/`vector`=新），harness 加 `anchored_vec_flash` 消融档。**单变量消融**（同 session 各 2 次，gold n=51 temp=0）：向量选锚 QWK 两次 {0.616, 0.611} 与基线 {0.579, 0.604} **不重叠**、均值 +0.022，MAE/±0.5 打平无退化 → 设为生产默认（`score.py`/`session.py` 的 `_GRADE_CFG` 加 `anchor_rank="vector"`）。这坐实了 v1.3 结论的另一半：过滤锚话题、向量在池内排序，分工都有量化证据。详见 docs/EVALUATION.md。★坑★ 选锚逻辑不改「怎么打分」，只改「喂哪几篇锚文」，故仍是那条被 eval 锁死的唯一打分管道。
 
+- [v1.5] MCP server ✅：给 `src/tools/` 纯函数层加**第三种宿主**（继 CLI REPL、Web 后端之后）——`src/mcp_server.py` 用官方 `mcp` SDK 的 FastMCP，把 6 个**无状态分析工具**（score_predict/dictionary_lookup/grammar_check/vocab_upgrade/deconstruct_article/exemplar_provide）暴露成标准 MCP 服务，Claude Desktop / Cursor 等客户端可直接调用。**零重写智能**：薄适配器包已有纯函数，是「纯函数 + 框架适配」两层架构可复用性的活证据。刻意不暴露写库工具（save_vocab/save_material 需 user_id、写用户私有库，不适合匿名宿主）。stdio 传输（`python -m src.mcp_server`）；smoke 实测 6 工具注册正确 + dictionary_lookup 端到端调用通。★坑★ 文件名用 `mcp_server.py` 而非包 `src/mcp/`，避免 shadow `mcp` SDK 包。README 加接入配置；`mcp==1.28.1` 入 requirements。（注：score_predict 等调 DeepSeek，花服务持有者额度、勿公网裸暴露——同 deploy-online 记忆的鉴权隐患。）
+
 > 每个阶段产出一个能跑的东西再进下一阶段。改动 scope 或决策前先和我确认。
 
 ## 明确不做

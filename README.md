@@ -72,6 +72,30 @@ python -m uvicorn src.api.app:app --port 8000   # 浏览器开 http://127.0.0.1:
 
 `http://127.0.0.1:8000/docs` 有 Swagger 逐端点手测。可选：`pytest tests/`（LLM-free 部分无需 key）、`python scripts/obs_summary.py`（成本/延迟汇总）、`python -m src.eval.harness --config all`（复现评测）。
 
+## MCP server（工具层的第三种宿主）
+
+同一套 `src/tools/` 纯函数，除了 CLI REPL 和 Web 后端，再加一层 **MCP server**（[`src/mcp_server.py`](src/mcp_server.py)），把 6 个无状态分析工具（打分 / 查词 / 语法 / 词汇升级 / 文章拆解 / 生成范文）暴露给 **Claude Desktop、Cursor 等任意 MCP 客户端**。**没有重写任何智能**——薄薄一层 FastMCP 适配器包住已有纯函数，正是「纯函数 + 框架适配」两层工具架构可复用性的证据（写库工具需 user_id、涉及私有库，刻意不暴露）。
+
+```powershell
+python -m src.mcp_server                  # stdio 传输启动（客户端会托管此进程）
+```
+
+Claude Desktop 接入（`claude_desktop_config.json`）：
+
+```json
+{
+  "mcpServers": {
+    "ielts-writing-agent": {
+      "command": "D:\\AAAAGENTTTT\\.venv\\Scripts\\python.exe",
+      "args": ["-m", "src.mcp_server"],
+      "cwd": "D:\\AAAAGENTTTT"
+    }
+  }
+}
+```
+
+> 注意：`score_predict`/`dictionary_lookup` 等会调 DeepSeek，服务进程需能读到 `.env` 的 key，且花的是**服务持有者**的额度——本地/可信客户端用，勿公网裸暴露。
+
 **技术栈**：LangGraph · DeepSeek API（`v4-flash`/`v4-pro`，OpenAI 兼容）· 本地 bge-m3（Ollama）· ChromaDB · SQLite · FastAPI（SSE 流式）· 纯 HTML/CSS/JS。锁定决策见 [CLAUDE.md](CLAUDE.md)，深度设计见 [DESIGN.md](DESIGN.md)。
 
 ## 复现边界与已知局限（如实说明）
